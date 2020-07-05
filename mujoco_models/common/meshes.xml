@@ -1,0 +1,38 @@
+<mojuco>
+    <!-- Meshes -->
+    <asset>
+        <mesh name="base_link" file="base_link.stl" />
+        <mesh name="wheel" file="wheel.stl" />
+        <mesh name="top_plate" file="top_plate.stl" />
+        <mesh name="installation_plate" file="installation_plate.stl" />
+        <mesh name="ur5_visual_base" file="ur5_visual_base.stl" />
+        <mesh name="ur5_collision_base" file="ur5_collision_base.stl" />
+        <mesh name="ur5_visual_shoulder" file="ur5_visual_shoulder.stl" />
+        <mesh name="ur5_collision_shoulder" file="ur5_collision_shoulder.stl" />
+        <mesh name="ur5_visual_upperarm" file="ur5_visual_upperarm.stl" />
+        <mesh name="ur5_collision_upperarm" file="ur5_collision_upperarm.stl" />
+        <mesh name="ur5_visual_forearm" file="ur5_visual_forearm.stl" />
+        <mesh name="ur5_collision_forearm" file="ur5_collision_forearm.stl" />
+        <mesh name="ur5_visual_wrist1" file="ur5_visual_wrist1.stl" />
+        <mesh name="ur5_collision_wrist1" file="ur5_collision_wrist1.stl" />
+        <mesh name="ur5_visual_wrist2" file="ur5_visual_wrist2.stl" />
+        <mesh name="ur5_collision_wrist2" file="ur5_collision_wrist2.stl" />
+        <mesh name="ur5_visual_wrist3" file="ur5_visual_wrist3.stl" />
+        <mesh name="ur5_collision_wrist3" file="ur5_collision_wrist3.stl" />
+        <mesh name="robotiq_3f_gripper_visual_link_0" file="robotiq_3f_gripper_visual_link_0.stl" />
+        <mesh name="robotiq_3f_gripper_collision_link_0" file="robotiq_3f_gripper_collision_link_0.STL" />
+        <mesh name="robotiq_3f_gripper_visual_link_1" file="robotiq_3f_gripper_visual_link_1.stl" />
+        <mesh name="robotiq_3f_gripper_collision_link_1" file="robotiq_3f_gripper_collision_link_1.STL" />
+        <mesh name="robotiq_3f_gripper_visual_link_2" file="robotiq_3f_gripper_visual_link_2.stl" />
+        <mesh name="robotiq_3f_gripper_collision_link_2" file="robotiq_3f_gripper_collision_link_2.STL" />
+        <mesh name="robotiq_3f_gripper_visual_link_3" file="robotiq_3f_gripper_visual_link_3.stl" />
+        <mesh name="robotiq_3f_gripper_collision_link_3" file="robotiq_3f_gripper_collision_link_3.STL" />
+        <mesh name="robotiq_3f_gripper_visual_palm" file="robotiq_3f_gripper_visual_palm.stl" />
+        <mesh name="robotiq_3f_gripper_collision_palm" file="robotiq_3f_gripper_collision_palm.STL" />
+        <mesh name="laser_plate" file="laser_plate.stl" />
+        <mesh name="sick-lms1xx" file="sick-lms1xx.stl" />
+        <mesh name="realsense_support" file="realsense_support.stl" />
+        <mesh name="d415" file="d415.stl" />
+    </asset>
+</mojuco>
+

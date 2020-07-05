@@ -1,0 +1,131 @@
+<mujoco>
+    <!-- Tendons for the whole robot -->
+    <tendon>
+        <!-- robotiq 3 finger grippers -->
+        <fixed name="left_gripper_finger_1_joint_1_joint_2">
+			<joint joint="left_gripper_finger_1_joint_1"  coef="1"/>
+			<joint joint="left_gripper_finger_1_joint_2"  coef="-1.5"/>
+		</fixed>
+		<fixed name="left_gripper_finger_1_joint_2_joint_3">
+			<joint joint="left_gripper_finger_1_joint_2"  coef="1"/>
+			<joint joint="left_gripper_finger_1_joint_3"  coef="-3.5"/>
+		</fixed>
+
+        <fixed name="right_gripper_finger_1_joint_1_joint_2">
+			<joint joint="right_gripper_finger_1_joint_1"  coef="1"/>
+			<joint joint="right_gripper_finger_1_joint_2"  coef="-1.5"/>
+		</fixed>
+        <fixed name="right_gripper_finger_1_joint_2_joint_3">
+			<joint joint="right_gripper_finger_1_joint_2"  coef="1"/>
+			<joint joint="right_gripper_finger_1_joint_3"  coef="-3.5"/>
+		</fixed>
+
+        <fixed name="left_gripper_finger_2_joint_1_joint_2">
+			<joint joint="left_gripper_finger_2_joint_1"  coef="1"/>
+			<joint joint="left_gripper_finger_2_joint_2"  coef="-1.5"/>
+		</fixed>
+		<fixed name="left_gripper_finger_2_joint_2_joint_3">
+			<joint joint="left_gripper_finger_2_joint_2"  coef="1"/>
+			<joint joint="left_gripper_finger_2_joint_3"  coef="-3.5"/>
+		</fixed>
+
+        <fixed name="right_gripper_finger_2_joint_1_joint_2">
+			<joint joint="right_gripper_finger_2_joint_1"  coef="1"/>
+			<joint joint="right_gripper_finger_2_joint_2"  coef="-1.5"/>
+		</fixed>
+        <fixed name="right_gripper_finger_2_joint_2_joint_3">
+			<joint joint="right_gripper_finger_2_joint_2"  coef="1"/>
+			<joint joint="right_gripper_finger_2_joint_3"  coef="-3.5"/>
+		</fixed>
+
+		<fixed name="left_gripper_finger_middle_joint_1_joint_2">
+			<joint joint="left_gripper_finger_middle_joint_1"  coef="1"/>
+			<joint joint="left_gripper_finger_middle_joint_2"  coef="-1.5"/>
+		</fixed>
+		<fixed name="left_gripper_finger_middle_joint_2_joint_3">
+			<joint joint="left_gripper_finger_middle_joint_2"  coef="1"/>
+			<joint joint="left_gripper_finger_middle_joint_3"  coef="-3.5"/>
+		</fixed>
+
+        <fixed name="right_gripper_finger_middle_joint_1_joint_2">
+			<joint joint="right_gripper_finger_middle_joint_1"  coef="1"/>
+			<joint joint="right_gripper_finger_middle_joint_2"  coef="-1.5"/>
+		</fixed>
+        <fixed name="right_gripper_finger_middle_joint_2_joint_3">
+			<joint joint="right_gripper_finger_middle_joint_2"  coef="1"/>
+			<joint joint="right_gripper_finger_middle_joint_3"  coef="-3.5"/>
+		</fixed>
+	</tendon>
+
+    <!-- Equalities for the whole robot -->
+    <equality>
+        <!-- wheels -->
+		<joint name="left_wheel_joint" joint1="front_left_wheel_joint" joint2="rear_left_wheel_joint" polycoef="0 1 0 0 0"/>
+		<joint name="right_wheel_joint" joint1="front_right_wheel_joint" joint2="rear_right_wheel_joint" polycoef="0 1 0 0 0"/>
+
+        <!-- robotiq 3 finger grippers -->
+        <tendon name="left_gripper_finger_1_joint_1_joint_2" tendon1="left_gripper_finger_1_joint_1_joint_2" />
+		<tendon name="left_gripper_finger_1_joint_2_joint_3" tendon1="left_gripper_finger_1_joint_2_joint_3"/>
+        <tendon name="right_gripper_finger_1_joint_1_joint_2" tendon1="right_gripper_finger_1_joint_1_joint_2" />
+		<tendon name="right_gripper_finger_1_joint_2_joint_3" tendon1="right_gripper_finger_1_joint_2_joint_3"/>
+
+        <tendon name="left_gripper_finger_2_joint_1_joint_2" tendon1="left_gripper_finger_2_joint_1_joint_2" />
+		<tendon name="left_gripper_finger_2_joint_2_joint_3" tendon1="left_gripper_finger_2_joint_2_joint_3"/>
+        <tendon name="right_gripper_finger_2_joint_1_joint_2" tendon1="right_gripper_finger_2_joint_1_joint_2" />
+		<tendon name="right_gripper_finger_2_joint_2_joint_3" tendon1="right_gripper_finger_2_joint_2_joint_3"/>
+
+        <tendon name="left_gripper_finger_middle_joint_1_joint_2" tendon1="left_gripper_finger_middle_joint_1_joint_2" />
+		<tendon name="left_gripper_finger_middle_joint_2_joint_3" tendon1="left_gripper_finger_middle_joint_2_joint_3"/>
+        <tendon name="right_gripper_finger_middle_joint_1_joint_2" tendon1="right_gripper_finger_middle_joint_1_joint_2" />
+		<tendon name="right_gripper_finger_middle_joint_2_joint_3" tendon1="right_gripper_finger_middle_joint_2_joint_3"/>
+
+		<joint name="left_gripper_scissor_wide_joint" joint1="left_gripper_palm_finger_2_joint" joint2="left_gripper_palm_finger_1_joint" polycoef="0 -1 0 0 0"/>
+		<joint name="right_gripper_scissor_wide_joint" joint1="right_gripper_palm_finger_2_joint" joint2="right_gripper_palm_finger_1_joint" polycoef="0 -1 0 0 0"/>
+    </equality>
+
+    <!-- Actuators for the whole robot -->
+    <actuator>
+        <!-- wheels -->
+
+        <!-- ur5s -->
+        <position name="left_arm_shoulder_pan_pos" group="0" joint="left_arm_shoulder_pan_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" /> <!-- kp = 500 -->
+        <position name="left_arm_shoulder_lift_pos" group="0" joint="left_arm_shoulder_lift_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" />
+        <position name="left_arm_elbow_pos" group="0" joint="left_arm_elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" />
+        <position name="left_arm_wrist_1_pos" group="0" joint="left_arm_wrist_1_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="400" /> <!-- kp = 100 -->
+        <position name="left_arm_wrist_2_pos" group="0" joint="left_arm_wrist_2_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="400" />
+        <position name="left_arm_wrist_3_pos" group="0" joint="left_arm_wrist_3_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="400" />
+
+        <position name="right_arm_shoulder_pan_pos" group="0" joint="right_arm_shoulder_pan_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" /> <!-- kp = 500 -->
+        <position name="right_arm_shoulder_lift_pos" group="0" joint="right_arm_shoulder_lift_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" />
+        <position name="right_arm_elbow_pos" group="0" joint="right_arm_elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" />
+        <position name="right_arm_wrist_1_pos" group="0" joint="right_arm_wrist_1_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="400" /> <!-- kp = 100 -->
+        <position name="right_arm_wrist_2_pos" group="0" joint="right_arm_wrist_2_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="400" />
+        <position name="right_arm_wrist_3_pos" group="0" joint="right_arm_wrist_3_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="400" />
+
+
+<!--        <velocity name="left_arm_shoulder_pan_vel" group="1" joint="left_arm_shoulder_pan_joint" kv="100" />-->
+<!--        <velocity name="left_arm_shoulder_lift_vel" group="1" joint="left_arm_shoulder_lift_joint" kv="100" />-->
+<!--        <velocity name="left_arm_elbow_vel" group="1" joint="left_arm_elbow_joint" kv="100" />-->
+<!--        <velocity name="left_arm_wrist_1_vel" group="1" joint="left_arm_wrist_1_joint" kv="50" />-->
+<!--        <velocity name="left_arm_wrist_2_vel" group="1" joint="left_arm_wrist_2_joint" kv="50" />-->
+<!--        <velocity name="left_arm_wrist_3_vel" group="1" joint="left_arm_wrist_3_joint" kv="50" />-->
+
+<!--        <velocity name="right_arm_shoulder_pan_vel" group="1" joint="right_arm_shoulder_pan_joint" kv="100" />-->
+<!--        <velocity name="right_arm_shoulder_lift_vel" group="1" joint="right_arm_shoulder_lift_joint" kv="100" />-->
+<!--        <velocity name="right_arm_elbow_vel" group="1" joint="right_arm_elbow_joint" kv="100" />-->
+<!--        <velocity name="right_arm_wrist_1_vel" group="1" joint="right_arm_wrist_1_joint" kv="50" />-->
+<!--        <velocity name="right_arm_wrist_2_vel" group="1" joint="right_arm_wrist_2_joint" kv="50" />-->
+<!--        <velocity name="right_arm_wrist_3_vel" group="1" joint="right_arm_wrist_3_joint" kv="50" />-->
+
+        <!-- robotiq 3 finger grippers -->
+        <position name="left_gripper_finger_1_pos" group="0" joint="left_gripper_finger_1_joint_1" ctrllimited="true" ctrlrange="0 1.2218" kp="20" />
+        <position name="left_gripper_finger_2_pos" group="0" joint="left_gripper_finger_2_joint_1" ctrllimited="true" ctrlrange="0 1.2218" kp="20" />
+        <position name="left_gripper_finger_middle_pos" group="0" joint="left_gripper_finger_middle_joint_1" ctrllimited="true" ctrlrange="0 1.2218" kp="20" />
+        <position name="left_gripper_scissor_wide_pos" group="0" joint="left_gripper_palm_finger_1_joint" ctrllimited="true" ctrlrange="-0.1784 0.192" kp="20" />
+
+        <position name="right_gripper_finger_1_pos" group="0" joint="right_gripper_finger_1_joint_1" ctrllimited="true" ctrlrange="0 1.2218" kp="20" />
+        <position name="right_gripper_finger_2_pos" group="0" joint="right_gripper_finger_2_joint_1" ctrllimited="true" ctrlrange="0 1.2218" kp="20" />
+        <position name="right_gripper_finger_middle_pos" group="0" joint="right_gripper_finger_middle_joint_1" ctrllimited="true" ctrlrange="0 1.2218" kp="20" />
+        <position name="right_gripper_scissor_wide_pos" group="0" joint="right_gripper_palm_finger_1_joint" ctrllimited="true" ctrlrange="-0.1784 0.192" kp="20" />
+    </actuator>
+</mujoco>

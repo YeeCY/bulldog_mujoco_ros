@@ -1,0 +1,44 @@
+<mujoco model="ur5">
+    <body name="base_link">
+        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="4" diaginertia="0.0072 0.00443333 0.00443333" />
+        <geom type="mesh" material="ur5_grey" mesh="ur5_visual_base" class="visual" />
+        <geom type="mesh" material="ur5_grey" mesh="ur5_collision_base" class="collision" />
+        <body name="shoulder_link" pos="0 0 0.089159">
+            <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666" />
+            <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14159 3.14159" />
+            <geom type="mesh" material="ur5_blue" mesh="ur5_visual_shoulder" class="visual" />
+            <geom type="mesh" material="ur5_blue" mesh="ur5_collision_shoulder" class="collision" />
+            <body name="upper_arm_link" pos="0 0.13585 0" quat="0.707107 0 0.707107 0">
+                <inertial pos="0 0 0.28" mass="8.393" diaginertia="0.226891 0.226891 0.0151074" />
+                <joint name="shoulder_lift_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                <geom type="mesh" material="ur5_grey" mesh="ur5_visual_upperarm" class="visual" />
+                <geom type="mesh" material="ur5_grey" mesh="ur5_collision_upperarm" class="collision" />
+                <body name="forearm_link" pos="0 -0.1197 0.425">
+                    <inertial pos="0 0 0.196125" mass="2.275" diaginertia="0.0312168 0.0312168 0.004095" />
+                    <joint name="elbow_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                    <geom type="mesh" material="ur5_blue" mesh="ur5_visual_forearm" class="visual" />
+                    <geom type="mesh" material="ur5_blue" mesh="ur5_collision_forearm" class="collision" />
+                    <body name="wrist_1_link" pos="0 0 0.39225" quat="0.707107 0 0.707107 0">
+                        <inertial pos="0 0.093 0" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
+                        <joint name="wrist_1_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                        <geom type="mesh" material="ur5_grey" mesh="ur5_visual_wrist1" class="visual" />
+                        <geom type="mesh" material="ur5_grey" mesh="ur5_collision_wrist1" class="collision" />
+                        <body name="wrist_2_link" pos="0 0.093 0">
+                            <inertial pos="0 0 0.09465" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
+                            <joint name="wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14159 3.14159" />
+                            <geom type="mesh" material="ur5_blue" mesh="ur5_visual_wrist2" class="visual" />
+                            <geom type="mesh" material="ur5_blue" mesh="ur5_collision_wrist2" class="collision" />
+                            <body name="wrist_3_link" pos="0 0 0.09465">
+                                <inertial pos="0 0.0650884 0" quat="0.707107 0 0 0.707107" mass="0.1889" diaginertia="0.000132134 8.47648e-05 8.47648e-05" />
+                                <joint name="wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                                <geom type="mesh" material="ur5_grey" mesh="ur5_visual_wrist3" class="visual" />
+                                <geom type="mesh" material="ur5_grey" mesh="ur5_collision_wrist3" class="collision" />
+                                <geom size="0.005 0.005 0.005" pos="0 0.0723 0" quat="0.707107 0 0 0.707107" type="box" />
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </body>
+</mujoco>

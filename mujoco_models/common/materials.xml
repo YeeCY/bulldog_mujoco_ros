@@ -1,0 +1,27 @@
+<mujoco>
+  <!-- Materials -->
+  <asset>
+      <material name="grid" texture="grid" texrepeat="1 1" texuniform="true"
+                reflectance="0.2"/>
+      <material name="sensor_imu" rgba="0.1 0.1 0.9 1.0" />
+      <material name="sensor_odom" rgba="0.1 0.9 0.1 1.0" />
+      <material name="sensor_touch" rgba="0.3 0.9 0.3 0.3" />
+      <material name="sensor_laser" rgba="0.9 0.1 0.1 1.0" />
+
+      <material name="base" rgba="0.075 0.075 0.075 1.0" />
+      <material name="top_plate" rgba="0.3 0.3 0.3 1" />
+      <material name="installation_plate" rgba="0.075 0.075 0.075 1.0" />
+      <material name="laser_plate" rgba="0.075 0.075 0.075 1.0" />
+      <material name="laser" rgba="1.0 0.766 0.044 1.0" />
+      <material name="wheel" rgba="0.175 0.175 0.175 1.0" />
+      <material name="ur5_blue" rgba="0.251 0.348 0.480 1.0" />
+      <material name="ur5_gray" rgba="0.520 0.520 0.520 1.0" />
+      <material name="ur5_black" rgba="0.143 0.143 0.143 1.0" />
+      <material name="robotiq_3f_gripper_black" rgba="0.2 0.2 0.2 1.0" />
+      <material name="robotiq_3f_gripper_tool0" rgba="0.2 0.4 0.7 1.0" />
+      <material name="realsense_support" rgba="0.8 0.8 0.8 1.0" />
+      <material name="realsense_d415" rgba="0.5 0.5 0.5 1.0" />
+  </asset>
+</mujoco>
+
+

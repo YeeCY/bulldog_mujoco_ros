@@ -1,0 +1,67 @@
+<mujoco>
+    <!-- Sensors for the whole robot -->
+    <sensor>
+        <!-- imu -->
+        <accelerometer name="imu_accelerometer_sensor" site="base_footprint_imu" />
+        <gyro name="imu_gyro_sensor" site="base_footprint_imu" />
+
+        <!-- odometry -->
+        <framelinvel name="odom_linvel_sensor" objtype="site" objname="base_footprint_odom" />
+        <frameangvel name="odom_angvel_sensor" objtype="site" objname="base_footprint_odom" />
+
+        <!-- laser scan -->
+        <rangefinder name="laser_scan_sensor" site="laser_scan" />
+
+        <!-- ur5s -->
+        <jointpos name="left_arm_shoulder_pan_pos_sensor" joint="left_arm_shoulder_pan_joint" />
+        <jointpos name="left_arm_shoulder_lift_pos_sensor" joint="left_arm_shoulder_lift_joint" />
+        <jointpos name="left_arm_elbow_pos_sensor" joint="left_arm_elbow_joint" />
+        <jointpos name="left_arm_wrist_1_pos_sensor" joint="left_arm_wrist_1_joint" />
+        <jointpos name="left_arm_wrist_2_pos_sensor" joint="left_arm_wrist_2_joint" />
+        <jointpos name="left_arm_wrist_3_pos_sensor" joint="left_arm_wrist_3_joint" />
+
+        <jointpos name="right_arm_shoulder_pan_pos_sensor" joint="right_arm_shoulder_pan_joint" />
+        <jointpos name="right_arm_shoulder_lift_pos_sensor" joint="right_arm_shoulder_lift_joint" />
+        <jointpos name="right_arm_elbow_pos_sensor" joint="right_arm_elbow_joint" />
+        <jointpos name="right_arm_wrist_1_pos_sensor" joint="right_arm_wrist_1_joint" />
+        <jointpos name="right_arm_wrist_2_pos_sensor" joint="right_arm_wrist_2_joint" />
+        <jointpos name="right_arm_wrist_3_pos_sensor" joint="right_arm_wrist_3_joint" />
+
+        <jointvel name="left_arm_shoulder_pan_vel_sensor" joint="left_arm_shoulder_pan_joint" />
+        <jointvel name="left_arm_shoulder_lift_vel_sensor" joint="left_arm_shoulder_lift_joint" />
+        <jointvel name="left_arm_elbow_vel_sensor" joint="left_arm_elbow_joint" />
+        <jointvel name="left_arm_wrist_1_vel_sensor" joint="left_arm_wrist_1_joint" />
+        <jointvel name="left_arm_wrist_2_vel_sensor" joint="left_arm_wrist_2_joint" />
+        <jointvel name="left_arm_wrist_3_vel_sensor" joint="left_arm_wrist_3_joint" />
+
+        <jointvel name="right_arm_shoulder_pan_vel_sensor" joint="right_arm_shoulder_pan_joint" />
+        <jointvel name="right_arm_shoulder_lift_vel_sensor" joint="right_arm_shoulder_lift_joint" />
+        <jointvel name="right_arm_elbow_vel_sensor" joint="right_arm_elbow_joint" />
+        <jointvel name="right_arm_wrist_1_vel_sensor" joint="right_arm_wrist_1_joint" />
+        <jointvel name="right_arm_wrist_2_vel_sensor" joint="right_arm_wrist_2_joint" />
+        <jointvel name="right_arm_wrist_3_vel_sensor" joint="right_arm_wrist_3_joint" />
+
+        <!-- robotiq 3 finger grippers -->
+        <touch name="left_gripper_palm_touch" site="left_gripper_palm_touch" />
+        <touch name="left_gripper_finger_1_link_1_touch_sensor" site="left_gripper_finger_1_link_1_touch" />
+        <touch name="left_gripper_finger_1_link_2_touch_sensor" site="left_gripper_finger_1_link_2_touch" />
+        <touch name="left_gripper_finger_1_link_3_touch_sensor" site="left_gripper_finger_1_link_3_touch" />
+        <touch name="left_gripper_finger_2_link_1_touch_sensor" site="left_gripper_finger_2_link_1_touch" />
+        <touch name="left_gripper_finger_2_link_2_touch_sensor" site="left_gripper_finger_2_link_2_touch" />
+        <touch name="left_gripper_finger_2_link_3_touch_sensor" site="left_gripper_finger_2_link_3_touch" />
+        <touch name="left_gripper_finger_middle_link_1_touch_sensor" site="left_gripper_finger_middle_link_1_touch" />
+        <touch name="left_gripper_finger_middle_link_2_touch_sensor" site="left_gripper_finger_middle_link_2_touch" />
+        <touch name="left_gripper_finger_middle_link_3_touch_sensor" site="left_gripper_finger_middle_link_3_touch" />
+
+        <touch name="right_gripper_palm_touch_sensor" site="right_gripper_palm_touch" />
+        <touch name="right_gripper_finger_1_link_1_touch_sensor" site="right_gripper_finger_1_link_1_touch" />
+        <touch name="right_gripper_finger_1_link_2_touch_sensor" site="right_gripper_finger_1_link_2_touch" />
+        <touch name="right_gripper_finger_1_link_3_touch_sensor" site="right_gripper_finger_1_link_3_touch" />
+        <touch name="right_gripper_finger_2_link_1_touch_sensor" site="right_gripper_finger_2_link_1_touch" />
+        <touch name="right_gripper_finger_2_link_2_touch_sensor" site="right_gripper_finger_2_link_2_touch" />
+        <touch name="right_gripper_finger_2_link_3_touch_sensor" site="right_gripper_finger_2_link_3_touch" />
+        <touch name="right_gripper_finger_middle_link_1_touch_sensor" site="right_gripper_finger_middle_link_1_touch" />
+        <touch name="right_gripper_finger_middle_link_2_touch_sensor" site="right_gripper_finger_middle_link_2_touch" />
+        <touch name="right_gripper_finger_middle_link_3_touch_sensor" site="right_gripper_finger_middle_link_3_touch" />
+    </sensor>
+</mujoco>

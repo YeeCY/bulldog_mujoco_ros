@@ -1,0 +1,40 @@
+<launch>
+    <arg name="debug" default="false" />
+    <arg name="verbose" default="true" />
+    <arg name="use_moveit" default="true" />
+    <arg name="gui" default="true" />
+    <arg name="robot_state_pub_frequency" default="50" />
+    <arg name="joint_state_pub_frequence" default="100" />
+    
+    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/mujoco_models/urdfs/ur5_joint_limited_robot.urdf.xacro" />
+    <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5_environment.xml" />
+
+    <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
+    <param if="$(eval not arg('robot_description').endswith('.xacro'))" name="robot_description" command="load" file="$(arg robot_description)"/>
+
+    <!-- useless -->
+    <!-- <param name="/hand/mapping/$(arg hand_serial)" value="$(arg hand_id)"/> -->
+    <!-- <param name="/hand/joint_prefix/$(arg hand_serial)" value="$(arg hand_id)_"/> -->
+
+    <!-- Publish joint state -->
+    <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controller">
+        <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_state_controller.yaml" />
+        <param name="publish_rate" value="$(arg joint_state_pub_frequence)" />
+    </node>
+
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="false"/>
+        <rosparam param="/source_list">[/joint_states]</rosparam>
+    </node> -->
+
+    <!-- Publish robot state (tf transforms) -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+        <param name="publish_frequency" value="$(arg robot_state_pub_frequency)" />
+        <param name="tf_prefix" value="" />
+    </node>
+
+    <!-- Launch mujoco ros control -->
+    <include file="$(find mujoco_ros_control)/launch/mujoco_ros_control.launch">
+        <arg name="robot_model_path" value="$(arg mujoco_model_filename)"/>
+    </include>
+</launch>

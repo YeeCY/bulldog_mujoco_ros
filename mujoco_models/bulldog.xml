@@ -1,0 +1,355 @@
+<mujoco model="bulldog">
+    <compiler angle="radian"
+              inertiafromgeom="true"
+              meshdir="./meshes/" />
+    <size njmax="500" nconmax="100" />
+
+    <include file="./common/visual.xml" />
+    <include file="./common/textures.xml" />
+    <include file="./common/materials.xml" />
+    <include file="./common/meshes.xml" />
+
+    <!-- Robot body -->
+    <worldbody>
+        <light name="sun_light" pos="0 0 1000.0"/>
+        <light name="tracking_light" pos="0 0 10.0" dir="0 0 -1" mode="trackcom"/>
+        <geom name="floor" type="plane" conaffinity="1" size="10 10 0.2" material="grid"/>
+        <body name="base_link" pos="0 0 0.14125">
+            <!-- default inertia is not balance -->
+            <!-- <inertial pos="-0.00065 -0.085 0.062" mass="46.034" fullinertia="0.6022 1.7386 2.0296 -0.02364 -0.1197 -0.001544" /> -->
+            <inertial pos="-0.00065 0.000 0.062" mass="46.034" fullinertia="0.6022 1.7386 2.0296 -0.02364 -0.1197 -0.001544" />
+            <!-- No navigation now !!! -->
+            <!-- <freejoint name="base_footprint_joint" /> -->
+            <geom type="mesh" contype="0" conaffinity="0" group="1" material="base" mesh="base_link" />
+            <geom size="0.425 0.21 0.08125" pos="0 0 0.18125" type="box" material="base" />
+            <geom size="0.34 0.21 0.04875" pos="0 0 0.21125" type="box" material="base" />
+            <site name="base_footprint_imu" type="box" size="0.005 0.005 0.005" material="sensor_imu" />
+            <site name="base_footprint_odom" type="box" size="0.005 0.005 0.005" material="sensor_odom" />
+            <body name="top_plate_link" pos="0.07937 0 0.253">
+                <geom type="mesh" contype="0" conaffinity="0" group="1" material="top_plate" mesh="top_plate" />
+            </body>
+            <body name="installation_plate_link" pos="0.147 0 0.2664">
+                <geom quat="0.707388 0 0 0.706825" type="mesh" contype="0" conaffinity="0" group="1" material="installation_plate" mesh="installation_plate" />
+                <geom quat="0.707388 0 0 0.706825" type="mesh" material="installation_plate" mesh="installation_plate" />
+            </body>
+            <body name="laser_plate_link">
+                <geom pos="0.497 0 0.2664" quat="0 1 0 0" type="mesh" contype="0" conaffinity="0" group="1" material="laser_plate" mesh="laser_plate" />
+                <body name="laser">
+                    <geom pos="0.512 0 0.2224" quat="-1 0 0 0" type="mesh" contype="0" conaffinity="0" group="1" material="laser" mesh="sick-lms1xx" />
+                    <geom size="0.0525 0.05 0.05" pos="0.512 0 0.1724" quat="-1 0 0 0" type="box" material="laser" />
+                    <site name="laser_scan" pos="0.512 0 0.2224" zaxis="1.0 0.0 0.0" type="cylinder" size="0.005 0.005 0.02" material="sensor_laser" />
+                </body>
+            </body>
+            <body name="front_left_wheel_link" pos="0.27935 0.2924 0.04352">
+                <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467" />
+                <joint name="front_left_wheel_joint" pos="0 0 0" axis="0 1 0" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" material="wheel" mesh="wheel" />
+                <geom size="0.1816 0.0673" quat="0.707107 0.707107 0 0" type="cylinder" material="wheel" />
+            </body>
+            <body name="front_right_wheel_link" pos="0.27935 -0.2924 0.04352">
+                <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467" />
+                <joint name="front_right_wheel_joint" pos="0 0 0" axis="0 1 0" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" material="wheel" mesh="wheel" />
+                <geom size="0.1816 0.0673" quat="0.707107 0.707107 0 0" type="cylinder" material="wheel" />
+            </body>
+            <body name="rear_left_wheel_link" pos="-0.27935 0.2924 0.04352">
+                <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467" />
+                <joint name="rear_left_wheel_joint" pos="0 0 0" axis="0 1 0" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" material="wheel" mesh="wheel" />
+                <geom size="0.1816 0.0673" quat="0.707107 0.707107 0 0" type="cylinder" material="wheel" />
+            </body>
+            <body name="rear_right_wheel_link" pos="-0.27935 -0.2924 0.04352">
+                <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467" />
+                <joint name="rear_right_wheel_joint" pos="0 0 0" axis="0 1 0" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" material="wheel" mesh="wheel" />
+                <geom size="0.1816 0.0673" quat="0.707107 0.707107 0 0" type="cylinder" material="wheel" />
+            </body>
+            <body name="left_arm_base_link">
+                <inertial pos="0 0 0" mass="4.0" diaginertia="0.00443333156 0.00443333156 0.0072" />
+                <geom pos="0.147 0.15945 0.40469" quat="0.92388 -0.382683 0 0" type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_base" />
+                <geom pos="0.147 0.15945 0.40469" quat="0.92388 -0.382683 0 0" type="mesh" material="ur5_gray" mesh="ur5_collision_base" />
+                <body name="left_arm_shoulder_link" pos="0.147 0.222495 0.467735" quat="0.92388 -0.382683 0 0">
+                    <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666" />
+                    <joint name="left_arm_shoulder_pan_joint" pos="0 0 0" axis="0 0 1" damping="65" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_blue" mesh="ur5_visual_shoulder" />
+                    <geom type="mesh" material="ur5_blue" mesh="ur5_collision_shoulder" />
+                    <body name="left_arm_upper_arm_link" pos="0 0.13585 0" quat="0.707107 0 0.707107 0">
+                        <inertial pos="0 0 0.28" mass="8.393" diaginertia="0.226891 0.226891 0.0151074" />
+                        <joint name="left_arm_shoulder_lift_joint" pos="0 0 0" axis="0 1 0" damping="65" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_upperarm" />
+                        <geom type="mesh" material="ur5_gray" mesh="ur5_collision_upperarm" />
+                        <body name="left_arm_forearm_link" pos="0 -0.1197 0.425">
+                            <inertial pos="0 0 0.196125" mass="2.275" diaginertia="0.0312168 0.0312168 0.004095" />
+                            <joint name="left_arm_elbow_joint" pos="0 0 0" axis="0 1 0" damping="65" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_blue" mesh="ur5_visual_forearm" />
+                            <geom type="mesh" material="ur5_blue" mesh="ur5_collision_forearm" />
+                            <body name="left_arm_wrist_1_link" pos="0 0 0.39225" quat="0.707107 0 0.707107 0">
+                                <inertial pos="0 0.093 0" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
+                                <joint name="left_arm_wrist_1_joint" pos="0 0 0" axis="0 1 0" damping="45" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_wrist1" />
+                                <geom type="mesh" material="ur5_gray" mesh="ur5_collision_wrist1" />
+                                <body name="left_arm_wrist_2_link" pos="0 0.093 0">
+                                    <inertial pos="0 0 0.09465" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
+                                    <joint name="left_arm_wrist_2_joint" pos="0 0 0" axis="0 0 1" damping="45" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                                    <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_blue" mesh="ur5_visual_wrist2" />
+                                    <geom type="mesh" material="ur5_blue" mesh="ur5_collision_wrist2" />
+                                    <body name="left_arm_wrist_3_link" pos="0 0 0.09465">
+                                        <inertial pos="-0.0139715 0.128216 -0.0210581" quat="0.593078 -0.0833896 0.125752 0.79088" mass="2.11863" diaginertia="0.0149489 0.012662 0.0109875" />
+                                        <joint name="left_arm_wrist_3_joint" pos="0 0 0" axis="0 1 0" damping="45" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                                        <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_wrist3" />
+                                        <geom type="mesh" material="ur5_gray" mesh="ur5_collision_wrist3" />
+                                        <geom size="0.005 0.005 0.005" pos="0 0.0723 0" quat="0.707107 0 0 0.707107" type="box" />
+                                        <body name="left_gripper_sensor_support_link">
+                                            <geom pos="0 0.0973 0" quat="0.653281 -0.653281 0.270598 0.270598" type="mesh" contype="0" conaffinity="0" group="1" material="realsense_support" mesh="realsense_support" />
+                                            <geom pos="0 0.0973 0" quat="0.653281 -0.653281 0.270598 0.270598" type="mesh" material="realsense_support" mesh="realsense_support" />
+                                            <body name="left_gripper_sensor_d415_camera_link">
+                                                <geom pos="-0.0643467 0.11592 -0.0643467" quat="0.653281 -0.653281 0.270598 0.270598" type="mesh" contype="0" conaffinity="0" group="1" material="realsense_d415" mesh="d415" />
+                                                <geom size="0.010025 0.0495 0.0115" pos="-0.0643467 0.10605 -0.0643467" quat="0.270598 -0.653281 -0.653281 0.270598" type="box" material="realsense_d415" />
+                                            </body>
+                                        </body>
+                                        <body name="left_gripper_palm">
+                                            <!-- could comment out this inertia -->
+                                            <inertial pos="0 0.1473 0" quat="0.382683 0 -0.92388 -4.52383e-12" mass="1.3" diaginertia="0.007113 0.007113 0.007113" />
+                                            <geom pos="0 0.1473 0" quat="0.382683 0 -0.92388 -4.52383e-12" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_palm" />
+                                            <geom pos="0 0.1473 0" quat="0.382683 0 -0.92388 -4.52383e-12" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_palm" />
+                                            <site name="left_gripper_palm_touch" type="ellipsoid" pos="0 0.1973 0" quat="0.382683 0 -0.92388 -4.52383e-12" size="0.035 0.0055 0.035" material="sensor_touch" />
+                                            <body name="left_gripper_palm_tool0">
+                                                <geom pos="0.0 0.2348 0.0" euler="-1.5708 0 -2.3561" type="sphere" size="0.01" contype="0" conaffinity="0" group="2" material="robotiq_3f_gripper_tool0" />
+                                                <site name="left_gripper_palm_tool0" pos="0.0 0.2348 0.0" euler="-1.5708 0 -2.3561" type="sphere" size="0.009" />
+                                            </body>
+                                            <body name="left_gripper_finger_1_link_0" pos="0.00671751 0.1687 -0.0576292" quat="0.653541 0.270488 0.270708 0.653022">
+                                                <inertial pos="0 0 0" quat="0.707145 0.707067 -0.0011614 -0.000375819" mass="0.05" diaginertia="0.00393333 0.00393333 0.00393333" />
+                                                <joint name="left_gripper_palm_finger_1_joint" pos="0 0 0" axis="0 1 0" damping="5" limited="true" range="-0.1784 0.192" />
+                                                <geom pos="0.02 0 0" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_0" />
+                                                <geom pos="0.02 0 0" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_0" />
+                                                <body name="left_gripper_finger_1_link_1" pos="0.02 0 0">
+                                                    <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                    <joint name="left_gripper_finger_1_joint_1" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.2218" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_1" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_1" />
+                                                    <site name="left_gripper_finger_1_link_1_touch" type="ellipsoid" pos="0.035 -0.014 0" quat="0.96639 0 0 -0.257081" size=".018 .006 .014" material="sensor_touch" />
+                                                    <body name="left_gripper_finger_1_link_2" pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081">
+                                                        <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                        <joint name="left_gripper_finger_1_joint_2" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.5708" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_2" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_2" />
+                                                        <site name="left_gripper_finger_1_link_2_touch" type="ellipsoid" pos="0.02 0.006 0" size=".016 .006 .014" material="sensor_touch" />
+                                                        <body name="left_gripper_finger_1_link_3" pos="0.039 0 0">
+                                                            <inertial pos="0 0 0" quat="0.614353 0.390886 -0.585309 0.35664" mass="0.05" diaginertia="0.00163315 0.00136097 0.000726883" />
+                                                            <joint name="left_gripper_finger_1_joint_3" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="-1.2217 -0.0523" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_3" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_3" />
+                                                            <site name="left_gripper_finger_1_link_3_touch" type="ellipsoid" pos="0.014 0.014 0" quat="0.96639 0 0 0.257081" size=".016 .006 .014" material="sensor_touch" />
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                            <body name="left_gripper_finger_2_link_0" pos="0.0576292 0.1687 -0.00671751" quat="0.653541 0.270488 0.270708 0.653022">
+                                                <inertial pos="0 0 0" quat="0.707145 0.707067 -0.0011614 -0.000375819" mass="0.05" diaginertia="0.00393333 0.00393333 0.00393333" />
+                                                <joint name="left_gripper_palm_finger_2_joint" pos="0 0 0" axis="0 1 0" damping="5" limited="true" range="-0.192 0.1784" />
+                                                <geom pos="0.02 0 0" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_0" />
+                                                <geom pos="0.02 0 0" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_0" />
+                                                <body name="left_gripper_finger_2_link_1" pos="0.02 0 0">
+                                                    <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                    <joint name="left_gripper_finger_2_joint_1" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.2218" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_1" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_1" />
+                                                    <site name="left_gripper_finger_2_link_1_touch" type="ellipsoid" pos="0.035 -0.014 0" quat="0.96639 0 0 -0.257081" size=".018 .006 .014" material="sensor_touch" />
+                                                    <body name="left_gripper_finger_2_link_2" pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081">
+                                                        <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                        <joint name="left_gripper_finger_2_joint_2" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.5708" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_2" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_2" />
+                                                        <site name="left_gripper_finger_2_link_2_touch" type="ellipsoid" pos="0.02 0.006 0" size=".016 .006 .014" material="sensor_touch" />
+                                                        <body name="left_gripper_finger_2_link_3" pos="0.039 0 0">
+                                                            <inertial pos="0 0 0" quat="0.614353 0.390886 -0.585309 0.35664" mass="0.05" diaginertia="0.00163315 0.00136097 0.000726883" />
+                                                            <joint name="left_gripper_finger_2_joint_3" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="-1.2217 -0.0523" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_3" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_3" />
+                                                            <site name="left_gripper_finger_2_link_3_touch" type="ellipsoid" pos="0.014 0.014 0" quat="0.96639 0 0 0.257081" size=".016 .006 .014" material="sensor_touch" />
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                            <body name="left_gripper_finger_middle_link_0">
+                                                <!-- TODO: add a inertia when necessary -->
+                                                <geom pos="-0.0321846 0.1887 0.0321846" quat="0.270706 -0.653021 -0.653542 0.27049" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_0" />
+                                                <geom pos="-0.0321846 0.1887 0.0321846" quat="0.270706 -0.653021 -0.653542 0.27049" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_0" />
+                                                <body name="left_gripper_finger_middle_link_1" pos="-0.0321846 0.1887 0.0321846" quat="0.270706 -0.653021 -0.653542 0.27049">
+                                                    <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                    <joint name="left_gripper_finger_middle_joint_1" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.2218" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_1" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_1" />
+                                                    <site name="left_gripper_finger_middle_link_1_touch" type="ellipsoid" pos="0.035 -0.014 0" quat="0.96639 0 0 -0.257081" size=".018 .006 .014" material="sensor_touch" />
+                                                    <body name="left_gripper_finger_middle_link_2" pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081">
+                                                        <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                        <joint name="left_gripper_finger_middle_joint_2" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.5708" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_2" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_2" />
+                                                        <site name="left_gripper_finger_middle_link_2_touch" type="ellipsoid" pos="0.02 0.006 0" size=".016 .006 .014" material="sensor_touch" />
+                                                        <body name="left_gripper_finger_middle_link_3" pos="0.039 0 0">
+                                                            <inertial pos="0 0 0" quat="0.614353 0.390886 -0.585309 0.35664" mass="0.05" diaginertia="0.00163315 0.00136097 0.000726883" />
+                                                            <joint name="left_gripper_finger_middle_joint_3" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="-1.2217 -0.0523" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_3" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_3" />
+                                                            <site name="left_gripper_finger_middle_link_3_touch" type="ellipsoid" pos="0.014 0.014 0" quat="0.96639 0 0 0.257081" size=".016 .006 .014" material="sensor_touch" />
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+            <body name="right_arm_base_link">
+                <inertial pos="0 0 0" mass="4.0" diaginertia="0.00443333156 0.00443333156 0.0072" />
+                <geom pos="0.147 -0.15945 0.40469" quat="0 0 -0.382683 0.92388" type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_base" />
+                <geom pos="0.147 -0.15945 0.40469" quat="0 0 -0.382683 0.92388" type="mesh" material="ur5_gray" mesh="ur5_collision_base" />
+                <body name="right_arm_shoulder_link" pos="0.147 -0.222495 0.467735" quat="0 0 -0.382683 0.92388">
+                    <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666" />
+                    <joint name="right_arm_shoulder_pan_joint" pos="0 0 0" axis="0 0 1" damping="65" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_blue" mesh="ur5_visual_shoulder" />
+                    <geom type="mesh" material="ur5_blue" mesh="ur5_collision_shoulder" />
+                    <body name="right_arm_upper_arm_link" pos="0 0.13585 0" quat="0.707107 0 0.707107 0">
+                        <inertial pos="0 0 0.28" mass="8.393" diaginertia="0.226891 0.226891 0.0151074" />
+                        <joint name="right_arm_shoulder_lift_joint" pos="0 0 0" axis="0 1 0" damping="65" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_upperarm" />
+                        <geom type="mesh" material="ur5_gray" mesh="ur5_collision_upperarm" />
+                        <body name="right_arm_forearm_link" pos="0 -0.1197 0.425">
+                            <inertial pos="0 0 0.196125" mass="2.275" diaginertia="0.0312168 0.0312168 0.004095" />
+                            <joint name="right_arm_elbow_joint" pos="0 0 0" axis="0 1 0" damping="65" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_blue" mesh="ur5_visual_forearm" />
+                            <geom type="mesh" material="ur5_blue" mesh="ur5_collision_forearm" />
+                            <body name="right_arm_wrist_1_link" pos="0 0 0.39225" quat="0.707107 0 0.707107 0">
+                                <inertial pos="0 0.093 0" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
+                                <joint name="right_arm_wrist_1_joint" pos="0 0 0" axis="0 1 0" damping="45" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_wrist1" />
+                                <geom type="mesh" material="ur5_gray" mesh="ur5_collision_wrist1" />
+                                <body name="right_arm_wrist_2_link" pos="0 0.093 0">
+                                    <inertial pos="0 0 0.09465" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
+                                    <joint name="right_arm_wrist_2_joint" pos="0 0 0" axis="0 0 1" damping="45" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                                    <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_blue" mesh="ur5_visual_wrist2" />
+                                    <geom type="mesh" material="ur5_blue" mesh="ur5_collision_wrist2" />
+                                    <body name="right_arm_wrist_3_link" pos="0 0 0.09465">
+                                        <inertial pos="-0.0215011 0.128216 0.0135286" quat="0.320707 0.519198 0.497294 0.616668" mass="2.11863" diaginertia="0.014941 0.01256 0.0110691" />
+                                        <joint name="right_arm_wrist_3_joint" pos="0 0 0" axis="0 1 0" damping="45" armature="0.01" limited="true" range="-3.14159 3.14159" />
+                                        <geom type="mesh" contype="0" conaffinity="0" group="1" material="ur5_gray" mesh="ur5_visual_wrist3" />
+                                        <geom type="mesh" material="ur5_gray" mesh="ur5_collision_wrist3" />
+                                        <geom size="0.005 0.005 0.005" pos="0 0.0723 0" quat="0.707107 0 0 0.707107" type="box" />
+                                        <body name="right_gripper_sensor_support_link">
+                                            <geom pos="0 0.0973 0" quat="0.270598 -0.270598 0.653281 0.653281" type="mesh" contype="0" conaffinity="0" group="1" material="realsense_support" mesh="realsense_support" />
+                                            <geom pos="0 0.0973 0" quat="0.270598 -0.270598 0.653281 0.653281" type="mesh" material="realsense_support" mesh="realsense_support" />
+                                            <body name="right_gripper_sensor_d415_camera_link">
+                                                <geom pos="-0.0643467 0.11592 0.0643467" quat="0.270598 -0.270598 0.653281 0.653281" type="mesh" contype="0" conaffinity="0" group="1" material="realsense_d415" mesh="d415" />
+                                                <geom size="0.010025 0.0495 0.0115" pos="-0.0643467 0.10605 0.0643467" quat="0.653281 -0.270598 -0.270598 0.653281" type="box" material="realsense_d415" />
+                                            </body>
+                                        </body>
+                                        <body name="right_gripper_palm">
+                                            <!-- could comment out this inertia -->
+                                            <inertial pos="0 0.1473 0" quat="0.382683 0 0.92388 4.52383e-12" mass="1.3" diaginertia="0.007113 0.007113 0.007113" />
+                                            <geom pos="0 0.1473 0" quat="0.382683 0 0.92388 4.52383e-12" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_palm" />
+                                            <geom pos="0 0.1473 0" quat="0.382683 0 0.92388 4.52388e-12" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_palm" />
+                                            <site name="right_gripper_palm_touch" type="ellipsoid" pos="0 0.1973 0" quat="0.382683 0 0.92388 4.52388e-12" size="0.035 0.0055 0.035" material="sensor_touch" />
+                                            <body name="right_gripper_palm_tool0">
+                                                <geom pos="0.0 0.2348 0.0" euler="-1.5708 0 -0.7854" type="sphere" size="0.01" contype="0" conaffinity="0" group="2" material="robotiq_3f_gripper_tool0" />
+                                                <site name="right_gripper_palm_tool0" pos="0.0 0.2348 0.0" euler="-1.5708 0 -0.7854" type="sphere" size="0.009" />
+                                            </body>
+                                            <body name="right_gripper_finger_1_link_0" pos="0.0576292 0.1687 0.00671751" quat="-0.653543 0.270493 0.270703 -0.65302">
+                                                <inertial pos="0 0 0" quat="0.707145 0.707067 -0.0011614 -0.000375819" mass="0.05" diaginertia="0.00393333 0.00393333 0.00393333" />
+                                                <joint name="right_gripper_palm_finger_1_joint" pos="0 0 0" axis="0 1 0" damping="5" limited="true" range="-0.1784 0.192" />
+                                                <geom pos="0.02 0 0" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_0" />
+                                                <geom pos="0.02 0 0" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_0" />
+                                                <body name="right_gripper_finger_1_link_1" pos="0.02 0 0">
+                                                    <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                    <joint name="right_gripper_finger_1_joint_1" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.2218" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_1" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_1" />
+                                                    <site name="right_gripper_finger_1_link_1_touch" type="ellipsoid" pos="0.035 -0.014 0" quat="0.96639 0 0 -0.257081" size=".018 .006 .014" material="sensor_touch" />
+                                                    <body name="right_gripper_finger_1_link_2" pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081">
+                                                        <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                        <joint name="right_gripper_finger_1_joint_2" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.5708" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_2" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_2" />
+                                                        <site name="right_gripper_finger_1_link_2_touch" type="ellipsoid" pos="0.02 0.006 0" size=".016 .006 .014" material="sensor_touch" />
+                                                        <body name="right_gripper_finger_1_link_3" pos="0.039 0 0">
+                                                            <inertial pos="0 0 0" quat="0.614353 0.390886 -0.585309 0.35664" mass="0.05" diaginertia="0.00163315 0.00136097 0.000726883" />
+                                                            <joint name="right_gripper_finger_1_joint_3" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="-1.2217 -0.0523" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_3" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_3" />
+                                                            <site name="right_gripper_finger_1_link_3_touch" type="ellipsoid" pos="0.014 0.014 0" quat="0.96639 0 0 0.257081" size=".016 .006 .014" material="sensor_touch" />
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                            <body name="right_gripper_finger_2_link_0" pos="0.00671751 0.1687 0.0576292" quat="-0.653543 0.270493 0.270703 -0.65302">
+                                                <inertial pos="0 0 0" quat="0.707145 0.707067 -0.0011614 -0.000375819" mass="0.05" diaginertia="0.00393333 0.00393333 0.00393333" />
+                                                <joint name="right_gripper_palm_finger_2_joint" pos="0 0 0" axis="0 1 0" damping="5" limited="true" range="-0.192 0.1784" />
+                                                <geom pos="0.02 0 0" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_0" />
+                                                <geom pos="0.02 0 0" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_0" />
+                                                <body name="right_gripper_finger_2_link_1" pos="0.02 0 0">
+                                                    <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                    <joint name="right_gripper_finger_2_joint_1" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.2218" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_1" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_1" />
+                                                    <site name="right_gripper_finger_2_link_1_touch" type="ellipsoid" pos="0.035 -0.014 0" quat="0.96639 0 0 -0.257081" size=".018 .006 .014" material="sensor_touch" />
+                                                    <body name="right_gripper_finger_2_link_2" pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081">
+                                                        <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                        <joint name="right_gripper_finger_2_joint_2" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.5708" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_2" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_2" />
+                                                        <site name="right_gripper_finger_2_link_2_touch" type="ellipsoid" pos="0.02 0.006 0" size=".016 .006 .014" material="sensor_touch" />
+                                                        <body name="right_gripper_finger_2_link_3" pos="0.039 0 0">
+                                                            <inertial pos="0 0 0" quat="0.614353 0.390886 -0.585309 0.35664" mass="0.05" diaginertia="0.00163315 0.00136097 0.000726883" />
+                                                            <joint name="right_gripper_finger_2_joint_3" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="-1.2217 -0.0523" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_3" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_3" />
+                                                            <site name="right_gripper_finger_2_link_3_touch" type="ellipsoid" pos="0.014 0.014 0" quat="0.96639 0 0 0.257081" size=".016 .006 .014" material="sensor_touch" />
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                            <body name="right_gripper_finger_middle_link_0">
+                                                <!-- TODO: add a inertia when necessary -->
+                                                <geom pos="-0.0321846 0.1887 -0.0321846" quat="0.270706 0.653021 0.653542 0.27049" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_0" />
+                                                <geom pos="-0.0321846 0.1887 -0.0321846" quat="0.270706 0.653021 0.653542 0.27049" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_0" />
+                                                <body name="right_gripper_finger_middle_link_1" pos="-0.0321846 0.1887 -0.0321846" quat="0.270706 0.653021 0.653542 0.27049">
+                                                    <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                    <joint name="right_gripper_finger_middle_joint_1" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.2218" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_1" />
+                                                    <geom pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_1" />
+                                                    <site name="right_gripper_finger_middle_link_1_touch" type="ellipsoid" pos="0.035 -0.014 0" quat="0.96639 0 0 -0.257081" size=".018 .006 .014" material="sensor_touch" />
+                                                    <body name="right_gripper_finger_middle_link_2" pos="0.05 -0.028 0" quat="0.96639 0 0 -0.257081">
+                                                        <inertial pos="0 0 0" quat="0.478816 0.503501 0.521199 0.495554" mass="0.15" diaginertia="0.00567167 0.00567167 0.00567167" />
+                                                        <joint name="right_gripper_finger_middle_joint_2" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="0 1.5708" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_2" />
+                                                        <geom pos="0.039 0 0.0075" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_2" />
+                                                        <site name="right_gripper_finger_middle_link_2_touch" type="ellipsoid" pos="0.02 0.006 0" size=".016 .006 .014" material="sensor_touch" />
+                                                        <body name="right_gripper_finger_middle_link_3" pos="0.039 0 0">
+                                                            <inertial pos="0 0 0" quat="0.614353 0.390886 -0.585309 0.35664" mass="0.05" diaginertia="0.00163315 0.00136097 0.000726883" />
+                                                            <joint name="right_gripper_finger_middle_joint_3" pos="0 0 0" axis="0 0 1" damping="5" limited="true" range="-1.2217 -0.0523" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" contype="0" conaffinity="0" group="1" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_visual_link_3" />
+                                                            <geom quat="0.96639 0 0 0.257081" type="mesh" material="robotiq_3f_gripper_black" mesh="robotiq_3f_gripper_collision_link_3" />
+                                                            <site name="right_gripper_finger_middle_link_3_touch" type="ellipsoid" pos="0.014 0.014 0" quat="0.96639 0 0 0.257081" size=".016 .006 .014" material="sensor_touch" />
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <include file="./common/contacts.xml" />
+    <include file="./common/actuators.xml" />
+    <include file="./common/sensors.xml" />
+</mujoco>
