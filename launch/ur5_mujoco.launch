@@ -6,7 +6,7 @@
     <arg name="robot_state_pub_frequency" default="50" />
     <arg name="joint_state_pub_frequence" default="100" />
     
-    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/mujoco_models/urdfs/ur5.urdf" />
+    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/mujoco_models/urdfs/ur5_joint_limited_robot.urdf.xacro" />
     <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5_environment.xml" />
 
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>

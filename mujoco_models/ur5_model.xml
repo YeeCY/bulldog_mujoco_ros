@@ -1,6 +1,7 @@
 <mujoco model="ur5">
     <body name="base_link">
-        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="4" diaginertia="0.0072 0.00443333 0.00443333" />
+        <!-- <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="4" diaginertia="0.0072 0.00443333 0.00443333" /> -->
+        <inertial pos="0 0 0" mass="4.0" diaginertia="0.00443333 0.00443333 0.0072" />
         <geom type="mesh" material="ur5_grey" mesh="ur5_visual_base" class="visual" />
         <geom type="mesh" material="ur5_grey" mesh="ur5_collision_base" class="collision" />
         <body name="shoulder_link" pos="0 0 0.089159">
