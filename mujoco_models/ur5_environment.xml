@@ -1,5 +1,6 @@
 <mujoco>
     <include file="shared_options.xml" />
+    <include file="ur5_options.xml" />
     <asset>
         <include file="shared_assets.xml" />
     </asset>

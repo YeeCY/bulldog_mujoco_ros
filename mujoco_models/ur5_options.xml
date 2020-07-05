@@ -1,0 +1,32 @@
+<mujoco>
+    <!-- Actuators -->
+    <actuator>
+        <position name="shoulder_pan" group="0" joint="shoulder_pan_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="4000"/>
+        <position name="shoulder_lift" group="0" joint="shoulder_lift_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="3000"/>
+        <position name="elbow" group="0" joint="elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="3000"/>
+        <position name="wrist_1" group="0" joint="wrist_1_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000"/>
+        <position name="wrist_2" group="0" joint="wrist_2_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000"/>
+        <position name="wrist_3" group="0" joint="wrist_3_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000"/>
+
+        <!-- <velocity name='shoulder_pan_v' group="1" joint='shoulder_pan_joint' kv="100" /> -->
+        <!-- <velocity name='shoulder_lift_v' group="1" joint='shoulder_lift_joint' kv="100" /> -->
+        <!-- <velocity name='forearm_v' group="1" joint='elbow_joint' kv="100" /> -->
+        <!-- <velocity name='wrist_1_v' group="1" joint='wrist_1_joint' kv="50" /> -->
+        <!-- <velocity name='wrist_2_v' group="1" joint='wrist_2_joint' kv="50" /> -->
+        <!-- <velocity name='wrist_3_v' group="1" joint='wrist_3_joint' kv="50" /> -->
+    </actuator>
+
+    <!-- Contacts -->
+    <contact>
+        <exclude body1="base_link" body2="shoulder_link"/>
+        <exclude body1="ee_link" body2="wrist_1_link"/>
+        <exclude body1="ee_link" body2="wrist_2_link"/>
+        <exclude body1="ee_link" body2="wrist_3_link"/>
+        <exclude body1="forearm_link" body2="upper_arm_link"/>
+        <exclude body1="forearm_link" body2="wrist_1_link"/>
+        <exclude body1="shoulder_link" body2="upper_arm_link"/>
+        <exclude body1="wrist_1_link" body2="wrist_2_link"/>
+        <exclude body1="wrist_1_link" body2="wrist_3_link"/>
+        <exclude body1="wrist_2_link" body2="wrist_3_link"/>
+    </contact>
+</mujoco>

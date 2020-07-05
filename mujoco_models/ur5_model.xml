@@ -34,7 +34,11 @@
                                 <joint name="wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
                                 <geom type="mesh" material="ur5_grey" mesh="ur5_visual_wrist3" class="visual" />
                                 <geom type="mesh" material="ur5_grey" mesh="ur5_collision_wrist3" class="collision" />
-                                <geom size="0.005 0.005 0.005" pos="0 0.0723 0" quat="0.707107 0 0 0.707107" type="box" />
+                                <!-- <geom size="0.005 0.005 0.005" pos="0 0.0723 0" quat="0.707107 0 0 0.707107" type="box" /> -->
+                                <body name="ee_link" pos="0 0.0823 0" quat="0.707107 0 0 0.707107">
+                                    <inertial pos="-0.01 0 0" mass="0" diaginertia="0 0 0" />
+                                    <geom size="0.01 0.01 0.01" pos="-0.01 0 0" type="box" />
+                                </body>
                             </body>
                         </body>
                     </body>
