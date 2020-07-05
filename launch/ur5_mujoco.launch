@@ -6,7 +6,7 @@
     <arg name="robot_state_pub_frequency" default="50" />
     <arg name="joint_state_pub_frequence" default="100" />
     
-    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/mujoco_models/urdfs/ur5_joint_limited_robot.urdf.xacro" />
+    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/mujoco_models/urdfs/ur5.urdf" />
     <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5_environment.xml" />
 
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
@@ -37,4 +37,11 @@
     <include file="$(find mujoco_ros_control)/launch/mujoco_ros_control.launch">
         <arg name="robot_model_path" value="$(arg mujoco_model_filename)"/>
     </include>
+
+    <!-- MOVEIT -->
+    <group if="$(arg use_moveit)">
+        <node pkg="sr_utilities_common" type="timed_roslaunch.sh" args="15 sr_moveit_hand_config moveit_planning_and_execution.launch
+            gui:=$(arg gui)" name="timed_roslaunch" output="screen"/>
+        <include file="$(find sr_moveit_hand_config)/launch/default_warehouse_db.launch"/>
+    </group>
 </launch>
