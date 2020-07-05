@@ -2,7 +2,6 @@
     <arg name="debug" default="false" />
     <arg name="verbose" default="true" />
     <arg name="use_moveit" default="true" />
-    <arg name="gui" default="true" />
     <arg name="robot_state_pub_frequency" default="50" />
     <arg name="joint_state_pub_frequence" default="100" />
     
@@ -41,8 +40,8 @@
 
     <!-- MOVEIT -->
     <group if="$(arg use_moveit)">
-        <node pkg="bulldog_mujoco_ros" type="timed_roslaunch.sh" args="10 ur5_moveit_config ur5_moveit_planning_execution.launch
-            gui:=$(arg gui)" name="timed_roslaunch" output="screen"/>
+        <node pkg="bulldog_mujoco_ros" type="timed_roslaunch.sh" args="10 bulldog_mujoco_ros ur5_moveit_planning_and_execution.launch
+            debug:=$(arg debug)" name="timed_roslaunch" output="screen"/>
         <!-- <include file="$(find ur5_moveit_config)/launch/warehouse.launch"/> -->
     </group>
 </launch>
