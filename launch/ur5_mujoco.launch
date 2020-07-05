@@ -10,7 +10,7 @@
     <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5_environment.xml" />
 
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
-    <param if="$(eval not arg('robot_description').endswith('.xacro'))" name="robot_description" command="load" file="$(arg robot_description)"/>
+    <rosparam if="$(eval not arg('robot_description').endswith('.xacro'))" param="robot_description" command="load" file="$(arg robot_description)"/>
 
     <!-- useless -->
     <!-- <param name="/hand/mapping/$(arg hand_serial)" value="$(arg hand_id)"/> -->
