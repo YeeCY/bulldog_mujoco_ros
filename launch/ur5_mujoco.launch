@@ -16,10 +16,8 @@
     <!-- <param name="/hand/joint_prefix/$(arg hand_serial)" value="$(arg hand_id)_"/> -->
 
     <!-- Publish joint state -->
-    <!-- load configuration -->
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_state_controller.yaml" />
     <param name="joint_state_controller/publish_rate" value="$(arg joint_state_pub_frequence)"/>
-    <!-- spawn controller -->
     <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controller" />
 
     <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
@@ -41,7 +39,11 @@
     <!-- MOVEIT -->
     <group if="$(arg use_moveit)">
         <node pkg="bulldog_mujoco_ros" type="timed_roslaunch.sh" args="10 bulldog_mujoco_ros ur5_moveit_planning_and_execution.launch
-            debug:=$(arg debug)" name="timed_roslaunch" output="screen"/>
+            debug:=$(arg debug) trajectory_controller_prefix:=ur5_trajectory_controller" name="timed_roslaunch" output="screen"/>
         <!-- <include file="$(find ur5_moveit_config)/launch/warehouse.launch"/> -->
     </group>
+
+    <!-- Control -->
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_trajectory_controller.yaml"/>
+    <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="ur5_trajectory_controller"/>
 </launch>

@@ -3,7 +3,10 @@
   <arg name="db" default="false" />
   <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
-  <arg name="limited" default="true"/>
+  <arg name="limited" default="false" />
+  <arg name="trajectory_controller_prefix" default="" />
+
+  <remap from="/follow_joint_trajectory" to="$(arg trajectory_controller_prefix)/follow_joint_trajectory"/>
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find ur5_moveit_config)/launch/planning_context.launch">
