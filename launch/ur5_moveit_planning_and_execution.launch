@@ -3,7 +3,7 @@
   <arg name="db" default="false" />
   <!-- By default, we are not in debug mode -->
   <arg name="debug" default="false" />
-  <arg name="limited" default="false" />
+  <arg name="limited" default="true" />
   <arg name="trajectory_controller_prefix" default="" />
 
   <remap from="/follow_joint_trajectory" to="$(arg trajectory_controller_prefix)/follow_joint_trajectory"/>

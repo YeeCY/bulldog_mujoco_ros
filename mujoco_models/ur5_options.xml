@@ -1,12 +1,13 @@
 <mujoco>
     <!-- Actuators -->
     <actuator>
-        <position name="shoulder_pan" group="0" joint="shoulder_pan_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="1000"/> <!-- kp = 2000 -->
-        <position name="shoulder_lift" group="0" joint="shoulder_lift_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="1000"/>
-        <position name="elbow" group="0" joint="elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="1000"/>
-        <position name="wrist_1" group="0" joint="wrist_1_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="1000"/>
-        <position name="wrist_2" group="0" joint="wrist_2_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="1000"/>
-        <position name="wrist_3" group="0" joint="wrist_3_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="1000"/>
+        <!-- The name of each actuator must be the same as its joint -->
+        <position name="shoulder_pan_joint" group="0" joint="shoulder_pan_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="500" />
+        <position name="shoulder_lift_joint" group="0" joint="shoulder_lift_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="500" />
+        <position name="elbow_joint" group="0" joint="elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="500" />
+        <position name="wrist_1_joint" group="0" joint="wrist_1_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="200" />
+        <position name="wrist_2_joint" group="0" joint="wrist_2_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="200" />
+        <position name="wrist_3_joint" group="0" joint="wrist_3_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="200"/>
 
         <!-- <velocity name='shoulder_pan_v' group="1" joint='shoulder_pan_joint' kv="100" /> -->
         <!-- <velocity name='shoulder_lift_v' group="1" joint='shoulder_lift_joint' kv="100" /> -->

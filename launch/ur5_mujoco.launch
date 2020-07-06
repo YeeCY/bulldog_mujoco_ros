@@ -40,7 +40,6 @@
     <group if="$(arg use_moveit)">
         <node pkg="bulldog_mujoco_ros" type="timed_roslaunch.sh" args="10 bulldog_mujoco_ros ur5_moveit_planning_and_execution.launch
             debug:=$(arg debug) trajectory_controller_prefix:=ur5_trajectory_controller" name="timed_roslaunch" output="screen"/>
-        <!-- <include file="$(find ur5_moveit_config)/launch/warehouse.launch"/> -->
     </group>
 
     <!-- Control -->
