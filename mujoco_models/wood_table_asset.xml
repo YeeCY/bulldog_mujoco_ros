@@ -2,7 +2,7 @@
     <compiler inertiafromgeom="auto" inertiagrouprange="4 4" angle="radian"/>
 
     <asset>
-        <texture name="tex_table_wood" type="cube" height="1" width="1" file="wood1.png" />
-        <material name="table_wood" rgba="1 1 1 1" texture="tex_table_wood" texrepeat="3 3" reflectance="1" shininess="1" texuniform="false" />
+        <texture name="tex_wood_table" type="cube" height="1" width="1" file="wood1.png" />
+        <material name="wood_table" rgba="1 1 1 1" texture="tex_wood_table" texrepeat="3 3" reflectance="1" shininess="1" texuniform="false" />
     </asset>
 </mujocoinclude>
