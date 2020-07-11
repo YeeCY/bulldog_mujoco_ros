@@ -16,11 +16,9 @@
         <include file="box_table_model.xml" />
 
         <!-- robot -->
-        <body pos="0.0 0 0.9">
+        <body name="ur5_robot" pos="0.0 0 0.9">
             <geom type="cylinder" size="0.08 0.45" pos='0 0 -0.45' />
             <include file="ur5_model.xml" />
         </body>
-        
-        
     </worldbody>
 </mujoco>

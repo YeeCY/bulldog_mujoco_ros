@@ -1,5 +1,5 @@
 <mujoco>
-    <body name="table" pos="0.6 0.0 0.4">
-        <geom type="box" material="box_table" size="0.45 0.45 0.425" />
+    <body name="box_table" pos="0.6 0.0 0.4">
+        <geom type="box" material="box_table" size="0.45 0.45 0.425" condim="3" />
     </body>
 </mujoco>

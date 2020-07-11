@@ -1,6 +1,6 @@
 <mujoco>
-    <body name="table" pos="0.6 0.0 0.8">
-        <geom size="0.45 0.45 0.025" type="box" material="table_wood" />
+    <body name="wood_table" pos="0.6 0.0 0.8">
+        <geom size="0.45 0.45 0.025" type="box" material="wood_table" />
         <geom size="0.04 0.4" pos="0.4 0.4 -0.4" quat="0 1 0 0" type="cylinder" />
         <geom size="0.04 0.4" pos="-0.4 0.4 -0.4" quat="0 1 0 0" type="cylinder" />
         <geom size="0.04 0.4" pos="0.4 -0.4 -0.4" quat="0 1 0 0" type="cylinder" />
