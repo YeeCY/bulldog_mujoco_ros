@@ -1,27 +1,29 @@
 <mujoco>
-    <texture name="skybox" type="skybox" builtin="gradient" rgb1="0.4 0.6 0.8"
-        rgb2="0 0 0" width="800" height="800" mark="random" markrgb="1 1 1" />
-    <texture name="grid" type="2d" builtin="checker" rgb1="0.1 0.2 0.3"
-        rgb2="0.2 0.3 0.4" width="300" height="300" mark="edge" markrgb="0.2 0.3 0.4" />
-    <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512"/>  
-    
-    <material name="mat_plane" reflectance='0.3' texture="texplane" texrepeat="1 1" texuniform="true"/>
-    <material name="ur5_blue" rgba="0.251 0.348 0.480 1.0" />
-    <material name="ur5_grey" rgba="0.520 0.520 0.520 1.0" />
-    <material name="ur5_black" rgba="0.143 0.143 0.143 1.0" />
+    <asset>
+        <texture name="skybox" type="skybox" builtin="gradient" rgb1="0.4 0.6 0.8"
+            rgb2="0 0 0" width="800" height="800" mark="random" markrgb="1 1 1" />
+        <texture name="grid" type="2d" builtin="checker" rgb1="0.1 0.2 0.3"
+            rgb2="0.2 0.3 0.4" width="300" height="300" mark="edge" markrgb="0.2 0.3 0.4" />
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512"/>  
 
-    <mesh name="ur5_visual_base" file="ur5_visual_base.stl" />
-    <mesh name="ur5_collision_base" file="ur5_collision_base.stl" />
-    <mesh name="ur5_visual_shoulder" file="ur5_visual_shoulder.stl" />
-    <mesh name="ur5_collision_shoulder" file="ur5_collision_shoulder.stl" />
-    <mesh name="ur5_visual_upperarm" file="ur5_visual_upperarm.stl" />
-    <mesh name="ur5_collision_upperarm" file="ur5_collision_upperarm.stl" />
-    <mesh name="ur5_visual_forearm" file="ur5_visual_forearm.stl" />
-    <mesh name="ur5_collision_forearm" file="ur5_collision_forearm.stl" />
-    <mesh name="ur5_visual_wrist1" file="ur5_visual_wrist1.stl" />
-    <mesh name="ur5_collision_wrist1" file="ur5_collision_wrist1.stl" />
-    <mesh name="ur5_visual_wrist2" file="ur5_visual_wrist2.stl" />
-    <mesh name="ur5_collision_wrist2" file="ur5_collision_wrist2.stl" />
-    <mesh name="ur5_visual_wrist3" file="ur5_visual_wrist3.stl" />
-    <mesh name="ur5_collision_wrist3" file="ur5_collision_wrist3.stl" />
+        <material name="mat_plane" reflectance='0.3' texture="texplane" texrepeat="1 1" texuniform="true"/>
+        <material name="ur5_blue" rgba="0.251 0.348 0.480 1.0" />
+        <material name="ur5_grey" rgba="0.520 0.520 0.520 1.0" />
+        <material name="ur5_black" rgba="0.143 0.143 0.143 1.0" />
+
+        <mesh name="ur5_visual_base" file="ur5_visual_base.stl" />
+        <mesh name="ur5_collision_base" file="ur5_collision_base.stl" />
+        <mesh name="ur5_visual_shoulder" file="ur5_visual_shoulder.stl" />
+        <mesh name="ur5_collision_shoulder" file="ur5_collision_shoulder.stl" />
+        <mesh name="ur5_visual_upperarm" file="ur5_visual_upperarm.stl" />
+        <mesh name="ur5_collision_upperarm" file="ur5_collision_upperarm.stl" />
+        <mesh name="ur5_visual_forearm" file="ur5_visual_forearm.stl" />
+        <mesh name="ur5_collision_forearm" file="ur5_collision_forearm.stl" />
+        <mesh name="ur5_visual_wrist1" file="ur5_visual_wrist1.stl" />
+        <mesh name="ur5_collision_wrist1" file="ur5_collision_wrist1.stl" />
+        <mesh name="ur5_visual_wrist2" file="ur5_visual_wrist2.stl" />
+        <mesh name="ur5_collision_wrist2" file="ur5_collision_wrist2.stl" />
+        <mesh name="ur5_visual_wrist3" file="ur5_visual_wrist3.stl" />
+        <mesh name="ur5_collision_wrist3" file="ur5_collision_wrist3.stl" />
+    </asset>
 </mujoco>
