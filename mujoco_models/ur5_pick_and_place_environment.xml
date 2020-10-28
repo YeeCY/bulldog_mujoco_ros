@@ -1,0 +1,36 @@
+<mujoco>
+    <include file="shared_options.xml" />
+    <include file="ur5_options.xml" />
+    <include file="shared_assets.xml" />
+    <include file="box_table_asset.xml" />
+    
+    <asset>
+        <material name="block" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 1" />
+    </asset>
+
+    <worldbody>
+        <!--  -->
+        <light ambient="0.2 0.2 0.2" castshadow="false" diffuse="0.8 0.8 0.8" dir="0 0 -1" directional="true" name="light0" pos="0 0 4" specular="0.3 0.3 0.3" />
+
+        <!-- floor -->
+        <body name="floor" pos="0 0 0">
+            <geom type="plane" condim="3" material="mat_plane" name="floor" pos="0 0 0" size="5 5 0.001" />
+        </body>
+        
+        <!-- block -->
+        <body name="block" pos="0.6 0.0 0.9">
+            <joint name="block_joint" type="free" limited="false" damping="0.01" />
+            <geom type="box" size="0.025 0.025 0.025" condim="3" contype="1" conaffinity="1" material="block" />
+            <!-- <site name="block" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere"/> -->
+        </body>
+
+        <!-- wood table -->
+        <include file="box_table_model.xml" />
+
+        <!-- robot -->
+        <body name="ur5_robot" pos="0.0 0 0.9">
+            <geom type="cylinder" size="0.08 0.45" pos='0 0 -0.45' />
+            <include file="ur5_model.xml" />
+        </body>
+    </worldbody>
+</mujoco>

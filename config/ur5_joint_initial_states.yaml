@@ -1,0 +1,17 @@
+# MuJoCo ROS control
+robot_joints:
+  - shoulder_pan_joint
+  - shoulder_lift_joint
+  - elbow_joint
+  - wrist_1_joint
+  - wrist_2_joint
+  - wrist_3_joint
+
+robot_initial_state:
+  # home
+  shoulder_pan_joint: -1.5708
+  shoulder_lift_joint: 0.0
+  elbow_joint: 0.0
+  wrist_1_joint: 0.0
+  wrist_2_joint: 0.0
+  wrist_3_joint: 0.0

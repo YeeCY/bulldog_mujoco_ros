@@ -6,7 +6,7 @@
     <arg name="joint_state_pub_frequence" default="100" />
     
     <arg name="robot_description" default="$(find bulldog_mujoco_ros)/mujoco_models/urdfs/ur5_joint_limited_robot.urdf.xacro" />
-    <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5_box_table_environment.xml" />
+    <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5_pick_and_place_environment.xml" />
 
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
     <rosparam if="$(eval not arg('robot_description').endswith('.xacro'))" param="robot_description" command="load" file="$(arg robot_description)"/>
@@ -30,8 +30,9 @@
         <param name="publish_frequency" value="$(arg robot_state_pub_frequency)" />
         <param name="tf_prefix" value="" />
     </node>
-
+ 
     <!-- Launch mujoco ros control -->
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_initial_states.yaml" />
     <include file="$(find mujoco_ros_control)/launch/mujoco_ros_control.launch">
         <arg name="robot_model_path" value="$(arg mujoco_model_filename)"/>
     </include>
