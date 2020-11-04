@@ -58,12 +58,19 @@
     </visual>
 
     <actuator>
-        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_shoulder_pan_joint" name="robot0_torq_j1" />
+        <!-- <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_shoulder_pan_joint" name="robot0_torq_j1" />
         <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_shoulder_lift_joint" name="robot0_torq_j2" />
         <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_elbow_joint" name="robot0_torq_j3" />
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_1_joint" name="robot0_torq_j4" />
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_2_joint" name="robot0_torq_j5" />
-        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_3_joint" name="robot0_torq_j6" />
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_3_joint" name="robot0_torq_j6" /> -->
+        <position name="robot0_pos_j1" joint="robot0_shoulder_pan_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="5000" />
+        <position name="robot0_pos_j2" joint="robot0_shoulder_lift_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="5000" />
+        <position name="robot0_pos_j3" joint="robot0_elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="5000" />
+        <position name="robot0_pos_j4" joint="robot0_wrist_1_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" />
+        <position name="robot0_pos_j5" joint="robot0_wrist_2_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000" />
+        <position name="robot0_pos_j6" joint="robot0_wrist_3_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="2000"/>
+
         <position name="gripper0_finger_1" ctrllimited="true" kp="20" joint="gripper0_finger_joint" ctrlrange="0 0.8" />
         <position name="gripper0_finger_2" ctrllimited="true" kp="20" joint="gripper0_right_outer_knuckle_joint" ctrlrange="0 0.8" />
     </actuator>
