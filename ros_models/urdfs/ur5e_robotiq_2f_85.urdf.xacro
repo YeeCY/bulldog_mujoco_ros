@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro"
+       name="ur5e_robotiq_2f_85" >
+
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+
+  <!-- ur5 -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+
+  <!-- robotiq -->
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
+
+  <!-- base -->
+  <!-- <link name="world" /> -->
+
+  <!-- <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_pole" />
+    <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
+  </joint> -->
+
+  <link name="base_pole">
+    <visual>
+      <origin xyz="0.0 0.0 0.45" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.08" length="0.9" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.45" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.08" length="0.9"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_pole_joint" type="fixed">
+    <parent link="base_pole" />
+    <child link = "robot0_base_link" />
+    <origin xyz="0.0 0.0 0.9" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <!-- arm -->
+  <xacro:ur5_robot prefix="robot0_" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
+  />
+
+  <!-- gripper -->
+  <!-- <link name="robot0_right_hand">
+    <visual>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+    </collision>
+  </link> -->
+
+  <!-- <body name="robot0_right_hand" pos="0 0.098 0" quat="0.707 -0.707 0 0"> -->
+  
+  <xacro:robotiq_arg2f_85 prefix="gripper0_"/>
+
+  <joint name="robot0_right_hand_joint" type="fixed">
+    <parent link="robot0_wrist_3_link" />
+    <child link="gripper0_robotiq_arg2f_base_link" />
+    <origin xyz="0 0.098 0" rpy="-1.571 0 0" />
+  </joint>
+
+  <link name="gripper0_tool0" />
+
+  <joint name="gripper0_tool0_joint" type="fixed">
+    <parent link="gripper0_robotiq_arg2f_base_link" />
+    <child link="gripper0_tool0" />
+    <origin xyz="0 0 0.145" rpy="0 0 0" />
+  </joint>
+
+
+
+</robot>

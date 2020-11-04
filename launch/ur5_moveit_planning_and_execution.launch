@@ -9,7 +9,7 @@
   <remap from="/follow_joint_trajectory" to="$(arg trajectory_controller_prefix)/follow_joint_trajectory"/>
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
-  <include file="$(find ur5_moveit_config)/launch/move_group.launch">
+  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/move_group.launch">
     <arg name="allow_trajectory_execution" value="true"/>  
     <arg name="fake_execution" value="false"/>
     <arg name="info" value="true"/>
@@ -22,11 +22,11 @@
   </group>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <include file="$(find ur5_moveit_config)/launch/moveit_rviz.launch">
-    <arg name="config" value="true"/>
+  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
   </include>
 
   <!-- If database loading was enabled, start mongodb as well -->
-  <include file="$(find ur5_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>
+  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>
 </launch>

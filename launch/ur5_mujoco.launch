@@ -5,7 +5,7 @@
     <arg name="robot_state_pub_frequency" default="50" />
     <arg name="joint_state_pub_frequence" default="100" />
     
-    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/mujoco_models/urdfs/ur5_joint_limited_robot.urdf.xacro" />
+    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/ros_models/urdfs/ur5e_robotiq_2f_85.urdf.xacro" />
     <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5_pick_and_place_environment.xml" />
 
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
@@ -32,14 +32,14 @@
     </node>
  
     <!-- Launch mujoco ros control -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_initial_states.yaml" />
+    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_initial_states.yaml" /> -->
     <include file="$(find mujoco_ros_control)/launch/mujoco_ros_control.launch">
         <arg name="robot_model_path" value="$(arg mujoco_model_filename)"/>
     </include>
 
     <!-- MOVEIT -->
     <group if="$(arg use_moveit)">
-        <node pkg="bulldog_mujoco_ros" type="timed_roslaunch.sh" args="10 bulldog_mujoco_ros ur5_moveit_planning_and_execution.launch
+        <node pkg="bulldog_mujoco_ros" type="timed_roslaunch.sh" args="5 bulldog_mujoco_ros ur5_moveit_planning_and_execution.launch
             debug:=$(arg debug) trajectory_controller_prefix:=ur5_trajectory_controller" name="timed_roslaunch" output="screen"/>
     </group>
 
