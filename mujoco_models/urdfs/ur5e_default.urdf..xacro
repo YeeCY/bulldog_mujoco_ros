@@ -10,8 +10,11 @@
   <!-- ur5 -->
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
 
+  <!-- robotiq -->
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
+
   <!-- arm -->
-  <xacro:ur5_robot prefix="" joint_limited="true"
+  <xacro:ur5_robot prefix="robot0_" joint_limited="true"
     shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
     shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
     elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
@@ -21,6 +24,10 @@
     transmission_hw_interface="$(arg transmission_hw_interface)"
   />
 
+  <!-- gripper -->
+  <xacro:robotiq_arg2f_85 prefix=""/>
+
+  <!-- base -->
   <link name="world" />
 
   <joint name="world_joint" type="fixed">
