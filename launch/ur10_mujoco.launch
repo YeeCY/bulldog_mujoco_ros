@@ -16,9 +16,8 @@
     <!-- The path of your mujoco license  -->
     <arg name="key_path" default="/home/yee/.mujoco/mujoco200/bin/mjkey.txt"/>
     <!-- Loads the robot description -->
-    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/ros_models/urdfs/ur5e_robotiq_2f_85.urdf.xacro" />
-    <!-- <arg name="robot_config_file" default="$(find sr_multi_moveit_config)/config/robot_configs/right_sh_ur10.yaml"/> -->
-    <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5e_robotiq_2f_85.xml" />
+    <arg name="robot_description" default="$(find sr_description)/mujoco_models/urdfs/ur10.urdf"/>
+    <arg name="mujoco_model_filename" default="$(find sr_description)/mujoco_models/sr_ur_environment.xml"/>
     
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
     <rosparam if="$(eval not arg('robot_description').endswith('.xacro'))" param="robot_description" command="load" file="$(arg robot_description)"/>
@@ -44,7 +43,8 @@
     </node>
  
     <!-- Launch mujoco ros control -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_initial_states.yaml" />
+    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_initial_states.yaml" /> -->
+    <rosparam command="load" file="$(find sr_robot_launch)/config/mujoco/ur10_home_pose.yaml"/>
     <!-- <include file="$(find mujoco_ros_control)/launch/mujoco_ros_control.launch">
         <arg name="robot_model_path" value="$(arg mujoco_model_filename)"/>
     </include> -->
@@ -57,13 +57,13 @@
 
     <!-- Control -->
     <!--Arm Controller -->
-    <!-- <rosparam file="$(find bulldog_mujoco_ros)/config/ur5_mujoco_ros_control_params.yaml" command="load"/> -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_trajectory_controller.yaml"/>
-    <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="ur5e_robotiq_2f_85_trajectory_controller"/>
+    <rosparam file="$(find bulldog_mujoco_ros)/config/ur10_mujoco_ros_control_params.yaml" command="load"/>
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur10_trajectory_controller.yaml"/>
+    <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="ur10_trajectory_controller"/>
 
     <!-- MOVEIT -->
     <group if="$(arg use_moveit)">
-        <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
+        <include file="$(find bulldog_mujoco_ros)/launch/ur10_moveit_planning_and_execution.launch">
             <arg name="load_robot_description" value="false"/>
             <arg name="debug" value="$(arg debug)"/>
             <arg name="gui" value="$(arg gui)"/>

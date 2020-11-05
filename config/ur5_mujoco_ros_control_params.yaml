@@ -1,0 +1,14 @@
+mujoco_ros_control/pid_gains:
+  robot0_shoulder_pan_joint: {p: 5000.0, i: 0.0, d: 300.0}
+  robot0_shoulder_lift_joint: {p: 12000.0, i: 100.0, d: 800.0}
+  robot0_elbow_joint: {p: 8000.0, i: 0.0, d: 30.0}
+  robot0_wrist_1_joint: {p: 2000.0, i: 0.0, d: 0.0}
+  robot0_wrist_2_joint: {p: 1900.0, i: 0.0, d: 0.0}
+  robot0_wrist_3_joint: {p: 400.0, i: 0.0, d: 0.0}
+
+  # robot0_shoulder_pan_joint: {p: 2000.0, i: 0.0, d: 200.0}
+  # robot0_shoulder_lift_joint: {p: 8000.0, i: 75.0, d: 600.0}
+  # robot0_elbow_joint: {p: 6000.0, i: 0.0, d: 20.0}
+  # robot0_wrist_1_joint: {p: 1500.0, i: 0.0, d: 0.0}
+  # robot0_wrist_2_joint: {p: 1500.0, i: 0.0, d: 0.0}
+  # robot0_wrist_3_joint: {p: 300.0, i: 0.0, d: 0.0}
