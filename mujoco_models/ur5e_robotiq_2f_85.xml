@@ -66,12 +66,27 @@
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_2_joint" name="robot0_torq_j5" />
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_3_joint" name="robot0_torq_j6" /> -->
 
-        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_shoulder_pan_joint" name="robot0_shoulder_pan_joint" />
+        <!-- <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_shoulder_pan_joint" name="robot0_shoulder_pan_joint" />
         <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_shoulder_lift_joint" name="robot0_shoulder_lift_joint" />
         <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="robot0_elbow_joint" name="robot0_elbow_joint" />
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_1_joint" name="robot0_wrist_1_joint" />
         <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_2_joint" name="robot0_wrist_2_joint" />
-        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_3_joint" name="robot0_wrist_3_joint" />
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="robot0_wrist_3_joint" name="robot0_wrist_3_joint" /> -->
+
+        <motor ctrllimited="true" ctrlrange="-6.28319 6.28319" joint="robot0_shoulder_pan_joint" name="robot0_shoulder_pan_joint" />
+        <motor ctrllimited="true" ctrlrange="-6.28319 6.28319" joint="robot0_shoulder_lift_joint" name="robot0_shoulder_lift_joint" />
+        <motor ctrllimited="true" ctrlrange="-3.14159 3.14159" joint="robot0_elbow_joint" name="robot0_elbow_joint" />
+        <motor ctrllimited="true" ctrlrange="-6.28319 6.28319" joint="robot0_wrist_1_joint" name="robot0_wrist_1_joint" />
+        <motor ctrllimited="true" ctrlrange="-6.28319 6.28319" joint="robot0_wrist_2_joint" name="robot0_wrist_2_joint" />
+        <motor ctrllimited="true" ctrlrange="-6.28319 6.28319" joint="robot0_wrist_3_joint" name="robot0_wrist_3_joint" />
+
+        <!-- Reference -->
+        <!-- <motor name="ra_shoulder_pan_joint" joint="ra_shoulder_pan_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="ra_shoulder_lift_joint" joint="ra_shoulder_lift_joint"  ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="ra_elbow_joint" joint="ra_elbow_joint" ctrllimited="false" ctrlrange="-3.14159 3.14159"/>
+        <motor name="ra_wrist_1_joint" joint="ra_wrist_1_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="ra_wrist_2_joint" joint="ra_wrist_2_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="ra_wrist_3_joint" joint="ra_wrist_3_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/> -->
 
         <!-- <position name="robot0_pos_j1" joint="robot0_shoulder_pan_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="500" />
         <position name="robot0_pos_j2" joint="robot0_shoulder_lift_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="500" />

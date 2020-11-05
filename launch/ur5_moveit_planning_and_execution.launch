@@ -1,14 +1,38 @@
 <launch>
-  <!-- specify the planning pipeline -->
-  <arg name="pipeline" default="ompl" />
-
+  <arg name="planning" default="ompl"/>
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />
   <!-- Allow user to specify database location -->
   <arg name="db_path" default="$(find ur5e_robotiq_2f_85_moveit_config)/default_warehouse_mongo_db" />
+  <arg name="debug" default="false"/>
+  <arg name="load_robot_description" default="true"/>
+  <arg name="gui" default="true"/>
 
-  <!-- By default, we are not in debug mode -->
-  <arg name="debug" default="false" />
+  <!-- The name of the rviz config file to load -->
+  <arg name="rviz_config_file" default="$(find bulldog_mujoco_ros)/config/moveit.rviz"/>
+
+  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="$(arg load_robot_description)"/>
+  </include>
+
+  <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(arg rviz_config_file)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- If database loading was enabled, start mongodb as well -->
+  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
+    <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
+  </include>
 
   <!-- <remap from="/follow_joint_trajectory" to="$(arg trajectory_controller_prefix)/follow_joint_trajectory"/> -->
 
@@ -83,12 +107,12 @@
   This corresponds to moving around the real robot without the use of MoveIt.
   -->
   <!-- <arg name="use_gui" default="false" /> -->
-  <arg name="use_rviz" default="true" />
+  <!-- <arg name="use_rviz" default="true" /> -->
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
-  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/planning_context.launch">
+  <!-- <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="false"/>
-  </include>
+  </include> -->
 
   <!-- If needed, broadcast static tf for robot root -->
 
@@ -96,22 +120,22 @@
   <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" /> -->
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
-  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/move_group.launch">
+  <!-- <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/move_group.launch">
     <arg name="allow_trajectory_execution" value="true"/>
     <arg name="fake_execution" value="false"/>
     <arg name="info" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
     <arg name="pipeline" value="$(arg pipeline)"/>
-  </include>
+  </include> -->
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
+  <!-- <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
     <arg name="rviz_config" value="$(find ur5e_robotiq_2f_85_moveit_config)/launch/moveit.rviz"/>
     <arg name="debug" value="$(arg debug)"/>
-  </include>
+  </include> -->
 
   <!-- If database loading was enabled, start mongodb as well -->
-  <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
+  <!-- <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
     <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
-  </include>
+  </include> -->
 </launch>
