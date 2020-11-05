@@ -32,7 +32,7 @@
     </node>
  
     <!-- Launch mujoco ros control -->
-    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_initial_states.yaml" /> -->
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_initial_states.yaml" />
     <include file="$(find mujoco_ros_control)/launch/mujoco_ros_control.launch">
         <arg name="robot_model_path" value="$(arg mujoco_model_filename)"/>
     </include>
@@ -44,6 +44,6 @@
     </group>
 
     <!-- Control -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_trajectory_controller.yaml"/>
+    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_trajectory_controller.yaml"/> -->
     <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="ur5_trajectory_controller"/>
 </launch>

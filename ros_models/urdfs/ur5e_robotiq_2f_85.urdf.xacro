@@ -14,17 +14,17 @@
   <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
 
   <!-- base -->
-  <!-- <link name="world" /> -->
+  <link name="world" />
 
-  <!-- <joint name="world_joint" type="fixed">
+  <joint name="world_joint" type="fixed">
     <parent link="world" />
     <child link = "base_pole" />
     <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
-  </joint> -->
+  </joint>
 
   <link name="base_pole">
     <visual>
-      <origin xyz="0.0 0.0 0.45" rpy="0 0 0" />
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <geometry>
         <cylinder radius="0.08" length="0.9" />
       </geometry>
@@ -33,7 +33,7 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0.0 0.0 0.45" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.08" length="0.9"/>
       </geometry>
@@ -43,7 +43,7 @@
   <joint name="base_pole_joint" type="fixed">
     <parent link="base_pole" />
     <child link = "robot0_base_link" />
-    <origin xyz="0.0 0.0 0.9" rpy="0.0 0.0 0.0" />
+    <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
   </joint>
 
   <!-- arm -->
@@ -84,7 +84,4 @@
     <child link="gripper0_tool0" />
     <origin xyz="0 0 0.145" rpy="0 0 0" />
   </joint>
-
-
-
 </robot>
