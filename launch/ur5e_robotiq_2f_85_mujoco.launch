@@ -49,7 +49,7 @@
         <arg name="robot_model_path" value="$(arg mujoco_model_filename)"/>
     </include> -->
 
-    <node name="mujoco_ros_control" pkg="mujoco_ros_control" type="mujoco_ros_control" output="screen" launch-prefix="gdb -ex run -args">
+    <node name="mujoco_ros_control" pkg="mujoco_ros_control" type="mujoco_ros_control" output="screen">
         <param name="robot_model_path" value="$(arg mujoco_model_filename)"/>
         <param name="robot_description_param" value="$(arg robot_description_param)"/>
         <param name="key_path" value="$(arg key_path)"/>

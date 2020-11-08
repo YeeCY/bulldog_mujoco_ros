@@ -1,0 +1,38 @@
+# MuJoCo ROS control
+robot_joints:
+  - robot0_shoulder_pan_joint
+  - robot0_shoulder_lift_joint
+  - robot0_elbow_joint
+  - robot0_wrist_1_joint
+  - robot0_wrist_2_joint
+  - robot0_wrist_3_joint
+
+robot_initial_state:
+  # home
+  # robot0_shoulder_pan_joint: 0.0
+  # robot0_shoulder_lift_joint: 0.0
+  # robot0_elbow_joint: 0.0
+  # robot0_wrist_1_joint: 0.0
+  # robot0_wrist_2_joint: 0.0
+  # robot0_wrist_3_joint: 0.0
+
+  # side
+  robot0_shoulder_pan_joint: 0.8 
+  robot0_shoulder_lift_joint: 1.347
+  robot0_elbow_joint: -1.195
+  robot0_wrist_1_joint: -1.584
+  robot0_wrist_2_joint: -1.726
+  robot0_wrist_3_joint: 1.830
+  
+  # top down
+  # -0.470, -1.735, 2.480, -2.275, -1.590, -0.420
+  # ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", 
+  #  "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
+  # robot0_shoulder_pan_joint: -0.470
+  # robot0_shoulder_lift_joint: -1.735
+  # robot0_elbow_joint: 2.480
+  # robot0_wrist_1_joint: -2.275
+  # robot0_wrist_2_joint: -1.590
+  # robot0_wrist_3_joint: -0.420
+
+  # gripper: [-0.026 -0.267 -0.2   -0.026 -0.267 -0.2  ]

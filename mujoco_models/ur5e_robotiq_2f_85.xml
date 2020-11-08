@@ -96,12 +96,12 @@
         <position ctrllimited="true" ctrlrange="-6.28319 6.28319" joint="robot0_wrist_3_joint" name="robot0_pos_j6" kp="20"/> -->
 
         <!-- exact position control with moveit -->
-        <position name="robot0_shoulder_pan_joint" joint="robot0_shoulder_pan_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="5000" />
-        <position name="robot0_shoulder_lift_joint" joint="robot0_shoulder_lift_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="5000" />
-        <position name="robot0_elbow_joint" joint="robot0_elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="5000" />
-        <position name="robot0_wrist_1_joint" joint="robot0_wrist_1_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000" />
-        <position name="robot0_wrist_2_joint" joint="robot0_wrist_2_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000" />
-        <position name="robot0_wrist_3_joint" joint="robot0_wrist_3_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000"/>
+        <position name="robot0_shoulder_pan_pos" joint="robot0_shoulder_pan_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="5000" />
+        <position name="robot0_shoulder_lift_pos" joint="robot0_shoulder_lift_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="5000" />
+        <position name="robot0_elbow_pos" joint="robot0_elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="5000" />
+        <position name="robot0_wrist_1_pos" joint="robot0_wrist_1_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000" />
+        <position name="robot0_wrist_2_pos" joint="robot0_wrist_2_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000" />
+        <position name="robot0_wrist_3_pos" joint="robot0_wrist_3_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000"/>
 
         <position name="gripper0_finger_1" ctrllimited="true" kp="20" joint="gripper0_finger_joint" ctrlrange="0 0.8" />
         <position name="gripper0_finger_2" ctrllimited="true" kp="20" joint="gripper0_right_outer_knuckle_joint" ctrlrange="0 0.8" />
@@ -271,7 +271,7 @@
         <body name="cube" pos="-0.02088249984551205 -0.0025849086909823828 0.8313281601409576" quat="0.13539701378386074 0.0 0.0 0.9907914254061816">
             <geom pos="0 0 0" group="1" name="cube" type="box" material="redwood_mat" size="0.02004282027092694 0.02088009213187532 0.021328160140957488" density="1000" friction="1 0.005 0.0001" solref="0.02 1.0" solimp="0.9 0.95 0.001" />
             <site pos="0 0 0" size="0.002 0.002 0.002" rgba="1 0 0 1" type="sphere" name="cube" />
-            <joint name="cube_jnt0" type="free" limited="false" />
+            <joint name="cube_jnt0" type="free" />
         </body>
     </worldbody>
 
