@@ -58,8 +58,9 @@
     <!-- Control -->
     <!--Arm Controller -->
     <!-- <rosparam file="$(find bulldog_mujoco_ros)/config/ur5_mujoco_ros_control_params.yaml" command="load"/> -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_trajectory_controller.yaml"/>
-    <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="ur5e_robotiq_2f_85_trajectory_controller"/>
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_controllers.yaml"/>
+    <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+        ur5e_robotiq_2f_85_manipulator_controller ur5e_robotiq_2f_85_gripper_controller"/>
 
     <!-- MOVEIT -->
     <group if="$(arg use_moveit)">

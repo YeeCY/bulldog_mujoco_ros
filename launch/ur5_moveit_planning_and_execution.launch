@@ -11,8 +11,11 @@
   <!-- The name of the rviz config file to load -->
   <arg name="rviz_config_file" default="$(find bulldog_mujoco_ros)/config/moveit.rviz"/>
 
-  <!-- remap move_group trajectory execution to controller trajectory command follower -->
-  <remap from="/follow_joint_trajectory" to="/ur5e_robotiq_2f_85_trajectory_controller/follow_joint_trajectory"/>
+  <!-- remap moveit trajectory execution to trajectory command controller -->
+  <!-- <remap from="/follow_joint_trajectory" to="/ur5e_robotiq_2f_85_trajectory_controller/follow_joint_trajectory"/> -->
+
+  <!-- remap moveit gripper command to gripper action controller-->
+  <!-- <remap from="/gripper_cmd" to="/ur5e_robotiq_2f_85_gripper_controller/gripper_cmd"/> -->
 
   <include file="$(find ur5e_robotiq_2f_85_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="$(arg load_robot_description)"/>

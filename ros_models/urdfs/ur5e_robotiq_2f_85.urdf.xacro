@@ -11,7 +11,7 @@
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
 
   <!-- robotiq -->
-  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/robotiq_2f_85/robotiq_arg2f_85_model_macro.xacro" />
 
   <!-- base -->
   <link name="world" />

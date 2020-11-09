@@ -10,7 +10,7 @@
 #       - robot0_wrist_2_joint
 #       - robot0_wrist_3_joint
 
-ur5e_robotiq_2f_85_trajectory_controller:
+ur5e_robotiq_2f_85_manipulator_controller:
   type: position_controllers/JointTrajectoryController
   joints:
     - robot0_shoulder_pan_joint
@@ -28,7 +28,7 @@ ur5e_robotiq_2f_85_trajectory_controller:
       robot0_wrist_1_joint: {trajectory: 0.2, goal: 0.1}
       robot0_wrist_2_joint: {trajectory: 0.2, goal: 0.1}
       robot0_wrist_3_joint: {trajectory: 0.2, goal: 0.1}
-  stop_trajectory_duration: 0.5
+  stop_trajectory_duration: 1.0
   state_publish_rate: 50
   action_monitor_rate: 10
   allow_partial_joints_goal: true
@@ -55,3 +55,23 @@ ur5e_robotiq_2f_85_trajectory_controller:
 #   state_publish_rate:  25
 #   action_monitor_rate: 10
 #   allow_partial_joints_goal: true
+
+# gripper controller
+# ur5e_robotiq_2f_85_gripper_controller:
+#   type: position_controllers/GripperActionController
+#   joint: gripper0_finger_joint
+
+ur5e_robotiq_2f_85_gripper_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - gripper0_finger_joint
+    - gripper0_right_outer_knuckle_joint
+  constraints:
+      goal_time: 1.5
+      stopped_velocity_tolerance: 0.5
+      gripper0_finger_joint: {trajectory: 0.3, goal: 0.25}
+      gripper0_right_outer_knuckle_joint: {trajectory: 0.3, goal: 0.25}
+  stop_trajectory_duration: 1.5
+  state_publish_rate: 50
+  action_monitor_rate: 10
+  allow_partial_joints_goal: true
