@@ -28,7 +28,7 @@ ur5e_robotiq_2f_85_manipulator_controller:
       robot0_wrist_1_joint: {trajectory: 0.3, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
       robot0_wrist_2_joint: {trajectory: 0.3, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
       robot0_wrist_3_joint: {trajectory: 0.3, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-  stop_trajectory_duration: 1.5 # 1.0
+  stop_trajectory_duration: 2.0 # 1.0
   state_publish_rate: 50
   action_monitor_rate: 10
   allow_partial_joints_goal: true
