@@ -1,96 +1,102 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-  <xacro:macro name="base_platform" params="prefix attach_link">
-    <link name="${prefix}controller_box">
-        <inertial>
-        <origin xyz="-0.325 0 -0.38" rpy="0 0 0" />
-        <mass value="46.64" />
-        <inertia ixx="1.71363" ixy="0" ixz="0" iyy="1.27988" iyz="0" izz="0.809981" />
-        </inertial>
-        <collision>
-        <origin xyz="-0.325 0 -0.38" rpy="0 0 0" />
-        <geometry>
-            <box size="0.11 0.2 0.265" />
-        </geometry>
-        </collision>
-    </link>
+    <xacro:macro name="base_platform" params="prefix attach_link">
+        <link name="${prefix}controller_box">
+            <inertial>
+                <origin xyz="-0.325 0 -0.38" rpy="0 0 0" />
+                <mass value="46.64" />
+                <inertia ixx="1.71363" ixy="0" ixz="0" iyy="1.27988" iyz="0" izz="0.809981" />
+            </inertial>
+            <collision>
+                <origin xyz="-0.325 0 -0.38" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.11 0.2 0.265" />
+                </geometry>
+            </collision>
+        </link>
 
-    <joint name="${prefix}controller_box_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <parent link="${attach_link}" />
-        <child link="${prefix}controller_box" />
-    </joint>
+        <joint name="${prefix}controller_box_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <parent link="${attach_link}" />
+            <child link="${prefix}controller_box" />
+        </joint>
 
-    <link name="${prefix}pedestal_feet">
-        <inertial>
-        <origin xyz="-0.1225 0 -0.758" rpy="0 0 0" />
-        <mass value="167.09" />
-        <inertia ixx="8.16095" ixy="0" ixz="0" iyy="9.59375" iyz="0" izz="15.0785" />
-        </inertial>
-        <collision>
-        <origin xyz="-0.1225 0 -0.758" rpy="0 0 0" />
-        <geometry>
-            <box size="0.385 0.35 0.155" />
-        </geometry>
-        </collision>
-    </link>
-    
-    <joint name="${prefix}pedestal_feet_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <parent link="${attach_link}" />
-        <child link="${prefix}pedestal_feet" />
-    </joint>
+        <link name="${prefix}pedestal_feet">
+            <inertial>
+                <origin xyz="-0.1225 0 -0.758" rpy="0 0 0" />
+                <mass value="167.09" />
+                <inertia ixx="8.16095" ixy="0" ixz="0" iyy="9.59375" iyz="0" izz="15.0785" />
+            </inertial>
+            <collision>
+                <origin xyz="-0.1225 0 -0.758" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.385 0.35 0.155" />
+                </geometry>
+            </collision>
+        </link>
 
-    <link name="${prefix}torso">
-        <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.0001" />
-        <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08" />
-        </inertial>
-        <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-            <box size="0.05 0.05 0.05" />
-        </geometry>
-        <material name="grey">
-            <color rgba="0.2 0.2 0.2 1"/>
-        </material>
-        </visual>
-    </link>
+        <joint name="${prefix}pedestal_feet_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <parent link="${attach_link}" />
+            <child link="${prefix}pedestal_feet" />
+        </joint>
 
-    <joint name="${prefix}torso_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <parent link="${attach_link}" />
-        <child link="${prefix}torso" />
-    </joint>
+        <link name="${prefix}torso">
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <mass value="0.0001" />
+                <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.05 0.05 0.05" />
+                </geometry>
+                <material name="grey">
+                    <color rgba="0.2 0.2 0.2 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.05 0.05 0.05" />
+                </geometry>
+            </collision>
+        </link>
 
-    <link name="${prefix}pedestal">
-        <inertial>
-        <origin xyz="0 0 0" rpy="0 -0.754 1.565" />
-        <mass value="60.864" />
-        <inertia ixx="6.0869" ixy="0" ixz="0" iyy="5.81635" iyz="0" izz="4.20915" />
-        </inertial>
-        <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-            <mesh filename="package://bulldog_mujoco_ros/ros_models/meshes/base/visual/pedestal.dae" />
-        </geometry>
-        </visual>
-        <collision>
-        <origin xyz="-0.02 0 -0.29" rpy="0 0 0" />
-        <geometry>
-            <cylinder radius="0.18" length="0.31" />
-        </geometry>
-        <material name="light_black">
-            <color rgba="0.2 0.2 0.2 1"/>
-        </material>
-        </collision>
-    </link>
+        <joint name="${prefix}torso_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <parent link="${attach_link}" />
+            <child link="${prefix}torso" />
+        </joint>
 
-    <joint name="${prefix}pedestal_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <parent link="${attach_link}" />
-        <child link="${prefix}pedestal" />
-    </joint>
-  </xacro:macro>
+        <link name="${prefix}pedestal">
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 -0.754 1.565" />
+                <mass value="60.864" />
+                <inertia ixx="6.0869" ixy="0" ixz="0" iyy="5.81635" iyz="0" izz="4.20915" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://bulldog_mujoco_ros/ros_models/meshes/base_platform/visual/pedestal.dae" />
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="-0.02 0 -0.29" rpy="0 0 0" />
+                <geometry>
+                    <cylinder radius="0.18" length="0.31" />
+                </geometry>
+                <material name="light_black">
+                    <color rgba="0.2 0.2 0.2 1"/>
+                </material>
+            </collision>
+        </link>
+
+        <joint name="${prefix}pedestal_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <parent link="${attach_link}" />
+            <child link="${prefix}pedestal" />
+        </joint>
+    </xacro:macro>
 </robot>

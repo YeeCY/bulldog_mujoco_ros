@@ -21,21 +21,36 @@
         <material name="table_mat" texture="textable" />
 
         <mesh file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/../common_meshes/pedestal.stl" name="robot0_pedestal" />
-        <mesh name="robot0_base" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/base.stl" />
+        <!-- <mesh name="robot0_base" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/base.stl" />
         <mesh name="robot0_shoulder" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/shoulder.stl" />
         <mesh name="robot0_upperarm" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/upperarm.stl" />
         <mesh name="robot0_forearm" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/forearm.stl" />
         <mesh name="robot0_wrist1" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist1.stl" />
         <mesh name="robot0_wrist2" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist2.stl" />
-        <mesh name="robot0_wrist3" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist3.stl" />
-        <mesh name="robot0_base_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/base_vis.stl" />
+        <mesh name="robot0_wrist3" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist3.stl" /> -->
+        <mesh name="robot0_base" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/base.stl" />
+        <mesh name="robot0_shoulder" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/shoulder.stl" />
+        <mesh name="robot0_upperarm" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/upperarm.stl" />
+        <mesh name="robot0_forearm" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/forearm.stl" />
+        <mesh name="robot0_wrist1" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/wrist1.stl" />
+        <mesh name="robot0_wrist2" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/wrist2.stl" />
+        <mesh name="robot0_wrist3" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/wrist3.stl" />
+        
+        <!-- <mesh name="robot0_base_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/base_vis.stl" />
         <mesh name="robot0_shoulder_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/shoulder_vis.stl" />
         <mesh name="robot0_upperarm_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/upperarm_vis.stl" />
         <mesh name="robot0_forearm_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/forearm_vis.stl" />
         <mesh name="robot0_wrist1_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist1_vis.stl" />
         <mesh name="robot0_wrist2_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist2_vis.stl" />
-        <mesh name="robot0_wrist3_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist3_vis.stl" />
+        <mesh name="robot0_wrist3_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/robots/ur5e/meshes/wrist3_vis.stl" /> -->
 
+        <mesh name="robot0_base_vis" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/base_vis.stl" />
+        <mesh name="robot0_shoulder_vis" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/shoulder_vis.stl" />
+        <mesh name="robot0_upperarm_vis" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/upperarm_vis.stl" />
+        <mesh name="robot0_forearm_vis" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/forearm_vis.stl" />
+        <mesh name="robot0_wrist1_vis" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/wrist1_vis.stl" />
+        <mesh name="robot0_wrist2_vis" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/wrist2_vis.stl" />
+        <mesh name="robot0_wrist3_vis" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/ur5e/meshes/wrist3_vis.stl" />
 
         <texture type="cube" name="robot0_pedestal_tex" builtin="flat" width="100" height="100" rgb1="0.2 0.2 0.2" rgb2="0.2 0.2 0.2" />
 
@@ -159,40 +174,55 @@
                 <geom conaffinity="0" contype="0" group="1" mesh="robot0_pedestal" type="mesh" name="robot0_pedestal_col1" material="robot0_pedestal_mat" />
                 <geom pos="-0.02 0 -0.29" rgba="0.2 0.2 0.2 1" size="0.18 0.31" type="cylinder" name="robot0_pedestal_col2" />
             </body>
-            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_base_vis" />
+            <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_base_vis" /> -->
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_base_vis" />
             <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_base" />
-            <body name="robot0_shoulder_link" pos="0 0 0.163">
+            <!-- position offset different from ur_description -->
+            <!-- <body name="robot0_shoulder_link" pos="0 0 0.163"> -->
+            <body name="robot0_shoulder_link" pos="0 0 0.089159">
                 <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666" />
                 <joint name="robot0_shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="100" /><!-- high damping to facilitate PID tuning -->
-                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_shoulder_vis" />
+                <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_shoulder_vis" /> -->
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_shoulder_vis" />
                 <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_shoulder" name="robot0_shoulder_col" />
-                <body name="robot0_upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0">
+                <!-- <body name="robot0_upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0"> -->
+                <body name="robot0_upper_arm_link" pos="0 0.13585 0" quat="0.707107 0 0.707107 0">
                     <inertial pos="0 0 0.2125" mass="8.393" diaginertia="0.133886 0.133886 0.0151074" />
                     <joint name="robot0_shoulder_lift_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="100" />
-                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_upperarm_vis" />
+                    <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_upperarm_vis" /> -->
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_upperarm_vis" />
                     <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_upperarm" name="robot0_upperarm_col" />
-                    <body name="robot0_forearm_link" pos="0 -0.131 0.425">
+                    <!-- <body name="robot0_forearm_link" pos="0 -0.131 0.425"> -->
+                    <body name="robot0_forearm_link" pos="0 -0.1197 0.425">
                         <inertial pos="0 0 0.196" mass="2.275" diaginertia="0.0311796 0.0311796 0.004095" />
                         <joint name="robot0_elbow_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" damping="100" />
-                        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_forearm_vis" />
+                        <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_forearm_vis" /> -->
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_forearm_vis" />
                         <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_forearm" name="robot0_forearm_col" />
-                        <body name="robot0_wrist_1_link" pos="0 0 0.392" quat="0.707107 0 0.707107 0">
+                        <!-- <body name="robot0_wrist_1_link" pos="0 0 0.392" quat="0.707107 0 0.707107 0"> -->
+                        <body name="robot0_wrist_1_link" pos="0 0 0.39225" quat="0.707107 0 0.707107 0">
                             <inertial pos="0 0.127 0" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
                             <joint name="robot0_wrist_1_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="100" />
-                            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist1_vis" />
+                            <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist1_vis" /> -->
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist1_vis" />
                             <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist1" name="robot0_wrist1_col" />
-                            <body name="robot0_wrist_2_link" pos="0 0.127 0">
+                            <!-- <body name="robot0_wrist_2_link" pos="0 0.127 0"> -->
+                            <body name="robot0_wrist_2_link" pos="0 0.093 0">
                                 <inertial pos="0 0 0.1" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
                                 <joint name="robot0_wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="100" />
-                                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist2_vis" />
+                                <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist2_vis" /> -->
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist2_vis" />
                                 <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist2" name="robot0_wrist2_col" />
-                                <body name="robot0_wrist_3_link" pos="0 0 0.1">
+                                <!-- <body name="robot0_wrist_3_link" pos="0 0 0.1"> -->
+                                <body name="robot0_wrist_3_link" pos="0 0 0.09465">
                                     <inertial pos="0 0.0771683 0" quat="0.707107 0 0 0.707107" mass="0.1889" diaginertia="0.000132134 9.90863e-05 9.90863e-05" />
                                     <joint name="robot0_wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="100" />
-                                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist3_vis" />
+                                    <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist3_vis" /> -->
+                                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist3_vis" />
                                     <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist3" name="robot0_wrist3_col" />
                                     <geom size="0.005 0.005 0.005" pos="0 0.09 0" quat="0.707107 0 0 0.707107" type="box" />
-                                    <body name="robot0_right_hand" pos="0 0.098 0" quat="0.707 -0.707 0 0">
+                                    <!-- <body name="robot0_right_hand" pos="0 0.098 0" quat="0.707 -0.707 0 0"> -->
+                                    <body name="robot0_right_hand" pos="0 0.082 0" quat="0.707 -0.707 0 0">
 
 
 
