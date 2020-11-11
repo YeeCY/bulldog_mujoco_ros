@@ -131,7 +131,8 @@
   <joint name="robot0_right_hand_joint" type="fixed">
     <parent link="robot0_wrist_3_link" />
     <child link="gripper0_robotiq_arg2f_base_link" />
-    <origin xyz="0 0.098 0" rpy="-1.5708 0 0" />
+    <!-- <origin xyz="0 0.098 0" rpy="-1.5708 0 0" /> -->
+    <origin xyz="0 0.082 0" rpy="-1.5708 0 0" />
   </joint>
 
   <link name="gripper0_tool0" />
