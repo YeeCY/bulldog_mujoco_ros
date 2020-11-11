@@ -13,10 +13,155 @@
   <!-- robotiq -->
   <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/robotiq_2f_85/robotiq_arg2f_85_model_macro.xacro" />
 
+  <!-- <body name="robot0_base" pos="-0.56 0.0 0.913">
+      <inertial diaginertia="0 0 0" mass="0" pos="0 0 0" />
+      <body name="robot0_controller_box" pos="0 0 0">
+          <inertial diaginertia="1.71363 1.27988 0.809981" mass="46.64" pos="-0.325 0 -0.38" />
+          <geom pos="-0.325 0 -0.38" size="0.11 0.2 0.265" type="box" name="robot0_controller_box_col" />
+      </body>
+      <body name="robot0_pedestal_feet" pos="0 0 0">
+          <inertial diaginertia="8.16095 9.59375 15.0785" mass="167.09" pos="-0.1225 0 -0.758" />
+          <geom pos="-0.1225 0 -0.758" size="0.385 0.35 0.155" type="box" name="robot0_pedestal_feet_col" />
+      </body>
+      <body name="robot0_torso" pos="0 0 0">
+          <inertial diaginertia="1e-08 1e-08 1e-08" mass="0.0001" pos="0 0 0" />
+          <geom conaffinity="0" contype="0" group="1" rgba="0.2 0.2 0.2 1" size="0.05 0.05 0.05" type="box" name="robot0_torso_col" />
+      </body>
+      <body name="robot0_pedestal" pos="0 0 0">
+          <inertial diaginertia="6.0869 5.81635 4.20915" mass="60.864" pos="0 0 0" quat="0.659267 -0.259505 -0.260945 0.655692" />
+          <geom conaffinity="0" contype="0" group="1" mesh="robot0_pedestal" type="mesh" name="robot0_pedestal_col1" material="robot0_pedestal_mat" />
+          <geom pos="-0.02 0 -0.29" rgba="0.2 0.2 0.2 1" size="0.18 0.31" type="cylinder" name="robot0_pedestal_col2" />
+      </body>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_base_vis" />
+      <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_base" /> -->
+
   <!-- base -->
   <link name="world" />
 
-  <joint name="world_joint" type="fixed">
+  <!-- <link name="robot0_base">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        // <mesh filename="package://bulldog_mujoco_ros/ros_models/meshes/base/visual/robotiq_arg2f_85_base_link.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="package://bulldog_mujoco_ros/ros_models/meshes/base/visual/base_vis.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bulldog_mujoco_ros/ros_models/meshse/base/collision/base.stl" />
+      </geometry>
+      <material>
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </collision>
+  </link> -->
+
+  <joint name="robot0_base_joint" type="fixed">
+    <!-- <origin xyz="-0.56 0.0 0.913" rpy="0 0 0"/> -->
+    <origin xyz="0.0 0.0 0.913" rpy="0 0 0"/>
+    <parent link="world" />
+    <child link="robot0_base_link" />
+  </joint>
+  
+  <link name="robot0_controller_box">
+    <inertial>
+      <origin xyz="-0.325 0 -0.38" rpy="0 0 0" />
+      <mass value="46.64" />
+      <inertia ixx="1.71363" ixy="0" ixz="0" iyy="1.27988" iyz="0" izz="0.809981" />
+    </inertial>
+    <collision>
+      <origin xyz="-0.325 0 -0.38" rpy="0 0 0" />
+      <geometry>
+        <box size="0.11 0.2 0.265" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="robot0_controller_box_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="robot0_base_link" />
+    <child link="robot0_controller_box" />
+  </joint>
+
+  <link name="robot0_pedestal_feet">
+    <inertial>
+      <origin xyz="-0.1225 0 -0.758" rpy="0 0 0" />
+      <mass value="167.09" />
+      <inertia ixx="8.16095" ixy="0" ixz="0" iyy="9.59375" iyz="0" izz="15.0785" />
+    </inertial>
+    <collision>
+      <origin xyz="-0.1225 0 -0.758" rpy="0 0 0" />
+      <geometry>
+        <box size="0.385 0.35 0.155" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="robot0_pedestal_feet_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="robot0_base_link" />
+    <child link="robot0_pedestal_feet" />
+  </joint>
+
+  <link name="robot0_torso">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0001" />
+      <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.05" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robot0_torso_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="robot0_base_link" />
+    <child link="robot0_torso" />
+  </joint>
+
+  <link name="robot0_pedestal">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 -0.754 1.565" />
+      <mass value="60.864" />
+      <inertia ixx="6.0869" ixy="0" ixz="0" iyy="5.81635" iyz="0" izz="4.20915" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bulldog_mujoco_ros/ros_models/meshes/base/visual/pedestal.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.02 0 -0.29" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.18" length="0.31" />
+      </geometry>
+      <material name="light_black">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </collision>
+  </link>
+
+  <joint name="robot0_pedestal_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="robot0_base_link" />
+    <child link="robot0_pedestal" />
+  </joint>
+
+  <!-- <joint name="world_joint" type="fixed">
     <parent link="world" />
     <child link = "base_pole" />
     <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
@@ -38,13 +183,13 @@
         <cylinder radius="0.08" length="0.9"/>
       </geometry>
     </collision>
-  </link>
+  </link>-->
 
-  <joint name="base_pole_joint" type="fixed">
+  <!-- <joint name="base_pole_joint" type="fixed">
     <parent link="base_pole" />
     <child link = "robot0_base_link" />
     <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
-  </joint>
+  </joint> -->
 
   <!-- arm -->
   <!-- <xacro:ur5_robot prefix="robot0_" joint_limited="true"
@@ -75,7 +220,7 @@
   <joint name="robot0_right_hand_joint" type="fixed">
     <parent link="robot0_wrist_3_link" />
     <child link="gripper0_robotiq_arg2f_base_link" />
-    <origin xyz="0 0.098 0" rpy="-1.571 0 0" />
+    <origin xyz="0 0.098 0" rpy="-1.5708 0 0" />
   </joint>
 
   <link name="gripper0_tool0" />
