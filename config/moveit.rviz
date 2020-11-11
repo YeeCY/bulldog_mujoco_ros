@@ -86,11 +86,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          base_pole:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           gripper0_left_inner_finger:
             Alpha: 1
             Show Axes: false
@@ -159,12 +154,27 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          robot0_controller_box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           robot0_ee_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
           robot0_forearm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robot0_pedestal:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robot0_pedestal_feet:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -178,6 +188,11 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          robot0_torso:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           robot0_upper_arm_link:
             Alpha: 1
             Show Axes: false
@@ -247,11 +262,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          base_pole:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           gripper0_left_inner_finger:
             Alpha: 1
             Show Axes: false
@@ -320,12 +330,27 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          robot0_controller_box:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           robot0_ee_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
           robot0_forearm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robot0_pedestal:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          robot0_pedestal_feet:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -339,6 +364,11 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          robot0_torso:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           robot0_upper_arm_link:
             Alpha: 1
             Show Axes: false
@@ -368,6 +398,21 @@ Visualization Manager:
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 0.1
+    - Class: rviz/TF
+      Enabled: false
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -396,7 +441,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.1562228202819824
+      Distance: 3.240103244781494
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -404,17 +449,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.5819302797317505
+        Y: -0.11699212342500687
+        Z: 0.5286776423454285
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.3653974533081055
+      Pitch: 1.1247968673706055
       Target Frame: <Fixed Frame>
-      Yaw: 0.34539535641670227
+      Yaw: 0.7753912806510925
     Saved: ~
 Window Geometry:
   Displays:
@@ -436,5 +481,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1481
-  X: 281
+  X: 269
   Y: 47
