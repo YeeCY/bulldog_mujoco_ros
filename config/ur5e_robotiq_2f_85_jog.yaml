@@ -1,0 +1,5 @@
+jog:
+  group: manipulator
+  target_link: gripper0_tool0
+  base_link: world
+  time_from_start: 0.5

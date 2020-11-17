@@ -71,4 +71,8 @@
             <arg name="planning" value="$(arg planning)"/>
         </include>
     </group>
+
+    <!-- Jog -->
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
+
 </launch>
