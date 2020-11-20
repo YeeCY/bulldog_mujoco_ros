@@ -2,4 +2,33 @@ jog:
   group: manipulator
   target_link: gripper0_tool0
   base_link: world
-  time_from_start: 0.5
+
+jog_frame_node:
+  time_from_start: 4.0
+
+# jog_joint_node:
+#   joint_names:
+#     - robot0_shoulder_pan_joint
+#     - robot0_shoulder_lift_joint
+#     - robot0_elbow_joint
+#     - robot0_wrist_1_joint
+#     - robot0_wrist_2_joint
+#     - robot0_wrist_3_joint
+jog_joint_node:
+  joint_names:
+    - gripper0_finger_joint
+    - gripper0_right_outer_knuckle_joint  # not used
+    - robot0_shoulder_pan_joint
+    - robot0_shoulder_lift_joint
+    - robot0_elbow_joint
+    - robot0_wrist_1_joint
+    - robot0_wrist_2_joint
+    - robot0_wrist_3_joint
+  time_from_start: 2.0
+
+# jog_frame_node:
+#   group_names:
+#     - manipulator
+#   link_names:
+#     - gripper0_tool0
+#   time_from_start: 1.0

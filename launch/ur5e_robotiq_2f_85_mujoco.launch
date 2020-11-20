@@ -74,5 +74,6 @@
 
     <!-- Jog -->
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
-
+    <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
+    <node name="jog_joint_node" pkg="jog_controller" type="jog_joint_node" output="screen"/>
 </launch>
