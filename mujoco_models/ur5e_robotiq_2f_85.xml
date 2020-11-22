@@ -118,8 +118,8 @@
         <position name="robot0_wrist_2_pos" joint="robot0_wrist_2_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000" />
         <position name="robot0_wrist_3_pos" joint="robot0_wrist_3_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000"/>
 
-        <position name="gripper0_finger_1" ctrllimited="true" kp="20" joint="gripper0_finger_joint" ctrlrange="0 0.8" />
-        <position name="gripper0_finger_2" ctrllimited="true" kp="20" joint="gripper0_right_outer_knuckle_joint" ctrlrange="0 0.8" />
+        <position name="gripper0_finger_pos" ctrllimited="true" kp="20" joint="gripper0_finger_joint" ctrlrange="0 0.8" />
+        <position name="gripper0_right_outer_knuckle_joint" ctrllimited="true" kp="20" joint="gripper0_right_outer_knuckle_joint" ctrlrange="0 0.8" />
     </actuator>
 
     <worldbody>
