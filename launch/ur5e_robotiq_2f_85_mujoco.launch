@@ -5,6 +5,8 @@
     <arg name="use_moveit" default="true"/>
     <!-- Set to false if you want to start without guis -->
     <arg name="moveit_gui" default="true"/>
+    <!-- Set to false if you want to start without rviz -->
+    <arg name="use_rviz" default="true"/>
     <!--Choose planner library, options are ompl, stomp or sbpl-->
     <arg name="planning" default="ompl"/>
     <!--Should the planner yaml be automatically generated? -->
@@ -68,6 +70,7 @@
             <arg name="load_robot_description" value="false"/>
             <arg name="debug" value="$(arg debug)"/>
             <arg name="gui" value="$(arg moveit_gui)"/>
+            <arg name="use_rviz" value="$(arg use_rviz)"/>
             <arg name="planning" value="$(arg planning)"/>
         </include>
     </group>
