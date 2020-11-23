@@ -4,7 +4,7 @@
     <!-- Set to true to allow planning trajectories-->
     <arg name="use_moveit" default="true"/>
     <!-- Set to false if you want to start without guis -->
-    <arg name="gui" default="true"/>
+    <arg name="moveit_gui" default="true"/>
     <!--Choose planner library, options are ompl, stomp or sbpl-->
     <arg name="planning" default="ompl"/>
     <!--Should the planner yaml be automatically generated? -->
@@ -67,7 +67,7 @@
         <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
             <arg name="load_robot_description" value="false"/>
             <arg name="debug" value="$(arg debug)"/>
-            <arg name="gui" value="$(arg gui)"/>
+            <arg name="gui" value="$(arg moveit_gui)"/>
             <arg name="planning" value="$(arg planning)"/>
         </include>
     </group>
