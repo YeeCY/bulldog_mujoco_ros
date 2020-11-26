@@ -17,11 +17,21 @@
     <arg name="joint_state_pub_frequency" default="125"/>
     <!-- The path of your mujoco license  -->
     <arg name="key_path" default="/home/yee/.mujoco/mujoco200/bin/mjkey.txt"/>
+    <!-- The window width of mujoco -->
+    <arg name="window_width" default="512"/>
+    <!-- The window height of mujoco -->
+    <arg name="window_height" default="512"/>
     <!-- Loads the robot description -->
     <arg name="robot_description" default="$(find bulldog_mujoco_ros)/ros_models/urdfs/ur5e_robotiq_2f_85.urdf.xacro" />
     <!-- <arg name="robot_config_file" default="$(find sr_multi_moveit_config)/config/robot_configs/right_sh_ur10.yaml"/> -->
     <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5e_robotiq_2f_85.xml" />
-    
+    <!-- Topic to read object states -->
+    <arg name="object_state_topic" default="/mujoco_ros/model_states"/>
+    <!-- Object meshes path -->
+    <arg name="description_repo_path" default="$(find bulldog_mujoco_ros)/mujco_models/assets"/>
+    <!-- Only publish static objects or both static and free objects -->
+    <arg name="static_only" default="true" />
+
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
     <rosparam if="$(eval not arg('robot_description').endswith('.xacro'))" param="robot_description" command="load" file="$(arg robot_description)"/>
 
@@ -55,6 +65,8 @@
         <param name="robot_model_path" value="$(arg mujoco_model_filename)"/>
         <param name="robot_description_param" value="$(arg robot_description_param)"/>
         <param name="key_path" value="$(arg key_path)"/>
+        <param name="window_width" value="$(arg window_width)"/>
+        <param name="window_height" value="$(arg window_width)"/>
     </node>
 
     <!-- Control -->
@@ -79,4 +91,11 @@
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
     <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
     <node name="jog_joint_node" pkg="jog_controller" type="jog_joint_node" output="screen"/>
+
+    <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
+    <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
+        <arg name="object_state_topic" value="$(arg object_state_topic)"/>
+        <arg name="description_repo_path" value="$(arg description_repo_path)"/>
+        <arg name="static_only" value="$(arg static_only)"/>
+    </include>
 </launch>
