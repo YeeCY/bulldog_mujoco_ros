@@ -9,6 +9,11 @@
   <arg name="use_rviz" default="true"/>
   <arg name="gui" default="true"/>
 
+  <!-- Update joint limits -->
+  <!-- <group ns="robot_description_planning">
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/joint_limits.yaml"/>
+  </group> -->
+
   <!-- The name of the rviz config file to load -->
   <arg name="rviz_config_file" default="$(find bulldog_mujoco_ros)/config/moveit.rviz"/>
 

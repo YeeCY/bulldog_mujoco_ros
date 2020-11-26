@@ -1,0 +1,7 @@
+<launch>
+  <arg name="robot_launch_file" default="bulldog_mujoco_ros ur5e_robotiq_2f_85_mujoco.launch use_rviz:=true" />
+
+  <node name="mujoco_simulation_spawner" pkg="bulldog_mujoco_ros" type="spawn_simulation.py" output="screen">
+    <param name="robot_launch_file" value="$(arg robot_launch_file)" />
+  </node>
+</launch>
