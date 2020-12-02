@@ -17,6 +17,8 @@
     <arg name="joint_state_pub_frequency" default="125"/>
     <!-- The path of your mujoco license  -->
     <arg name="key_path" default="/home/yee/.mujoco/mujoco200/bin/mjkey.txt"/>
+    <!-- Visualize the mujoco simulation -->
+    <arg name="visualize" default="true" />
     <!-- The window width of mujoco -->
     <arg name="window_width" default="512"/>
     <!-- The window height of mujoco -->
@@ -65,6 +67,7 @@
         <param name="robot_model_path" value="$(arg mujoco_model_filename)"/>
         <param name="robot_description_param" value="$(arg robot_description_param)"/>
         <param name="key_path" value="$(arg key_path)"/>
+        <param name="visualize" value="$(arg visualize)" />
         <param name="window_width" value="$(arg window_width)"/>
         <param name="window_height" value="$(arg window_width)"/>
     </node>
