@@ -39,8 +39,8 @@ class SpawnSimulation(object):
         # self._base_config_xml = xmlTool.parse('{}/{}'.format(self._xml_config_dir, base_mujoco_env_filename))
         # self._obj_names_list = []
         self._subprocess = []
-        rospy.Service("mujoco/spawn_sim_environment", Trigger, self._spawn_sim_environment_service)
-        rospy.Service("mujoco/terminate_sim", Trigger, self._terminate_sim_service)
+        rospy.Service("mujoco_ros/spawn_sim_environment", Trigger, self._spawn_sim_environment_service)
+        rospy.Service("mujoco_ros/terminate_sim", Trigger, self._terminate_sim_service)
 
     # def _get_file_mesh_directory(self, mesh_name):
     #     """
