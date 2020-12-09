@@ -76,7 +76,8 @@ class SpawnSimulation(object):
             rospy.sleep(1)
         except OSError as e:
             rospy.logerr("Could not spawn simulation")
-            process.kill()
+            # process.kill()
+            os.killpg(os.getpgid(process.pid), signal.SIGTERM)
             success = False
             msg = "Could not spawn simulation"
         else:
@@ -129,9 +130,9 @@ class SpawnSimulation(object):
         msg = "Simulation already terminated"
         for process in self._subprocess:
             process.returncode = 0
+            # process.kill()
+            # process.wait()
             os.killpg(os.getpgid(process.pid), signal.SIGTERM)
-            process.kill()
-            process.wait()
             if process.poll() == process.returncode:
                 success = True
                 msg = "Simulation correctly terminated"
