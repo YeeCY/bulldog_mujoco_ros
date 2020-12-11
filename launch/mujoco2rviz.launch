@@ -3,7 +3,7 @@
     <arg name="description_repo_path" default="$(find bulldog_mujoco_ros)/mujco_models/assets"/>
     <arg name="static_only" default="true" />
 
-    <node name="mujoco2rviz" pkg="mujoco2rviz" type="mujoco2rviz_node.py" output="screen">
+    <node name="mujoco2rviz" pkg="bulldog_mujoco_ros" type="mujoco2rviz_node.py" output="screen">
         <param name="object_state_topic" value="$(arg object_state_topic)"/>
         <param name="description_repo_path" value="$(arg description_repo_path)"/>
         <param name="static_only" value="$(arg static_only)"/>
