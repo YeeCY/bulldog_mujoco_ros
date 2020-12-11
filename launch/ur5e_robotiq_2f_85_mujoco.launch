@@ -39,7 +39,7 @@
 
     <arg name="robot_description_param" default="robot_description"/>
   
-    <param name="/use_sim_time" value="false"/>
+    <param name="/use_sim_time" value="true"/>
 
     <!-- Publish joint state -->
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_state_controller.yaml" />
