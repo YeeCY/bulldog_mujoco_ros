@@ -7,7 +7,8 @@ is only one hand in the urdf then an empty prefix can be used "".  If
 there are multiple hands then a prefix followed by an "_" is needed.
 -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robotiq_hand">
-
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/robotiq_3f/robotiq-3f_gripper_transmission.xacro" />
+  
   <xacro:macro name="robotiq_finger" params="prefix">
     <!-- Link list -->
 
@@ -571,6 +572,7 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <origin rpy="0 0 0" xyz="0 0.05715 0"/>
       <!-- Limits: [0deg.,90deg.] -->
       <limit lower="0" upper="1.5708" effort="60" velocity="-1"/>
+      <mimic joint="${prefix}joint_1" multiplier="1" offset="0" />
     </joint>
 
     <gazebo reference="${prefix}joint_2">
@@ -586,6 +588,7 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <origin rpy="0 0 ${3.1416/2 + 0.5198}" xyz="0 0.039 0"/>
       <!-- Limits: [-38deg.,60deg.] -->
       <limit lower="-0.6632" upper="1.0471" effort="60" velocity="-1"/>
+      <mimic joint="${prefix}joint_2" multiplier="-2" offset="0" />
     </joint>
 
     <gazebo reference="${prefix}joint_3">
@@ -766,6 +769,7 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <origin rpy="0 3.1416 -1.57" xyz="-0.0455 0.0214 -0.036"/>
       <!-- Limits: [-17deg.,17deg.] -->
       <limit lower="-0.2967" upper="0.2967" effort="60" velocity="-1"/>
+      <mimic joint="${prefix}joint_2" multiplier="-1" offset="0" />
     </joint>
 
     <gazebo reference="${prefix}palm_finger_2_joint">
@@ -786,6 +790,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <implicitSpringDamper>1</implicitSpringDamper>
     </gazebo>
     <!-- end of joint list -->
+
+    <!--Transmissions -->
+    <xacro:robotiq_transmission prefix="${prefix}"/>
+    <!-- end of transmission list -->
 
   </xacro:macro>
 
