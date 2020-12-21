@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro"
+       name="ur5e_robotiq_2f_85" >
+
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+
+  <!-- base platform -->
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/base_platform.urdf.xacro" />
+
+  <!-- ur5 -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+
+  <!-- robotiq -->
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/robotiq_3f/robotiq_hand_macro.urdf.xacro" />
+
+  <!-- <body name="robot0_base" pos="-0.56 0.0 0.913">
+      <inertial diaginertia="0 0 0" mass="0" pos="0 0 0" />
+      <body name="robot0_controller_box" pos="0 0 0">
+          <inertial diaginertia="1.71363 1.27988 0.809981" mass="46.64" pos="-0.325 0 -0.38" />
+          <geom pos="-0.325 0 -0.38" size="0.11 0.2 0.265" type="box" name="robot0_controller_box_col" />
+      </body>
+      <body name="robot0_pedestal_feet" pos="0 0 0">
+          <inertial diaginertia="8.16095 9.59375 15.0785" mass="167.09" pos="-0.1225 0 -0.758" />
+          <geom pos="-0.1225 0 -0.758" size="0.385 0.35 0.155" type="box" name="robot0_pedestal_feet_col" />
+      </body>
+      <body name="robot0_torso" pos="0 0 0">
+          <inertial diaginertia="1e-08 1e-08 1e-08" mass="0.0001" pos="0 0 0" />
+          <geom conaffinity="0" contype="0" group="1" rgba="0.2 0.2 0.2 1" size="0.05 0.05 0.05" type="box" name="robot0_torso_col" />
+      </body>
+      <body name="robot0_pedestal" pos="0 0 0">
+          <inertial diaginertia="6.0869 5.81635 4.20915" mass="60.864" pos="0 0 0" quat="0.659267 -0.259505 -0.260945 0.655692" />
+          <geom conaffinity="0" contype="0" group="1" mesh="robot0_pedestal" type="mesh" name="robot0_pedestal_col1" material="robot0_pedestal_mat" />
+          <geom pos="-0.02 0 -0.29" rgba="0.2 0.2 0.2 1" size="0.18 0.31" type="cylinder" name="robot0_pedestal_col2" />
+      </body>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_base_vis" />
+      <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_base" /> -->
+
+  <!-- base -->
+  <link name="world" />
+
+  <!-- <link name="robot0_base">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        // <mesh filename="package://bulldog_mujoco_ros/ros_models/meshes/base/visual/robotiq_arg2f_85_base_link.dae" scale="0.001 0.001 0.001" />
+        <mesh filename="package://bulldog_mujoco_ros/ros_models/meshes/base/visual/base_vis.dae" />
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bulldog_mujoco_ros/ros_models/meshse/base/collision/base.stl" />
+      </geometry>
+      <material>
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </collision>
+  </link> -->
+
+  <joint name="robot0_base_joint" type="fixed">
+    <origin xyz="-0.56 0.0 0.913" rpy="0 0 0"/>
+    <!-- <origin xyz="0.0 0.0 0.913" rpy="0 0 0"/> -->
+    <parent link="world" />
+    <child link="robot0_base_link" />
+  </joint>
+  
+  <xacro:base_platform prefix="robot0_" attach_link="robot0_base_link" />
+
+  <!-- <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_pole" />
+    <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <link name="base_pole">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.08" length="0.9" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.4 0.4 0.4 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.08" length="0.9"/>
+      </geometry>
+    </collision>
+  </link>-->
+
+  <!-- <joint name="base_pole_joint" type="fixed">
+    <parent link="base_pole" />
+    <child link = "robot0_base_link" />
+    <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
+  </joint> -->
+
+  <!-- arm -->
+  <!-- <xacro:ur5_robot prefix="robot0_" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
+  /> -->
+  <xacro:ur5_robot prefix="robot0_" joint_limited="false" transmission_hw_interface="$(arg transmission_hw_interface)"/>
+
+  <!-- gripper -->
+  <!-- <link name="robot0_right_hand">
+    <visual>
+      <origin xyz="0 0 0.0" rpy="0 0 0" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+    </collision>
+  </link> -->
+
+  <link name="robot0_right_hand" /><!-- could add camera with this link -->
+
+  <joint name="robot0_right_hand_joint" type="fixed">
+    <parent link="robot0_wrist_3_link" />
+    <child link="robot0_right_hand" />
+    <!-- <origin xyz="0 0.098 0" rpy="-1.5708 0 0" /> -->
+    <origin xyz="0 0.082 0" rpy="-1.5708 0 0" />
+  </joint>
+
+  <xacro:robotiq_hand prefix="gripper0_" parent="robot0_right_hand" reflect="1">
+    <origin xyz="0 0 0.065" rpy="1.5708 0 2.3562" />
+  </xacro:robotiq_hand>
+
+  <!-- <joint name="gripper0_palm_joint" type="fixed">
+    <parent link="robot0_right_hand" />
+    <child link="gripper0_palm" />
+    <origin xyz="0 0 0.065" rpy="1.5708 0 2.3562" />
+  </joint> -->
+
+  <link name="gripper0_tool0" />
+
+  <joint name="gripper0_tool0_joint" type="fixed">
+    <parent link="gripper0_palm" />
+    <child link="gripper0_tool0" />
+    <origin xyz="0 0.1 0" rpy="0 0 0" />
+  </joint>
+</robot>

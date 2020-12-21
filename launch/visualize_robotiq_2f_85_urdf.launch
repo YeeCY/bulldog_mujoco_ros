@@ -9,5 +9,5 @@
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find bulldog_mujoco_ros)/config/visualize.rviz" required="true" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find bulldog_mujoco_ros)/config/visualize_robotiq_2f_85.rviz" required="true" />
 </launch>
