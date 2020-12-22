@@ -7,8 +7,9 @@ there are multiple hands then a prefix followed by an "_" is needed.
 
 -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-        <xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq-3f-gripper_finger_articulated_macro.xacro" />
-        <xacro:macro name="robotiq-3f-gripper_articulated" params="prefix">
+	<xacro:include filename="$(find robotiq_3f_gripper_visualization)/cfg/robotiq-3f-gripper_finger_articulated_macro.xacro" />
+  	<xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/robotiq_3f/robotiq-3f_gripper_transmission.xacro" />
+	<xacro:macro name="robotiq-3f-gripper_articulated" params="prefix">
         <xacro:robotiq-3f-gripper_finger_articulated prefix="${prefix}finger_1_"/>
         <xacro:robotiq-3f-gripper_finger_articulated prefix="${prefix}finger_2_"/>
         <xacro:robotiq-3f-gripper_finger_articulated prefix="${prefix}finger_middle_"/>
@@ -16,7 +17,7 @@ there are multiple hands then a prefix followed by an "_" is needed.
 		<link name="${prefix}palm">
 			<visual>
 				<geometry>
-                                        <mesh filename="package://robotiq_3f_gripper_visualization/meshes/robotiq-3f-gripper_articulated/visual/palm.dae" />
+                    <mesh filename="package://robotiq_3f_gripper_visualization/meshes/robotiq-3f-gripper_articulated/visual/palm.dae" />
 				</geometry>
 				<material name="gray">
 					<color rgba="0.2 0.2 0.2 1"/>
@@ -24,7 +25,7 @@ there are multiple hands then a prefix followed by an "_" is needed.
 			</visual>
 			<collision>
 				<geometry>
-                                        <mesh filename="package://robotiq_3f_gripper_visualization/meshes/robotiq-3f-gripper_articulated/collision/palm.STL" />
+                	<mesh filename="package://robotiq_3f_gripper_visualization/meshes/robotiq-3f-gripper_articulated/collision/palm.STL" />
 				</geometry>
 				<material name="yellow">
 					<color rgba="0 1 1 1"/>
@@ -67,5 +68,9 @@ there are multiple hands then a prefix followed by an "_" is needed.
 			<origin xyz="0.0 0.0875 0.0" rpy="0 0 1.5707"/>
 		</joint>
 		<!-- end of joint list -->
+
+		<!-- transmissions -->
+    	<xacro:robotiq_transmission prefix="${prefix}"/>
+		<!-- end of transmissions -->
 	</xacro:macro>
 </robot>

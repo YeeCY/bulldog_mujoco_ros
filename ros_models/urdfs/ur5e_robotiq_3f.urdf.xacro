@@ -14,7 +14,7 @@
   <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/ur5/ur5.urdf.xacro" />
 
   <!-- robotiq -->
-  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/robotiq_3f/robotiq_hand_macro.urdf.xacro" />
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/robotiq_3f/robotiq-3f-gripper_articulated_macro.xacro" />
 
   <!-- <body name="robot0_base" pos="-0.56 0.0 0.913">
       <inertial diaginertia="0 0 0" mass="0" pos="0 0 0" />
@@ -79,6 +79,7 @@
     <parent link="world" />
     <child link = "base_pole" />
     <origin xyz="0.0 0.0 0.45" rpy="0.0 0.0 0.0" />
+  <xacro:robotiq-3f-gripper_articulated prefix=""/>
   </joint>
 
   <link name="base_pole">
@@ -136,21 +137,23 @@
     <origin xyz="0 0.082 0" rpy="-1.5708 0 0" />
   </joint>
 
-  <xacro:robotiq_hand prefix="gripper0_" parent="robot0_right_hand" reflect="1">
+  <!-- <xacro:robotiq_hand prefix="gripper0_" parent="robot0_right_hand" reflect="1">
     <origin xyz="0 0 0.065" rpy="1.5708 0 2.3562" />
-  </xacro:robotiq_hand>
+  </xacro:robotiq_hand> -->
+  
+  <xacro:robotiq-3f-gripper_articulated prefix="gripper0_"/>
 
-  <!-- <joint name="gripper0_palm_joint" type="fixed">
+  <joint name="gripper0_palm_joint" type="fixed">
     <parent link="robot0_right_hand" />
     <child link="gripper0_palm" />
     <origin xyz="0 0 0.065" rpy="1.5708 0 2.3562" />
-  </joint> -->
+  </joint>
 
-  <link name="gripper0_tool0" />
+  <!-- <link name="gripper0_tool0" />
 
   <joint name="gripper0_tool0_joint" type="fixed">
     <parent link="gripper0_palm" />
     <child link="gripper0_tool0" />
     <origin xyz="0 0.1 0" rpy="0 0 0" />
-  </joint>
+  </joint> -->
 </robot>

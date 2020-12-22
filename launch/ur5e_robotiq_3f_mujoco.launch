@@ -75,20 +75,20 @@
     <!-- Control -->
     <!--Arm Controller -->
     <!-- <rosparam file="$(find bulldog_mujoco_ros)/config/ur5_mujoco_ros_control_params.yaml" command="load"/> -->
-    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_3f_controllers.yaml"/>
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_3f_controllers.yaml"/>
     <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
-        ur5e_robotiq_3f_manipulator_controller ur5e_robotiq_3f_gripper_controller"/> -->
+        ur5e_robotiq_3f_manipulator_controller ur5e_robotiq_3f_gripper_controller"/>
 
     <!-- MOVEIT -->
-    <!-- <group if="$(arg use_moveit)">
-        <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
+    <group if="$(arg use_moveit)">
+        <include file="$(find bulldog_mujoco_ros)/launch/ur5e_robotiq_3f_moveit_planning_and_execution.launch">
             <arg name="load_robot_description" value="false"/>
             <arg name="debug" value="$(arg debug)"/>
             <arg name="gui" value="$(arg moveit_gui)"/>
             <arg name="use_rviz" value="$(arg use_rviz)"/>
             <arg name="planning" value="$(arg planning)"/>
         </include>
-    </group> -->
+    </group>
 
     <!-- Jog -->
     <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>

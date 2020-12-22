@@ -139,7 +139,7 @@ class SpawnSimulation(object):
             else:
                 success = False
                 msg = "Could not terminate simulation"
-        rospy.sleep(1)
+        rospy.sleep(2)
         return TriggerResponse(success, msg)
 
 
