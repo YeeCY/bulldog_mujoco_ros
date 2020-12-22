@@ -36,17 +36,17 @@ robot_initial_state:
   robot0_wrist_2_joint: 0.0
   robot0_wrist_3_joint: -0.7854
 
-  gripper0_palm_finger_1_joint: 0.0
-  gripper0_finger_1_joint_1: 0.0
-  gripper0_finger_1_joint_2: 0.0
-  gripper0_finger_1_joint_3: 0.0
-  gripper0_palm_finger_2_joint: 0.0
-  gripper0_finger_2_joint_1: 0.0
-  gripper0_finger_2_joint_2: 0.0
-  gripper0_finger_2_joint_3: 0.0
-  gripper0_finger_middle_joint_1: 0.0
-  gripper0_finger_middle_joint_2: 0.0
-  gripper0_finger_middle_joint_3: 0.0
+  # gripper0_palm_finger_1_joint: 0.0
+  # gripper0_finger_1_joint_1: 0.0
+  # gripper0_finger_1_joint_2: 0.0
+  # gripper0_finger_1_joint_3: 0.0
+  # gripper0_palm_finger_2_joint: 0.0
+  # gripper0_finger_2_joint_1: 0.0
+  # gripper0_finger_2_joint_2: 0.0
+  # gripper0_finger_2_joint_3: 0.0
+  # gripper0_finger_middle_joint_1: 0.0
+  # gripper0_finger_middle_joint_2: 0.0
+  # gripper0_finger_middle_joint_3: 0.0
 
   # side
   # robot0_shoulder_pan_joint: 0.8 

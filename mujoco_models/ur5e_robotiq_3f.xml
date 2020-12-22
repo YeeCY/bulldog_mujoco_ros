@@ -66,6 +66,13 @@
         <mesh name="gripper0_link_1_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/grippers/meshes/robotiq_s_gripper/link_1_vis.stl" />
         <mesh name="gripper0_link_2_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/grippers/meshes/robotiq_s_gripper/link_2_vis.stl" />
         <mesh name="gripper0_link_3_vis" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/grippers/meshes/robotiq_s_gripper/link_3_vis.stl" />
+
+        <!-- <mesh name="gripper0_palm" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/robotiq_3f_gripper/meshes/palm.STL" />
+        <mesh name="gripper0_link_0" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/robotiq_3f_gripper/meshes/link_0.STL" />
+        <mesh name="gripper0_link_1" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/robotiq_3f_gripper/meshes/link_1.STL" />
+        <mesh name="gripper0_link_2" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/robotiq_3f_gripper/meshes/link_2.STL" />
+        <mesh name="gripper0_link_3" file="/home/yee/mujoco_ros/src/bulldog_mujoco_ros/mujoco_models/assets/robots/robotiq_3f_gripper/meshes/link_3.STL" /> -->
+
         <texture type="cube" name="redwood" file="/home/yee/anaconda3/envs/rl/lib/python3.8/site-packages/robosuite/models/assets/textures/red-wood.png" />
         <material texrepeat="1 1" specular="0.4" shininess="0.1" name="redwood_mat" texture="redwood" />
     </asset>

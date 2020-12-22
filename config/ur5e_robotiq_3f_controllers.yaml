@@ -94,11 +94,30 @@ ur5e_robotiq_3f_gripper_controller:
   constraints:
       goal_time: 1.5
       stopped_velocity_tolerance: 0.5
-      gripper0_finger_1_joint_1: {trajectory: 0.3, goal: 0.25}
-      gripper0_finger_2_joint_1: {trajectory: 0.3, goal: 0.25}
-      gripper0_finger_middle_joint_1: {trajectory: 0.3, goal: 0.25}
-      gripper0_palm_finger_1_joint: {trajectory: 0.3, goal: 0.25}
+      gripper0_finger_1_joint_1: {trajectory: 0.2, goal: 0.1}
+      gripper0_finger_2_joint_1: {trajectory: 0.2, goal: 0.1}
+      gripper0_finger_middle_joint_1: {trajectory: 0.2, goal: 0.1}
+      gripper0_palm_finger_1_joint: {trajectory: 0.2, goal: 0.1}
   stop_trajectory_duration: 1.5
   state_publish_rate: 50
   action_monitor_rate: 10
   allow_partial_joints_goal: true
+
+# ur5e_robotiq_3f_gripper_controller:
+#   type: position_controllers/JointTrajectoryController
+#   joints:
+#     - gripper0_finger_1_joint_1
+#     - gripper0_finger_2_joint_1
+#     - gripper0_finger_middle_joint_1
+#     - gripper0_palm_finger_1_joint
+#   constraints:
+#       goal_time: 1.5
+#       stopped_velocity_tolerance: 0.5
+#       gripper0_finger_1_joint_1: {trajectory: 0.4, goal: 0.5}
+#       gripper0_finger_2_joint_1: {trajectory: 0.4, goal: 0.5}
+#       gripper0_finger_middle_joint_1: {trajectory: 0.4, goal: 0.5}
+#       gripper0_palm_finger_1_joint: {trajectory: 0.4, goal: 0.5}
+#   stop_trajectory_duration: 1.5
+#   state_publish_rate: 50
+#   action_monitor_rate: 10
+#   allow_partial_joints_goal: true

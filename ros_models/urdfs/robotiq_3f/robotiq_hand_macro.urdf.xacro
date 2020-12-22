@@ -39,10 +39,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
       </inertial>
     </link>
 
-    <gazebo reference="${prefix}link_0">
+    <!-- <gazebo reference="${prefix}link_0">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link 1 -->
     <link name="${prefix}link_1">
@@ -74,10 +74,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
       </inertial>
     </link>
 
-    <gazebo reference="${prefix}link_1">
+    <!-- <gazebo reference="${prefix}link_1">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link 2 -->
     <link name="${prefix}link_2">
@@ -108,10 +108,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
       </inertial>
     </link>
 
-    <gazebo reference="${prefix}link_2">
+    <!-- <gazebo reference="${prefix}link_2">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link 3 -->
     <link name="${prefix}link_3">
@@ -141,13 +141,13 @@ there are multiple hands then a prefix followed by an "_" is needed.
       </inertial>
     </link>
 
-    <gazebo reference="${prefix}link_3">
+    <!-- <gazebo reference="${prefix}link_3">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link proximal actuating hinge -->
-    <link name="${prefix}link_proximal_actuating_hinge">
+    <!-- <link name="${prefix}link_proximal_actuating_hinge">
       <visual>
         <origin rpy="0 0 0" xyz="0.01429 0 0"/>
         <geometry>
@@ -175,10 +175,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_proximal_actuating_hinge">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link paraproximal actuating hinge -->
-    <link name="${prefix}link_paraproximal_actuating_hinge">
+    <!-- <link name="${prefix}link_paraproximal_actuating_hinge">
       <visual>
         <origin rpy="0 0 0" xyz="0.01143 0 0"/>
         <geometry>
@@ -193,7 +193,7 @@ there are multiple hands then a prefix followed by an "_" is needed.
       </collision>
       <inertial>
         <origin rpy="0 0 0" xyz="0.0064 0 0"/>
-        <!-- copied from proximal_actuating_hinge -->
+        copied from proximal_actuating_hinge
         <mass value="0.00362"/>
         <inertia ixx= "0.00000012043"
                  ixy= "0"
@@ -207,10 +207,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_paraproximal_actuating_hinge">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link proximal actuating bar -->
-    <link name="${prefix}link_proximal_actuating_bar">
+    <!-- <link name="${prefix}link_proximal_actuating_bar">
       <visual>
         <origin rpy="0 0 0" xyz="0.026789 0 0"/>
         <geometry>
@@ -238,10 +238,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_proximal_actuating_bar">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link paraproximal bar -->
-    <link name="${prefix}link_paraproximal_bar">
+    <!-- <link name="${prefix}link_paraproximal_bar">
       <visual>
         <origin rpy="0 0 0" xyz="0.02885 0 0"/>
         <geometry>
@@ -269,10 +269,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_paraproximal_bar">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link median actuating hinge -->
-    <link name="${prefix}link_median_actuating_hinge">
+    <!-- <link name="${prefix}link_median_actuating_hinge">
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
@@ -300,10 +300,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_median_actuating_hinge">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link median bar -->
-    <link name="${prefix}link_median_bar">
+    <!-- <link name="${prefix}link_median_bar">
       <visual>
         <origin rpy="0 0 0" xyz="0.01905 0 0"/>
         <geometry>
@@ -331,10 +331,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_median_bar">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link paramedian hinge -->
-    <link name="${prefix}link_paramedian_hinge">
+    <!-- <link name="${prefix}link_paramedian_hinge">
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
@@ -362,10 +362,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_paramedian_hinge">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link median bar underactuated -->
-    <link name="${prefix}link_median_bar_underactuated">
+    <!-- <link name="${prefix}link_median_bar_underactuated">
       <visual>
         <origin rpy="0 0 0" xyz="0.01905 0 0"/>
         <geometry>
@@ -393,10 +393,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_median_bar_underactuated">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Link paradistal hinge -->
-    <link name="${prefix}link_paradistal_hinge">
+    <!-- <link name="${prefix}link_paradistal_hinge">
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
@@ -424,13 +424,13 @@ there are multiple hands then a prefix followed by an "_" is needed.
     <gazebo reference="${prefix}link_paradistal_hinge">
       <mu1>1.1</mu1>
       <mu2>1.1</mu2>
-    </gazebo>
+    </gazebo> -->
     <!-- End of link list -->
 
     <!-- Joint list -->
 
     <!-- Joint proximal actuating hinge -->
-    <joint name="${prefix}joint_proximal_actuating_hinge" type="revolute">
+    <!-- <joint name="${prefix}joint_proximal_actuating_hinge" type="revolute">
       <parent link="${prefix}link_0"/>
       <child link="${prefix}link_proximal_actuating_hinge"/>
       <axis xyz="0 0 1"/>
@@ -440,10 +440,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
 
     <gazebo reference="${prefix}joint_proximal_actuating_hinge">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint paraproximal actuating hinge -->
-    <joint name="${prefix}joint_paraproximal_actuating_hinge" type="revolute">
+    <!-- <joint name="${prefix}joint_paraproximal_actuating_hinge" type="revolute">
       <parent link="${prefix}link_0"/>
       <child link="${prefix}link_paraproximal_actuating_hinge"/>
       <axis xyz="0 0 1"/>
@@ -453,10 +453,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
 
     <gazebo reference="${prefix}joint_paraproximal_actuating_hinge">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint proximal actuating bar -->
-    <joint name="${prefix}joint_proximal_actuating_bar" type="revolute">
+    <!-- <joint name="${prefix}joint_proximal_actuating_bar" type="revolute">
       <parent link="${prefix}link_proximal_actuating_hinge"/>
       <child link="${prefix}link_proximal_actuating_bar"/>
       <axis xyz="0 0 1"/>
@@ -466,10 +466,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
 
     <gazebo reference="${prefix}joint_proximal_actuating_bar">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint paraproximal bar -->
-    <joint name="${prefix}joint_paraproximal_bar" type="revolute">
+    <!-- <joint name="${prefix}joint_paraproximal_bar" type="revolute">
       <parent link="${prefix}link_paraproximal_actuating_hinge"/>
       <child link="${prefix}link_paraproximal_bar"/>
       <axis xyz="0 0 1"/>
@@ -479,10 +479,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
 
     <gazebo reference="${prefix}joint_paraproximal_bar">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint median actuating hinge -->
-    <joint name="${prefix}joint_median_actuating_hinge" type="revolute">
+    <!-- <joint name="${prefix}joint_median_actuating_hinge" type="revolute">
       <parent link="${prefix}link_1"/>
       <child link="${prefix}link_median_actuating_hinge"/>
       <axis xyz="0 0 1"/>
@@ -492,38 +492,38 @@ there are multiple hands then a prefix followed by an "_" is needed.
 
     <gazebo reference="${prefix}joint_median_actuating_hinge">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint paramedian hinge -->
-    <joint name="${prefix}joint_paramedian_hinge" type="revolute">
+    <!-- <joint name="${prefix}joint_paramedian_hinge" type="revolute">
       <parent link="${prefix}link_1"/>
       <child link="${prefix}link_paramedian_hinge"/>
       <axis xyz="0 0 1"/>
-      <!-- -0.37 is hand picked, 0.9719 is hand calculated from atan(0.02381/0.01625) -->
+      -0.37 is hand picked, 0.9719 is hand calculated from atan(0.02381/0.01625)
       <origin rpy="0 0 0" xyz="0 0.05715 -0.01"/>
       <limit effort="100" lower="-3.1416" upper="3.1416" velocity="100"/>
     </joint>
 
     <gazebo reference="${prefix}joint_paramedian_hinge">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint median actuating hinge median bar -->
-    <joint name="${prefix}joint_median_actuating_hinge_median_bar" type="revolute">
+    <!-- <joint name="${prefix}joint_median_actuating_hinge_median_bar" type="revolute">
       <parent link="${prefix}link_median_actuating_hinge"/>
       <child link="${prefix}link_median_bar"/>
       <axis xyz="0 0 1"/>
-      <!-- hand calc 90 deg + atan(0.01516/0.01625) -->
+      hand calc 90 deg + atan(0.01516/0.01625)
       <origin rpy="0 0 ${3.1416/2 + 0.7507}" xyz="0.01625 0.01516 0"/>
       <limit effort="100" lower="-3.1416" upper="3.1416" velocity="100"/>
     </joint>
 
     <gazebo reference="${prefix}joint_median_actuating_hinge_median_bar">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint paradistal hinge -->
-    <joint name="${prefix}joint_paradistal_hinge" type="revolute">
+    <!-- <joint name="${prefix}joint_paradistal_hinge" type="revolute">
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_paradistal_hinge"/>
       <axis xyz="0 0 1"/>
@@ -533,21 +533,21 @@ there are multiple hands then a prefix followed by an "_" is needed.
 
     <gazebo reference="${prefix}joint_paradistal_hinge">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint paramedian hinge median bar underactuated -->
-    <joint name="${prefix}joint_paramedian_hinge_median_bar_underactuated" type="revolute">
+    <!-- <joint name="${prefix}joint_paramedian_hinge_median_bar_underactuated" type="revolute">
       <parent link="${prefix}link_paramedian_hinge"/>
       <child link="${prefix}link_median_bar_underactuated"/>
       <axis xyz="0 0 1"/>
-      <!-- hand calc 90 deg + atan(0.01227/0.00329) -->
+      hand calc 90 deg + atan(0.01227/0.00329)
       <origin rpy="0 0 ${3.1416/2}" xyz="0.01227 0.00329 0"/>
       <limit effort="100" lower="-3.1416" upper="3.1416" velocity="100"/>
     </joint>
 
     <gazebo reference="${prefix}joint_paramedian_hinge_median_bar_underactuated">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint 1 -->
     <joint name="${prefix}joint_1" type="revolute">
@@ -557,12 +557,12 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <child link="${prefix}link_1"/>
       <dynamics damping="1" friction="0" />
       <!-- Limits: [0deg.,70deg.] -->
-      <limit effort="60" velocity="-1" lower="0" upper="1.2217" />
+      <limit effort="60" velocity="100" lower="0" upper="1.2217" />
     </joint>
 
-    <gazebo reference="${prefix}joint_1">
+    <!-- <gazebo reference="${prefix}joint_1">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint 2 -->
     <joint name="${prefix}joint_2" type="revolute">
@@ -572,13 +572,13 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <axis xyz="0 0 1"/>
       <origin rpy="0 0 0" xyz="0 0.05715 0"/>
       <!-- Limits: [0deg.,90deg.] -->
-      <limit lower="0" upper="1.5708" effort="60" velocity="-1"/>
+      <limit lower="0" upper="1.5708" effort="60" velocity="100"/>
       <mimic joint="${prefix}joint_1" multiplier="1" offset="0" />
     </joint>
 
-    <gazebo reference="${prefix}joint_2">
+    <!-- <gazebo reference="${prefix}joint_2">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint 3 -->
     <joint name="${prefix}joint_3" type="revolute">
@@ -588,17 +588,17 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <axis xyz="0 0 1"/>
       <origin rpy="0 0 ${3.1416/2 + 0.5198}" xyz="0 0.039 0"/>
       <!-- Limits: [-38deg.,60deg.] -->
-      <limit lower="-0.6632" upper="1.0471" effort="60" velocity="-1"/>
+      <limit lower="-0.6632" upper="1.0471" effort="60" velocity="100"/>
       <mimic joint="${prefix}joint_2" multiplier="-2" offset="0" />
     </joint>
 
-    <gazebo reference="${prefix}joint_3">
+    <!-- <gazebo reference="${prefix}joint_3">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
     <!-- end of joint list -->
 
     <!-- coupling joints in sdf -->
-    <gazebo>
+    <!-- <gazebo>
       <joint name="${prefix}link_proximal_actuating_bar_median_actuating_hinge_couple" type="revolute">
         <parent>${prefix}link_median_actuating_hinge</parent>
         <child>${prefix}link_proximal_actuating_bar</child>
@@ -609,15 +609,15 @@ there are multiple hands then a prefix followed by an "_" is needed.
             <friction>0</friction>
           </dynamics>
           <xyz>0 0 1</xyz>
-          <!-- <use_parent_model_frame>false</use_parent_model_frame> -->
+          <use_parent_model_frame>false</use_parent_model_frame>
         </axis>
       </joint>
     </gazebo>
     <gazebo reference="${prefix}link_proximal_actuating_bar_median_actuating_hinge_couple">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
-    <gazebo>
+    <!-- <gazebo>
       <joint name="${prefix}link_median_bar_link_3_couple" type="revolute">
         <parent>${prefix}link_3</parent>
         <child>${prefix}link_median_bar</child>
@@ -628,15 +628,15 @@ there are multiple hands then a prefix followed by an "_" is needed.
             <friction>0</friction>
           </dynamics>
           <xyz>0 0 1</xyz>
-          <!-- <use_parent_model_frame>false</use_parent_model_frame> -->
+          <use_parent_model_frame>false</use_parent_model_frame>
         </axis>
       </joint>
     </gazebo>
     <gazebo reference="${prefix}link_median_bar_link_3_couple">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
-    <gazebo>
+    <!-- <gazebo>
       <joint name="${prefix}link_paramedian_bar_paradistal_hinge_couple" type="revolute">
         <parent>${prefix}link_paradistal_hinge</parent>
         <child>${prefix}link_median_bar_underactuated</child>
@@ -647,15 +647,15 @@ there are multiple hands then a prefix followed by an "_" is needed.
             <friction>0</friction>
           </dynamics>
           <xyz>0 0 1</xyz>
-           <!-- <use_parent_model_frame>false</use_parent_model_frame> -->
+           <use_parent_model_frame>false</use_parent_model_frame>
         </axis>
       </joint>
     </gazebo>
     <gazebo reference="${prefix}link_median_bar_link_3_couple">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
-    <gazebo>
+    <!-- <gazebo>
       <joint name="${prefix}link_paradistal_hinge_link_3_couple" type="revolute">
         <parent>${prefix}link_paradistal_hinge</parent>
         <child>${prefix}link_3</child>
@@ -666,17 +666,19 @@ there are multiple hands then a prefix followed by an "_" is needed.
             <friction>0</friction>
           </dynamics>
           <xyz>0 0 1</xyz>
-          <!-- <use_parent_model_frame>false</use_parent_model_frame> -->
+          <use_parent_model_frame>false</use_parent_model_frame>
         </axis>
       </joint>
     </gazebo>
     <gazebo reference="${prefix}link_paradistal_hinge_link_3_couple">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
-    <gazebo>
+    <!-- <gazebo>
       <joint name="${prefix}link_paraproximal_bar_paramedian_hinge_couple" type="revolute">
-        <parent>${prefix}link_paramedian_hinge</parent>
+        <parent>${prefix}link_paramedian_hinge</parent>    <gazebo reference="${prefix}joint_1">
+      <implicitSpringDamper>1</implicitSpringDamper>
+    </gazebo>
         <child>${prefix}link_paraproximal_bar</child>
         <pose>0.05770 0 0 0 0 0</pose>
         <axis>
@@ -685,13 +687,13 @@ there are multiple hands then a prefix followed by an "_" is needed.
             <friction>0</friction>
           </dynamics>
           <xyz>0 0 1</xyz>
-          <!-- <use_parent_model_frame>false</use_parent_model_frame> -->
+          <use_parent_model_frame>false</use_parent_model_frame>
         </axis>
       </joint>
     </gazebo>
     <gazebo reference="${prefix}link_paraproximal_bar_paramedian_hinge_couple">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
   </xacro:macro>
 
@@ -738,10 +740,10 @@ there are multiple hands then a prefix followed by an "_" is needed.
         </inertial>
       </link>
 
-      <gazebo reference="${prefix}palm">
+      <!-- <gazebo reference="${prefix}palm">
         <mu1>1.1</mu1>
         <mu2>1.1</mu2>
-      </gazebo>
+      </gazebo> -->
     <!-- End of link list -->
 
     <!-- Joint list -->
@@ -754,12 +756,12 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <axis xyz="0 1 0"/>
       <origin rpy="0 3.1416 -1.57" xyz="-0.0455 0.0214 0.036"/>
       <!-- Limits: [-17deg.,17deg.] -->
-      <limit lower="-0.2967" upper="0.2967" effort="60" velocity="-1"/>
+      <limit lower="-0.2967" upper="0.2967" effort="60" velocity="100"/>
     </joint>
 
-    <gazebo reference="${prefix}palm_finger_1_joint">
+    <!-- <gazebo reference="${prefix}palm_finger_1_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint palm_finger_2_joint -->
     <joint name="${prefix}palm_finger_2_joint" type="revolute">
@@ -769,13 +771,13 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <axis xyz="0 1 0"/>
       <origin rpy="0 3.1416 -1.57" xyz="-0.0455 0.0214 -0.036"/>
       <!-- Limits: [-17deg.,17deg.] -->
-      <limit lower="-0.2967" upper="0.2967" effort="60" velocity="-1"/>
+      <limit lower="-0.2967" upper="0.2967" effort="60" velocity="100"/>
       <mimic joint="${prefix}palm_finger_1_joint" multiplier="-1" offset="0" />
     </joint>
 
-    <gazebo reference="${prefix}palm_finger_2_joint">
+    <!-- <gazebo reference="${prefix}palm_finger_2_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Joint palm_finger_middle_joint -->
     <joint name="${prefix}palm_finger_middle_joint" type="revolute">
@@ -784,12 +786,12 @@ there are multiple hands then a prefix followed by an "_" is needed.
       <dynamics damping="1" friction="0" />
       <axis xyz="0 1 0"/>
       <origin rpy="0 0 1.57" xyz="0.0455 0.0214 0"/>
-      <limit lower="0" upper="0" effort="60" velocity="-1"/>
+      <limit lower="0" upper="0" effort="60" velocity="100"/>
     </joint>
 
-    <gazebo reference="${prefix}palm_finger_middle_joint">
+    <!-- <gazebo reference="${prefix}palm_finger_middle_joint">
       <implicitSpringDamper>1</implicitSpringDamper>
-    </gazebo>
+    </gazebo> -->
     <!-- end of joint list -->
 
     <!--Transmissions -->
