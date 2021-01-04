@@ -128,7 +128,8 @@ class SpawnSimulation(object):
         rospy.loginfo("Terminating simulation..")
         success = True
         msg = "Simulation already terminated"
-        for process in self._subprocess:
+        while self._subprocess:
+            process = self._subprocess.pop(0)
             process.returncode = 0
             process.kill()
             process.wait()
@@ -139,7 +140,7 @@ class SpawnSimulation(object):
             else:
                 success = False
                 msg = "Could not terminate simulation"
-        rospy.sleep(1)
+                break
         return TriggerResponse(success, msg)
 
 
