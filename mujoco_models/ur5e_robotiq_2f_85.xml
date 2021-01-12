@@ -298,8 +298,8 @@
                 </body>
             </body>
         </body>
-        <body name="cube" pos="0.026817515372038227 -0.0016111731679768065 0.8307265651976169" quat="-0.6507401510901603 0.0 0.0 0.7593005042531945">
-            <geom pos="0 0 0" group="1" name="cube" type="box" material="redwood_mat" size="0.02168007469520469 0.02006241337559928 0.020726565197616814" density="1000" friction="1 0.005 0.0001" solref="0.02 1.0" solimp="0.9 0.95 0.001" />
+        <body name="cube" pos="-0.02088249984551205 -0.0025849086909823828 0.8313281601409576" quat="0.13539701378386074 0.0 0.0 0.9907914254061816">
+            <geom pos="0 0 0" group="1" name="cube" type="box" material="redwood_mat" size="0.02004282027092694 0.02088009213187532 0.021328160140957488" density="1000" friction="1 0.005 0.0001" solref="0.02 1.0" solimp="0.9 0.95 0.001" />
             <site pos="0 0 0" size="0.002 0.002 0.002" rgba="1 0 0 1" type="sphere" name="cube" />
             <joint name="cube_jnt0" type="free" />
         </body>
