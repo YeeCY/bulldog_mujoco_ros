@@ -75,12 +75,12 @@
     <!-- Control -->
     <!--Arm Controller -->
     <!-- <rosparam file="$(find bulldog_mujoco_ros)/config/ur5_mujoco_ros_control_params.yaml" command="load"/> -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_controllers.yaml"/>
+    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_controllers.yaml"/>
     <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
-        ur5e_robotiq_2f_85_manipulator_controller ur5e_robotiq_2f_85_gripper_controller"/>
+        ur5e_robotiq_2f_85_manipulator_controller ur5e_robotiq_2f_85_gripper_controller"/> -->
 
     <!-- MOVEIT -->
-    <group if="$(arg use_moveit)">
+    <!-- <group if="$(arg use_moveit)">
         <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
             <arg name="load_robot_description" value="false"/>
             <arg name="debug" value="$(arg debug)"/>
@@ -88,17 +88,17 @@
             <arg name="use_rviz" value="$(arg use_rviz)"/>
             <arg name="planning" value="$(arg planning)"/>
         </include>
-    </group>
+    </group> -->
 
     <!-- Jog -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
+    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
     <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
-    <node name="jog_joint_node" pkg="jog_controller" type="jog_joint_node" output="screen"/>
+    <node name="jog_joint_node" pkg="jog_controller" type="jog_joint_node" output="screen"/> -->
 
     <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
-    <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
+    <!-- <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
         <arg name="object_state_topic" value="$(arg object_state_topic)"/>
         <arg name="description_repo_path" value="$(arg description_repo_path)"/>
         <arg name="static_only" value="$(arg static_only)"/>
-    </include>
+    </include> -->
 </launch>
