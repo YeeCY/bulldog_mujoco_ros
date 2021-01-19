@@ -16,20 +16,20 @@ robot_joints:
 
 robot_initial_state:
   # home
-  # robot0_shoulder_pan_joint: 0.0
-  # robot0_shoulder_lift_joint: 0.0
-  # robot0_elbow_joint: 0.0
-  # robot0_wrist_1_joint: 0.0
-  # robot0_wrist_2_joint: 0.0
-  # robot0_wrist_3_joint: 0.0
-
-  # up
   robot0_shoulder_pan_joint: 0.0
-  robot0_shoulder_lift_joint: -1.5708
+  robot0_shoulder_lift_joint: 0.0
   robot0_elbow_joint: 0.0
   robot0_wrist_1_joint: 0.0
   robot0_wrist_2_joint: 0.0
   robot0_wrist_3_joint: 0.0
+
+  # up
+  # robot0_shoulder_pan_joint: 0.0
+  # robot0_shoulder_lift_joint: -1.5708
+  # robot0_elbow_joint: 0.0
+  # robot0_wrist_1_joint: 0.0
+  # robot0_wrist_2_joint: 0.0
+  # robot0_wrist_3_joint: 0.0
 
   gripper0_finger_joint: -0.026
   gripper0_left_inner_finger_joint: -0.267
@@ -50,12 +50,12 @@ robot_initial_state:
   # -0.470, -1.735, 2.480, -2.275, -1.590, -0.420
   # ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", 
   #  "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
-  # robot0_shoulder_pan_joint: -0.470
-  # robot0_shoulder_lift_joint: -1.735
-  # robot0_elbow_joint: 2.480
-  # robot0_wrist_1_joint: -2.275
-  # robot0_wrist_2_joint: -1.590
-  # robot0_wrist_3_joint: -0.420
+  robot0_shoulder_pan_joint: -0.470
+  robot0_shoulder_lift_joint: -1.735
+  robot0_elbow_joint: 2.480
+  robot0_wrist_1_joint: -2.275
+  robot0_wrist_2_joint: -1.590
+  robot0_wrist_3_joint: -0.420
 
   # gripper: [-0.026 -0.267 -0.2   -0.026 -0.267 -0.2  ]
   # gripper0_finger_joint: 0.0

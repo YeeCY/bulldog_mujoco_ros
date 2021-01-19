@@ -111,12 +111,19 @@
         <position ctrllimited="true" ctrlrange="-6.28319 6.28319" joint="robot0_wrist_3_joint" name="robot0_pos_j6" kp="20"/> -->
 
         <!-- exact position control with moveit -->
-        <position name="robot0_shoulder_pan_pos" joint="robot0_shoulder_pan_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="5000" />
+        <!-- <position name="robot0_shoulder_pan_pos" joint="robot0_shoulder_pan_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="5000" />
         <position name="robot0_shoulder_lift_pos" joint="robot0_shoulder_lift_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="5000" />
         <position name="robot0_elbow_pos" joint="robot0_elbow_joint" ctrllimited="true" ctrlrange="-3.14159 3.14159" kp="5000" />
         <position name="robot0_wrist_1_pos" joint="robot0_wrist_1_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000" />
         <position name="robot0_wrist_2_pos" joint="robot0_wrist_2_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000" />
-        <position name="robot0_wrist_3_pos" joint="robot0_wrist_3_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000"/>
+        <position name="robot0_wrist_3_pos" joint="robot0_wrist_3_joint" ctrllimited="true" ctrlrange="-6.28319 6.28319" kp="2000"/> -->
+
+        <motor name="robot0_shoulder_pan_pos" joint="robot0_shoulder_pan_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="robot0_shoulder_lift_pos" joint="robot0_shoulder_lift_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="robot0_elbow_pos" joint="robot0_elbow_joint" ctrllimited="false" ctrlrange="-3.14159 3.14159"/>
+        <motor name="robot0_wrist_1_pos" joint="robot0_wrist_1_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="robot0_wrist_2_pos" joint="robot0_wrist_2_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
+        <motor name="robot0_wrist_3_pos" joint="robot0_wrist_3_joint" ctrllimited="false" ctrlrange="-6.28319 6.28319"/>
 
         <position name="gripper0_finger_pos" ctrllimited="true" kp="20" joint="gripper0_finger_joint" ctrlrange="0 0.73" />
         <position name="gripper0_right_outer_knuckle_pos" ctrllimited="true" kp="20" joint="gripper0_right_outer_knuckle_joint" ctrlrange="0 0.73" />
@@ -179,44 +186,44 @@
             <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_base" />
             <!-- position offset different from ur_description -->
             <!-- <body name="robot0_shoulder_link" pos="0 0 0.163"> -->
-            <body name="robot0_shoulder_link" pos="0 0 0.089159">
+            <body name="robot0_shoulder_link" pos="0 0 2.089159">
                 <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666" />
-                <joint name="robot0_shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="100" /><!-- high damping to facilitate PID tuning -->
+                <joint name="robot0_shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.1" /><!-- high damping to facilitate PID tuning -->
                 <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_shoulder_vis" /> -->
                 <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_shoulder_vis" />
                 <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_shoulder" name="robot0_shoulder_col" />
                 <!-- <body name="robot0_upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0"> -->
                 <body name="robot0_upper_arm_link" pos="0 0.13585 0" quat="0.707107 0 0.707107 0">
                     <inertial pos="0 0 0.2125" mass="8.393" diaginertia="0.133886 0.133886 0.0151074" />
-                    <joint name="robot0_shoulder_lift_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="100" />
+                    <joint name="robot0_shoulder_lift_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="0.1" />
                     <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_upperarm_vis" /> -->
                     <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_upperarm_vis" />
                     <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_upperarm" name="robot0_upperarm_col" />
                     <!-- <body name="robot0_forearm_link" pos="0 -0.131 0.425"> -->
                     <body name="robot0_forearm_link" pos="0 -0.1197 0.425">
                         <inertial pos="0 0 0.196" mass="2.275" diaginertia="0.0311796 0.0311796 0.004095" />
-                        <joint name="robot0_elbow_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" damping="100" />
+                        <joint name="robot0_elbow_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" damping="0.1" />
                         <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_forearm_vis" /> -->
                         <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_forearm_vis" />
                         <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_forearm" name="robot0_forearm_col" />
                         <!-- <body name="robot0_wrist_1_link" pos="0 0 0.392" quat="0.707107 0 0.707107 0"> -->
                         <body name="robot0_wrist_1_link" pos="0 0 0.39225" quat="0.707107 0 0.707107 0">
                             <inertial pos="0 0.127 0" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
-                            <joint name="robot0_wrist_1_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="100" />
+                            <joint name="robot0_wrist_1_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="0.1" />
                             <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist1_vis" /> -->
                             <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist1_vis" />
                             <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist1" name="robot0_wrist1_col" />
                             <!-- <body name="robot0_wrist_2_link" pos="0 0.127 0"> -->
                             <body name="robot0_wrist_2_link" pos="0 0.093 0">
                                 <inertial pos="0 0 0.1" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942" />
-                                <joint name="robot0_wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="100" />
+                                <joint name="robot0_wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="0.1" />
                                 <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist2_vis" /> -->
                                 <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist2_vis" />
                                 <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist2" name="robot0_wrist2_col" />
                                 <!-- <body name="robot0_wrist_3_link" pos="0 0 0.1"> -->
                                 <body name="robot0_wrist_3_link" pos="0 0 0.09465">
                                     <inertial pos="0 0.0771683 0" quat="0.707107 0 0 0.707107" mass="0.1889" diaginertia="0.000132134 9.90863e-05 9.90863e-05" />
-                                    <joint name="robot0_wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="100" />
+                                    <joint name="robot0_wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="0.1" />
                                     <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" quat="0.707 0.707 0 0" mesh="robot0_wrist3_vis" /> -->
                                     <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist3_vis" />
                                     <geom type="mesh" rgba="0.7 0.7 0.7 1" mesh="robot0_wrist3" name="robot0_wrist3_col" />
@@ -326,7 +333,4 @@
         </fixed>
     </tendon>
     <contact />
-    <!-- <default class="main">
-        <joint damping="100.0" armature="0.01" margin="0.0" frictionloss="0.1"/>
-    </default> -->
 </mujoco>
