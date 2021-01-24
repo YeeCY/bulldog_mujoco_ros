@@ -1,0 +1,4 @@
+string env_prefix
+---
+bool success
+string message

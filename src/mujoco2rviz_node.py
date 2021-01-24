@@ -37,7 +37,7 @@ class Mujoco2Rviz():
         object_state_topic = rospy.get_param('~object_state_topic', 'mujoco/model_states')
         self._objects_states_subscriber = rospy.Subscriber(object_state_topic, ModelStates,
                                                            self._objects_states_cb)
-        self._collision_object_publisher = rospy.Publisher('/collision_object', CollisionObject, queue_size=2,
+        self._collision_object_publisher = rospy.Publisher('collision_object', CollisionObject, queue_size=2,
                                                            latch=True)
 
     def publish_objects_to_rviz(self, publishing_rate=20):
@@ -55,7 +55,7 @@ class Mujoco2Rviz():
         for model_instance_name in self._model_cache.keys():
             self._model_cache[model_instance_name].operation = CollisionObject.REMOVE
             self._collision_object_publisher.publish(self._model_cache[model_instance_name])
-            rospy.sleep(1)
+            # rospy.sleep(1)
         rospy.loginfo("All cleaned up, shutting down...")
 
     def _objects_states_cb(self, objects_states_msg):
@@ -140,7 +140,7 @@ class Mujoco2Rviz():
         return collision_object
 
     def _get_all_collision_objects(self):
-        rospy.wait_for_service('/get_planning_scene', 10.0)
+        rospy.wait_for_service('get_planning_scene', 10.0)
         plannig_scene_service = rospy.ServiceProxy('get_planning_scene',
                                                    GetPlanningScene)
         collision_object_names = []

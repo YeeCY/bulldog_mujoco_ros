@@ -24,6 +24,7 @@ import xml.etree.ElementTree as xmlTool
 from xml.dom import minidom
 # from mujoco_ros_msgs.srv import SpawnObjects, SpawnObjectsResponse
 from std_srvs.srv import Trigger, TriggerResponse
+# from bulldog_mujoco_ros.srv import SpawnEnv, SpawnEnvResponse
 
 
 class SpawnSimulation(object):
