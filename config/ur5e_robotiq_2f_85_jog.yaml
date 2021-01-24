@@ -4,11 +4,7 @@ jog:
   base_link: world
 
 jog_frame_node:
-  time_from_start: 1.5
-
-jog_frame_server:
-  time_from_start: 4.0
-  use_action: false
+  time_from_start: 0.5
 
 # jog_joint_node:
 #   joint_names:

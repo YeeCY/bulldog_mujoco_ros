@@ -33,70 +33,82 @@
     <arg name="description_repo_path" default="$(find bulldog_mujoco_ros)/mujco_models/assets"/>
     <!-- Only publish static objects or both static and free objects -->
     <arg name="static_only" default="true" />
-
-    <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
-    <rosparam if="$(eval not arg('robot_description').endswith('.xacro'))" param="robot_description" command="load" file="$(arg robot_description)"/>
+    <!-- Root namespace of this environment -->
+    <arg name="env_prefix" default="env" />
 
     <arg name="robot_description_param" default="robot_description"/>
-  
+
     <param name="/use_sim_time" value="true"/>
 
-    <!-- Publish joint state -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_state_controller.yaml" />
-    <param name="joint_state_controller/publish_rate" value="$(arg joint_state_pub_frequency)"/>
-    <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controller" />
+    <group ns="$(arg env_prefix)">
+        <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
+        <rosparam if="$(eval not arg('robot_description').endswith('.xacro'))" param="robot_description" command="load" file="$(arg robot_description)"/>
+    
+        <!-- Remap absolute topics to relative topics for all nodes below -->
+        <remap from="/clock" to="clock" />
+        <remap from="/tf" to="tf" />
+        <remap from="/tf_static" to="tf_static" />
+        <remap from="/clicked_point" to="clicked_point" />
+        <remap from="/initialpose" to="initialpose" />
+        <remap from="/move_base_simple/goal" to="move_base_simple/goal" />
+        
 
-    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-        <param name="use_gui" value="false"/>
-        <rosparam param="/source_list">[/joint_states]</rosparam>
-    </node> -->
+        <!-- Publish joint state -->
+        <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_state_controller.yaml" />
+        <param name="joint_state_controller/publish_rate" value="$(arg joint_state_pub_frequency)" />
+        <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="joint_state_controller" />
 
-    <!-- Publish robot state (tf transforms) -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
-        <param name="publish_frequency" value="$(arg robot_state_pub_frequency)" />
-        <param name="tf_prefix" value="" />
-    </node>
- 
-    <!-- Launch mujoco ros control -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_joint_initial_states.yaml" />
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_mujoco_ros_control_params.yaml" />
-    <node name="mujoco_ros_control" pkg="mujoco_ros_control" type="mujoco_ros_control" output="screen">
-        <param name="robot_model_path" value="$(arg mujoco_model_filename)"/>
-        <param name="robot_description_param" value="$(arg robot_description_param)"/>
-        <param name="key_path" value="$(arg key_path)"/>
-        <param name="visualize" value="$(arg visualize)" />
-        <param name="window_width" value="$(arg window_width)"/>
-        <param name="window_height" value="$(arg window_width)"/>
-    </node>
+        <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+            <param name="use_gui" value="false"/>
+            <rosparam param="/source_list">[/joint_states]</rosparam>
+        </node> -->
 
-    <!-- Control -->
-    <!--Arm Controller -->
-    <!-- <rosparam file="$(find bulldog_mujoco_ros)/config/ur5_mujoco_ros_control_params.yaml" command="load"/> -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_controllers.yaml"/>
-    <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
-        ur5e_robotiq_2f_85_manipulator_controller ur5e_robotiq_2f_85_gripper_controller"/>
+        <!-- Publish robot state (tf transforms) -->
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+            <param name="publish_frequency" value="$(arg robot_state_pub_frequency)" />
+            <param name="tf_prefix" value="" />
+        </node>
+    
+        <!-- Launch mujoco ros control -->
+        <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_joint_initial_states.yaml" />
+        <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_mujoco_ros_control_params.yaml" />
+        <node name="mujoco_ros_control" pkg="mujoco_ros_control" type="mujoco_ros_control" output="screen">
+            <param name="robot_model_path" value="$(arg mujoco_model_filename)"/>
+            <param name="robot_description_param" value="$(arg robot_description_param)"/>
+            <param name="key_path" value="$(arg key_path)"/>
+            <param name="visualize" value="$(arg visualize)" />
+            <param name="window_width" value="$(arg window_width)"/>
+            <param name="window_height" value="$(arg window_width)"/>
+        </node>
 
-    <!-- MOVEIT -->
-    <group if="$(arg use_moveit)">
-        <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
-            <arg name="load_robot_description" value="false"/>
-            <arg name="debug" value="$(arg debug)"/>
-            <arg name="gui" value="$(arg moveit_gui)"/>
-            <arg name="use_rviz" value="$(arg use_rviz)"/>
-            <arg name="planning" value="$(arg planning)"/>
-        </include>
+        <!-- Control -->
+        <!--Arm Controller -->
+        <!-- <rosparam file="$(find bulldog_mujoco_ros)/config/ur5_mujoco_ros_control_params.yaml" command="load"/> -->
+        <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_controllers.yaml"/>
+        <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+            ur5e_robotiq_2f_85_manipulator_controller ur5e_robotiq_2f_85_gripper_controller"/>
+
+        <!-- MOVEIT -->
+        <group if="$(arg use_moveit)">
+            <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
+                <arg name="load_robot_description" value="false"/>
+                <arg name="debug" value="$(arg debug)"/>
+                <arg name="gui" value="$(arg moveit_gui)"/>
+                <arg name="use_rviz" value="$(arg use_rviz)"/>
+                <arg name="planning" value="$(arg planning)"/>
+            </include>
+        </group>
+
+        <!-- Jog -->
+        <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
+        <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
+        <node name="jog_joint_node" pkg="jog_controller" type="jog_joint_node" output="screen"/> -->
+
+        <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
+        <!-- <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
+            <arg name="object_state_topic" value="$(arg object_state_topic)"/>
+            <arg name="description_repo_path" value="$(arg description_repo_path)"/>
+            <arg name="static_only" value="$(arg static_only)"/>
+        </include> -->
     </group>
-
-    <!-- Jog -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
-    <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
-    <node name="jog_joint_node" pkg="jog_controller" type="jog_joint_node" output="screen"/>
-    <node name="jog_frame_server" pkg="jog_controller" type="jog_frame_server" output="screen"/>
-
-    <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
-    <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
-        <arg name="object_state_topic" value="$(arg object_state_topic)"/>
-        <arg name="description_repo_path" value="$(arg description_repo_path)"/>
-        <arg name="static_only" value="$(arg static_only)"/>
-    </include>
 </launch>
