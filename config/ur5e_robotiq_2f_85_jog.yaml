@@ -4,7 +4,7 @@ jog:
   base_link: world
 
 jog_frame_node:
-  time_from_start: 0.5
+  time_from_start: 1.0
   exclude_joint_names: 
     - gripper0_finger_joint
     - gripper0_right_outer_knuckle_joint

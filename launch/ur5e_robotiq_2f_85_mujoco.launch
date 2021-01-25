@@ -33,8 +33,8 @@
     <arg name="description_repo_path" default="$(find bulldog_mujoco_ros)/mujco_models/assets"/>
     <!-- Only publish static objects or both static and free objects -->
     <arg name="static_only" default="true" />
-    <!-- Root namespace of this environment -->
-    <arg name="env_prefix" default="env" />
+    <!-- Name of this environment window -->
+    <arg name="window_name" default="mujoco_ros" />
 
     <param if="$(eval arg('robot_description').endswith('.xacro'))" name="robot_description" command="xacro --inorder $(arg robot_description)"/>
     <rosparam if="$(eval not arg('robot_description').endswith('.xacro'))" param="robot_description" command="load" file="$(arg robot_description)"/>
@@ -78,6 +78,7 @@
         <param name="visualize" value="$(arg visualize)" />
         <param name="window_width" value="$(arg window_width)"/>
         <param name="window_height" value="$(arg window_width)"/>
+        <param name="window_name" value="$(arg window_name)" />
     </node>
 
     <!-- Control -->
