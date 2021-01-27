@@ -1,12 +1,14 @@
 <launch>
     <!-- Set to true to debug -->
     <arg name="debug" default="false" />
-    <!-- Set to true to allow planning trajectories-->
+    <!-- Set to true to allow planning trajectories -->
     <arg name="use_moveit" default="true"/>
-    <!-- Set to false if you want to start without guis -->
-    <arg name="moveit_gui" default="true"/>
+    <!-- Set to true to allow cartesian control -->
+    <arg name="use_cartesian" default="false" />
     <!-- Set to false if you want to start without rviz -->
     <arg name="use_rviz" default="true"/>
+    <!-- RVIZ configuration file for cartesian control -->
+    <arg name="cartesian_rviz_config" default="$(find bulldog_mujoco_ros)/config/cartesian.rviz" />
     <!--Choose planner library, options are ompl, stomp or sbpl-->
     <arg name="planning" default="ompl"/>
     <!--Should the planner yaml be automatically generated? -->
@@ -25,7 +27,6 @@
     <arg name="window_height" default="512"/>
     <!-- Loads the robot description -->
     <arg name="robot_description" default="$(find bulldog_mujoco_ros)/ros_models/urdfs/ur5e_robotiq_2f_85.urdf.xacro" />
-    <!-- <arg name="robot_config_file" default="$(find sr_multi_moveit_config)/config/robot_configs/right_sh_ur10.yaml"/> -->
     <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5e_robotiq_2f_85.xml" />
     <!-- Topic to read object states -->
     <arg name="object_state_topic" default="mujoco_ros/model_states"/>
@@ -81,32 +82,47 @@
         <param name="window_name" value="$(arg window_name)" />
     </node>
 
-    <!-- Control -->
-    <!--Arm Controller -->
-    <!-- <rosparam file="$(find bulldog_mujoco_ros)/config/ur5_mujoco_ros_control_params.yaml" command="load"/> -->
+    <!-- Load controllers -->
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_controllers.yaml"/>
-    <node name="spawn_ur5_controller" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
-        ur5e_robotiq_2f_85_manipulator_controller ur5e_robotiq_2f_85_gripper_controller"/>
 
     <!-- MOVEIT -->
     <group if="$(arg use_moveit)">
+        <node name="moveit_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+            ur5e_robotiq_2f_85_gripper_controller 
+            ur5e_robotiq_2f_85_manipulator_controller"/>
+
         <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
             <arg name="load_robot_description" value="false"/>
             <arg name="debug" value="$(arg debug)"/>
-            <arg name="gui" value="$(arg moveit_gui)"/>
             <arg name="use_rviz" value="$(arg use_rviz)"/>
             <arg name="planning" value="$(arg planning)"/>
         </include>
+
+        <!-- Jog -->
+        <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
+        <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
+
+        <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
+        <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
+            <arg name="object_state_topic" value="$(arg object_state_topic)"/>
+            <arg name="description_repo_path" value="$(arg description_repo_path)"/>
+            <arg name="static_only" value="$(arg static_only)"/>
+        </include>
     </group>
 
-    <!-- Jog -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
-    <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
-
-    <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
-    <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
-        <arg name="object_state_topic" value="$(arg object_state_topic)"/>
-        <arg name="description_repo_path" value="$(arg description_repo_path)"/>
-        <arg name="static_only" value="$(arg static_only)"/>
-    </include>
+    <!-- RVIZ for cartesian controller -->
+    <group if="$(arg use_cartesian)">
+        <node name="cartesian_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+            ur5e_robotiq_2f_85_cartesian_motion_controller"/>
+        
+        <group if="$(arg use_rviz)">
+            <node name="cartesian_control_handle_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+                ur5e_robotiq_2f_85_motion_control_handle"/>
+            
+            <arg     if="$(eval cartesian_rviz_config=='')" name="command_args" value="" />
+            <arg unless="$(eval cartesian_rviz_config=='')" name="command_args" value="-d $(arg cartesian_rviz_config)" />
+            
+            <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="$(arg command_args)" output="screen"/>
+        </group>
+    </group>
 </launch>

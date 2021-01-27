@@ -20,14 +20,14 @@ ur5e_robotiq_2f_85_manipulator_controller:
     - robot0_wrist_2_joint
     - robot0_wrist_3_joint
   constraints:
-      goal_time: 0.6 # 0.6
-      stopped_velocity_tolerance: 0.1 # 0.05
-      robot0_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-      robot0_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-      robot0_elbow_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-      robot0_wrist_1_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-      robot0_wrist_2_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-      robot0_wrist_3_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    goal_time: 0.6 # 0.6
+    stopped_velocity_tolerance: 0.1 # 0.05
+    robot0_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_elbow_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_wrist_1_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_wrist_2_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_wrist_3_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
   stop_trajectory_duration: 0.5 # 1.0
   state_publish_rate: 50
   action_monitor_rate: 10
@@ -79,6 +79,45 @@ ur5e_robotiq_2f_85_manipulator_controller:
 #   action_monitor_rate: 10
 #   allow_partial_joints_goal: true
 
+# A joint-based Cartesian motion controller.
+ur5e_robotiq_2f_85_cartesian_motion_controller:
+  type: "position_controllers/CartesianMotionController"
+
+  # Needed for Inverse Kinematics
+  robot_base_link: "world"
+  end_effector_link: "gripper0_tool0"
+  target_frame_topic: "target_frame"
+  joints:
+    - robot0_shoulder_pan_joint
+    - robot0_shoulder_lift_joint
+    - robot0_elbow_joint
+    - robot0_wrist_1_joint
+    - robot0_wrist_2_joint
+    - robot0_wrist_3_joint
+  solver:
+    error_scale: 10
+    iterations: 10
+  pd_gains:
+    trans_x: {p: 5.0}
+    trans_y: {p: 5.0}
+    trans_z: {p: 5.0}
+    rot_x: {p: 1.0}
+    rot_y: {p: 1.0}
+    rot_z: {p: 1.0}
+
+ur5e_robotiq_2f_85_motion_control_handle:
+   type: "cartesian_controllers/MotionControlHandle"
+   robot_base_link: "world"
+   end_effector_link: "gripper0_tool0"
+   target_frame_topic: "/ur5e_robotiq_2f_85_cartesian_motion_controller/target_frame"
+   joints:
+    - robot0_shoulder_pan_joint
+    - robot0_shoulder_lift_joint
+    - robot0_elbow_joint
+    - robot0_wrist_1_joint
+    - robot0_wrist_2_joint
+    - robot0_wrist_3_joint
+
 # gripper controller
 # ur5e_robotiq_2f_85_gripper_controller:
 #   type: position_controllers/GripperActionController
@@ -90,10 +129,10 @@ ur5e_robotiq_2f_85_gripper_controller:
     - gripper0_finger_joint
     - gripper0_right_outer_knuckle_joint
   constraints:
-      goal_time: 1.5
-      stopped_velocity_tolerance: 0.5
-      gripper0_finger_joint: {trajectory: 0.3, goal: 0.25}
-      gripper0_right_outer_knuckle_joint: {trajectory: 0.3, goal: 0.25}
+    goal_time: 1.5
+    stopped_velocity_tolerance: 0.5
+    gripper0_finger_joint: {trajectory: 0.3, goal: 0.25}
+    gripper0_right_outer_knuckle_joint: {trajectory: 0.3, goal: 0.25}
   stop_trajectory_duration: 1.5
   state_publish_rate: 50
   action_monitor_rate: 10

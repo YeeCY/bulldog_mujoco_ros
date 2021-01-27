@@ -7,7 +7,6 @@
   <arg name="debug" default="false"/>
   <arg name="load_robot_description" default="true"/>
   <arg name="use_rviz" default="true"/>
-  <arg name="gui" default="true"/>
 
   <!-- Update joint limits -->
   <!-- <group ns="robot_description_planning">
