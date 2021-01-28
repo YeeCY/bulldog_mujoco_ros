@@ -2,9 +2,9 @@
     <!-- Set to true to debug -->
     <arg name="debug" default="false" />
     <!-- Set to true to allow planning trajectories -->
-    <arg name="use_moveit" default="true"/>
+    <arg name="use_moveit" default="false"/>
     <!-- Set to true to allow cartesian control -->
-    <arg name="use_cartesian" default="false" />
+    <arg name="use_cartesian" default="true" />
     <!-- Set to false if you want to start without rviz -->
     <arg name="use_rviz" default="true"/>
     <!-- RVIZ configuration file for cartesian control -->
@@ -52,6 +52,9 @@
     <remap from="/initialpose" to="initialpose" />
     <remap from="/move_base_simple/goal" to="move_base_simple/goal" />
     <remap from="/move_group/display_planned_path" to="move_group/display_planned_path" />
+    <remap from="/ur5e_robotiq_2f_85_motion_control_handle/update" to="ur5e_robotiq_2f_85_motion_control_handle/update" />
+    <remap from="/ur5e_robotiq_2f_85_motion_control_handle/feedback" to="ur5e_robotiq_2f_85_motion_control_handle/feedback" />
+    <remap from="/ur5e_robotiq_2f_85_motion_control_handle/update_full" to="ur5e_robotiq_2f_85_motion_control_handle/update_full" />
 
     <!-- Publish joint state -->
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5_joint_state_controller.yaml" />
