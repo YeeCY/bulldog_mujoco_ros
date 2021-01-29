@@ -93,6 +93,9 @@
         <node name="moveit_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
             ur5e_robotiq_2f_85_gripper_controller 
             ur5e_robotiq_2f_85_manipulator_controller"/>
+        <node name="moveit_stopped_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="--stopped
+            ur5e_robotiq_2f_85_cartesian_motion_controller
+            ur5e_robotiq_2f_85_motion_control_handle"/>
 
         <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
             <arg name="load_robot_description" value="false"/>
@@ -116,7 +119,10 @@
     <!-- RVIZ for cartesian controller -->
     <group if="$(arg use_cartesian)">
         <node name="cartesian_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+            ur5e_robotiq_2f_85_gripper_controller
             ur5e_robotiq_2f_85_cartesian_motion_controller"/>
+        <node name="cartesian_stopped_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="--stopped
+            ur5e_robotiq_2f_85_manipulator_controller"/>
         
         <group if="$(arg use_rviz)">
             <node name="cartesian_control_handle_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="

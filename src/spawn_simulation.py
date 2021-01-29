@@ -76,7 +76,7 @@ class SpawnSimulation(object):
             process = subprocess.Popen(['roslaunch {}'.format(self._robot_launch_file)], 
                                        shell=True, preexec_fn=os.setsid, executable='/bin/bash')
             # rospy.sleep(1)
-            time.sleep(1)
+            time.sleep(4)
         except OSError as e:
             rospy.logerr("Could not spawn simulation")
             # process.kill()
