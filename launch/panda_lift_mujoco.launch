@@ -1,10 +1,6 @@
 <launch>
     <!-- Set to true to debug -->
     <arg name="debug" default="false" />
-    <!-- Set to true to allow planning trajectories -->
-    <arg name="use_moveit" default="true"/>
-    <!-- Set to true to allow cartesian control -->
-    <arg name="use_cartesian" default="false" />
     <!-- Set to false if you want to start without rviz -->
     <arg name="use_rviz" default="true"/>
     <!-- RVIZ configuration file for cartesian control -->
@@ -26,8 +22,8 @@
     <!-- The window height of mujoco -->
     <arg name="window_height" default="512"/>
     <!-- Loads the robot description -->
-    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/ros_models/urdfs/ur5e_robotiq_2f_85.urdf.xacro" />
-    <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/ur5e_robotiq_2f_85.xml" />
+    <arg name="robot_description" default="$(find bulldog_mujoco_ros)/ros_models/urdfs/panda.urdf.xacro" />
+    <arg name="mujoco_model_filename" default="$(find bulldog_mujoco_ros)/mujoco_models/panda_lift.xml" />
     <!-- Topic to read object states -->
     <arg name="object_state_topic" default="mujoco_ros/model_states"/>
     <!-- Object meshes path -->
@@ -73,8 +69,8 @@
     </node>
 
     <!-- Launch mujoco ros control -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_joint_initial_states.yaml" />
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_mujoco_ros_control_params.yaml" />
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_lift_joint_initial_states.yaml" />
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_mujoco_ros_control_params.yaml" />
     <node name="mujoco_ros_control" pkg="mujoco_ros_control" type="mujoco_ros_control" output="screen">
         <param name="robot_model_path" value="$(arg mujoco_model_filename)"/>
         <param name="robot_description_param" value="$(arg robot_description_param)"/>
@@ -86,52 +82,28 @@
     </node>
 
     <!-- Load controllers -->
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_controllers.yaml"/>
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_controllers.yaml"/>
 
     <!-- MOVEIT -->
-    <group if="$(arg use_moveit)">
-        <node name="moveit_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
-            ur5e_robotiq_2f_85_gripper_controller 
-            ur5e_robotiq_2f_85_manipulator_controller"/>
-        <node name="moveit_stopped_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="--stopped
-            ur5e_robotiq_2f_85_cartesian_motion_controller
-            ur5e_robotiq_2f_85_motion_control_handle"/>
+    <!-- <node name="moveit_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+        panda_gripper_controller 
+        panda_manipulator_controller"/>
 
-        <include file="$(find bulldog_mujoco_ros)/launch/ur5_moveit_planning_and_execution.launch">
-            <arg name="load_robot_description" value="false"/>
-            <arg name="debug" value="$(arg debug)"/>
-            <arg name="use_rviz" value="$(arg use_rviz)"/>
-            <arg name="planning" value="$(arg planning)"/>
-        </include>
+    <include file="$(find bulldog_mujoco_ros)/launch/panda_moveit_planning_and_execution.launch">
+        <arg name="load_robot_description" value="false"/>
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="use_rviz" value="$(arg use_rviz)"/>
+        <arg name="planning" value="$(arg planning)"/>
+    </include> -->
 
-        <!-- Jog -->
-        <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/ur5e_robotiq_2f_85_jog.yaml"/>
-        <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
+    <!-- Jog -->
+    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_jog.yaml"/>
+    <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/> -->
 
-        <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
-        <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
-            <arg name="object_state_topic" value="$(arg object_state_topic)"/>
-            <arg name="description_repo_path" value="$(arg description_repo_path)"/>
-            <arg name="static_only" value="$(arg static_only)"/>
-        </include>
-    </group>
-
-    <!-- RVIZ for cartesian controller -->
-    <group if="$(arg use_cartesian)">
-        <node name="cartesian_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
-            ur5e_robotiq_2f_85_gripper_controller
-            ur5e_robotiq_2f_85_cartesian_motion_controller"/>
-        <node name="cartesian_stopped_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="--stopped
-            ur5e_robotiq_2f_85_manipulator_controller"/>
-        
-        <group if="$(arg use_rviz)">
-            <node name="cartesian_control_handle_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
-                ur5e_robotiq_2f_85_motion_control_handle"/>
-            
-            <arg     if="$(eval cartesian_rviz_config=='')" name="command_args" value="" />
-            <arg unless="$(eval cartesian_rviz_config=='')" name="command_args" value="-d $(arg cartesian_rviz_config)" />
-            
-            <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="$(arg command_args)" output="screen"/>
-        </group>
-    </group>
+    <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
+    <!-- <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
+        <arg name="object_state_topic" value="$(arg object_state_topic)"/>
+        <arg name="description_repo_path" value="$(arg description_repo_path)"/>
+        <arg name="static_only" value="$(arg static_only)"/>
+    </include> -->
 </launch>
