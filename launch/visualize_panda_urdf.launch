@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<launch>
+  <arg name="gui" default="True" />
+  <param name="use_gui" value="$(arg gui)"/>
+  
+  <param name="robot_description" command="$(find xacro)/xacro $(find bulldog_mujoco_ros)/ros_models/urdfs/panda.urdf.xacro" />  
+  
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find bulldog_mujoco_ros)/config/visualize_panda.rviz" required="true" />
+</launch>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+  <!-- If using a different frame with ${connected_to} param, make sure 'world' frame exists in the TF tree -->
+  <xacro:arg name="connected_to" default=""/>
+  
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/panda/panda_arm.xacro"/>
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/panda/hand.xacro"/>
+  
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/panda/panda.transmission.xacro"/>
+  
+  <!-- base platform -->
+  <xacro:include filename="$(find bulldog_mujoco_ros)/ros_models/urdfs/base_platform.urdf.xacro" />
+
+  <!-- base -->
+  <link name="world" />
+  
+  <joint name="robot0_base_joint" type="fixed">
+    <origin xyz="-0.56 0.0 0.913" rpy="0 0 0"/>
+    <!-- <origin xyz="0.0 0.0 0.913" rpy="0 0 0"/> -->
+    <parent link="world"/>
+    <child link="robot0_link0"/>
+  </joint>
+  
+  <xacro:base_platform prefix="robot0_" attach_link="robot0_link0" />
+
+  <!-- arm -->
+  <xacro:panda_arm arm_id="robot0" connected_to="world" xyz="-0.56 0.0 0.913" rpy="0 0 0"/>
+
+  <!-- gripper -->
+  <link name="robot0_right_hand" /><!-- could add camera with this link -->
+  <joint name="robot0_right_hand_joint" type="fixed">
+    <parent link="robot0_link7" />
+    <child link="robot0_right_hand" />
+    <origin xyz="0 0 0.1065" rpy="0 0 -0.7858908" />
+  </joint>
+  
+  <xacro:hand ns="gripper0" rpy="0 0 ${-pi / 4}" connected_to="robot0_right_hand"/>
+
+  <link name="gripper0_right_gripper" /><!-- rename grippe0_hand link -->
+  <joint name="gripper0_right_gripper_joint" type="fixed">
+    <parent link="gripper0_hand" />
+    <child link="gripper0_right_gripper" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <link name="gripper0_tool0" />
+
+  <joint name="gripper0_tool0_joint" type="fixed">
+    <parent link="gripper0_right_gripper" />
+    <child link="gripper0_tool0" />
+    <origin xyz="0 0 0.097" rpy="0 0 0" />
+  </joint>
+
+  <!-- transmission -->
+  <xacro:panda_transmission robot_name="robot0" gripper_name="gripper0" load_gripper="true" use_gazebo_control="false"/>
+
+</robot>
