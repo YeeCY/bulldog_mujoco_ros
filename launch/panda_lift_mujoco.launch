@@ -70,7 +70,7 @@
 
     <!-- Launch mujoco ros control -->
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_lift_joint_initial_states.yaml" />
-    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_mujoco_ros_control_params.yaml" />
+    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_mujoco_ros_control_params.yaml" /> -->
     <node name="mujoco_ros_control" pkg="mujoco_ros_control" type="mujoco_ros_control" output="screen">
         <param name="robot_model_path" value="$(arg mujoco_model_filename)"/>
         <param name="robot_description_param" value="$(arg robot_description_param)"/>
@@ -85,11 +85,11 @@
     <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_controllers.yaml"/>
 
     <!-- MOVEIT -->
-    <!-- <node name="moveit_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
+    <node name="moveit_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="
         panda_gripper_controller 
         panda_manipulator_controller"/>
 
-    <include file="$(find bulldog_mujoco_ros)/launch/panda_moveit_planning_and_execution.launch">
+    <!-- <include file="$(find bulldog_mujoco_ros)/launch/panda_moveit_planning_and_execution.launch">
         <arg name="load_robot_description" value="false"/>
         <arg name="debug" value="$(arg debug)"/>
         <arg name="use_rviz" value="$(arg use_rviz)"/>

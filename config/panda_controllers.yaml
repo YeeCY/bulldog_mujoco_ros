@@ -10,24 +10,35 @@
 #       - robot0_wrist_2_joint
 #       - robot0_wrist_3_joint
 
-ur5e_robotiq_2f_85_manipulator_controller:
-  type: position_controllers/JointTrajectoryController
+panda_manipulator_controller:
+  type: effort_controllers/JointTrajectoryController
   joints:
-    - robot0_shoulder_pan_joint
-    - robot0_shoulder_lift_joint
-    - robot0_elbow_joint
-    - robot0_wrist_1_joint
-    - robot0_wrist_2_joint
-    - robot0_wrist_3_joint
+    - robot0_joint1
+    - robot0_joint2
+    - robot0_joint3
+    - robot0_joint4
+    - robot0_joint5
+    - robot0_joint6
+    - robot0_joint7
   constraints:
     goal_time: 0.6 # 0.6
     stopped_velocity_tolerance: 0.1 # 0.05
-    robot0_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-    robot0_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-    robot0_elbow_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-    robot0_wrist_1_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-    robot0_wrist_2_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-    robot0_wrist_3_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_joint1: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_joint2: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_joint3: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_joint4: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_joint5: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_joint6: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+    robot0_joint7: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
+  gains:
+    robot0_joint1: {p: 100,  d: 0, i: 0, i_clamp: 1}
+    robot0_joint2: {p: 100,  d: 0, i: 0, i_clamp: 1}
+    robot0_joint3: {p: 100,  d: 0, i: 0, i_clamp: 1}
+    robot0_joint4: {p: 100,  d: 0, i: 0, i_clamp: 1}
+    robot0_joint5: {p: 100,  d: 0, i: 0, i_clamp: 1}
+    robot0_joint6: {p: 100,  d: 0, i: 0, i_clamp: 1}
+    robot0_joint7: {p: 100,  d: 0, i: 0, i_clamp: 1}
+
   stop_trajectory_duration: 0.5 # 1.0
   state_publish_rate: 50
   action_monitor_rate: 10
@@ -118,89 +129,21 @@ ur5e_robotiq_2f_85_motion_control_handle:
     - robot0_wrist_2_joint
     - robot0_wrist_3_joint
 
-# ur5e_robotiq_2f_85_joint_to_cartesian_controller:
-#     type: "cartesian_controllers/JointControllerAdapter"
-#     robot_base_link: "world"
-#     end_effector_link: "gripper0_tool0"
-#     target_frame_topic: "ur5e_robotiq_2f_85_cartesian_motion_controller/target_frame"
-#     joints:
-#       - robot0_shoulder_pan_joint
-#       - robot0_shoulder_lift_joint
-#       - robot0_elbow_joint
-#       - robot0_wrist_1_joint
-#       - robot0_wrist_2_joint
-#       - robot0_wrist_3_joint
-
-#     joint_limits:
-#       robot0_elbow_joint:
-#         has_velocity_limits: true
-#         max_velocity: 3.15
-#         has_acceleration_limits: false
-#         max_acceleration: 0
-#       robot0_shoulder_lift_joint:
-#         has_velocity_limits: true
-#         max_velocity: 3.15
-#         has_acceleration_limits: false
-#         max_acceleration: 0
-#       robot0_shoulder_pan_joint:
-#         has_velocity_limits: true
-#         max_velocity: 3.15
-#         has_acceleration_limits: false
-#         max_acceleration: 0
-#       robot0_wrist_1_joint:
-#         has_velocity_limits: true
-#         max_velocity: 3.2
-#         has_acceleration_limits: false
-#         max_acceleration: 0
-#       robot0_wrist_2_joint:
-#         has_velocity_limits: true
-#         max_velocity: 3.2
-#         has_acceleration_limits: false
-#         max_acceleration: 0
-#       robot0_wrist_3_joint:
-#         has_velocity_limits: true
-#         max_velocity: 3.2
-#         has_acceleration_limits: false
-#         max_acceleration: 0
-    
-#     ur5e_robotiq_2f_85_manipulator_controller:
-#       type: position_controllers/JointTrajectoryController
-#       joints:
-#         - robot0_shoulder_pan_joint
-#         - robot0_shoulder_lift_joint
-#         - robot0_elbow_joint
-#         - robot0_wrist_1_joint
-#         - robot0_wrist_2_joint
-#         - robot0_wrist_3_joint
-#       constraints:
-#         goal_time: 0.6 # 0.6
-#         stopped_velocity_tolerance: 0.1 # 0.05
-#         robot0_shoulder_pan_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-#         robot0_shoulder_lift_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-#         robot0_elbow_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-#         robot0_wrist_1_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-#         robot0_wrist_2_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-#         robot0_wrist_3_joint: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
-#       stop_trajectory_duration: 0.5 # 1.0
-#       state_publish_rate: 50
-#       action_monitor_rate: 10
-#       allow_partial_joints_goal: true
-
 # gripper controller
-# ur5e_robotiq_2f_85_gripper_controller:
+# panda_gripper_controller:
 #   type: position_controllers/GripperActionController
 #   joint: gripper0_finger_joint
 
-ur5e_robotiq_2f_85_gripper_controller:
+panda_gripper_controller:
   type: position_controllers/JointTrajectoryController
   joints:
-    - gripper0_finger_joint
-    - gripper0_right_outer_knuckle_joint
+    - gripper0_finger_joint1
+    - gripper0_finger_joint2
   constraints:
     goal_time: 1.5
     stopped_velocity_tolerance: 0.5
-    gripper0_finger_joint: {trajectory: 0.3, goal: 0.25}
-    gripper0_right_outer_knuckle_joint: {trajectory: 0.3, goal: 0.25}
+    gripper0_finger_joint1: {trajectory: 0.3, goal: 0.25}
+    gripper0_finger_joint2: {trajectory: 0.3, goal: 0.25}
   stop_trajectory_duration: 1.5
   state_publish_rate: 50
   action_monitor_rate: 10
