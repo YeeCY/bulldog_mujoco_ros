@@ -65,13 +65,13 @@
     </visual>
 
     <actuator>
-        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint1" name="robot0_torq_j1" />
-        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint2" name="robot0_torq_j2" />
-        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint3" name="robot0_torq_j3" />
-        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint4" name="robot0_torq_j4" />
-        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint5" name="robot0_torq_j5" />
-        <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="robot0_joint6" name="robot0_torq_j6" />
-        <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="robot0_joint7" name="robot0_torq_j7" />
+        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint1" name="robot0_joint1_torq" />
+        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint2" name="robot0_joint2_torq" />
+        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint3" name="robot0_joint3_torq" />
+        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint4" name="robot0_joint4_torq" />
+        <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="robot0_joint5" name="robot0_joint5_torq" />
+        <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="robot0_joint6" name="robot0_joint6_torq" />
+        <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="robot0_joint7" name="robot0_joint7_torq" />
         <position ctrllimited="true" ctrlrange="0.0 0.04" joint="gripper0_finger_joint1" kp="1000000" name="gripper0_gripper_finger_joint1" forcelimited="true" forcerange="-20 20" />
         <position ctrllimited="true" ctrlrange="-0.04 0.0" joint="gripper0_finger_joint2" kp="1000000" name="gripper0_gripper_finger_joint2" forcelimited="true" forcerange="-20 20" />
     </actuator>
@@ -130,7 +130,7 @@
             <inertial pos="0 0 0.05" mass="4" diaginertia="0.4 0.4 0.4" />
             <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="robot0_link0_vis" name="robot0_link0_visual" material="robot0_arm_mat" />
             <geom type="mesh" group="0" mesh="robot0_link0" name="robot0_link0_collision" />
-            <body name="robot0_link1" pos="0 0 0.333">
+            <body name="robot0_link1" pos="0 0 2.333">
                 <inertial pos="0 0 -0.07" mass="3" diaginertia="0.3 0.3 0.3" />
                 <joint name="robot0_joint1" pos="0 0 0" axis="0 0 1" limited="true" range="-2.8973 2.8973" damping="10.0" frictionloss="5.0" />
                 <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="robot0_link1_vis" name="robot0_link1_visual" material="robot0_arm_mat" />

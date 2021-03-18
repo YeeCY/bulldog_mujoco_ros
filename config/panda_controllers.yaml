@@ -31,7 +31,7 @@ panda_manipulator_controller:
     robot0_joint6: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
     robot0_joint7: {trajectory: 0.1, goal: 0.1} # {trajectory: 0.2, goal: 0.1}
   gains:
-    robot0_joint1: {p: 100,  d: 0, i: 0, i_clamp: 1}
+    robot0_joint1: {p: 10000, d: 800, i: 0, i_clamp: 1}  # {p: 10000, d: 800, i: 0, i_clamp: 1}
     robot0_joint2: {p: 100,  d: 0, i: 0, i_clamp: 1}
     robot0_joint3: {p: 100,  d: 0, i: 0, i_clamp: 1}
     robot0_joint4: {p: 100,  d: 0, i: 0, i_clamp: 1}
