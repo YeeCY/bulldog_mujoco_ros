@@ -3,9 +3,10 @@
   <!-- Generate sinusodial wave -->
   <node name="sinusoidal_wave_generator" pkg="bulldog_mujoco_ros" type="sinusoidal_wave_generator.py" output="screen">
     <param name="command_topic" value="/panda_manipulator_controller/command" />
-    <param name="command_joint" value="robot0_joint1" />
-    <param name="wave_mag" value="1.5708" />
-    <param name="wave_offset" value="0.0" />
+    <param name="command_joint" value="robot0_joint7" />
+    <!-- <param name="wave_mag" value="1.5708" /> -->
+    <param name="wave_mag" value="0.7854" />
+    <param name="wave_offset" value="0" />
     <param name="wave_freq" value="25" />
   </node>
 </launch>

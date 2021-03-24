@@ -14,17 +14,17 @@
   <!-- base -->
   <link name="world" />
   
+  <link name="robot0_base_link" />
   <joint name="robot0_base_joint" type="fixed">
     <origin xyz="-0.56 0.0 0.913" rpy="0 0 0"/>
-    <!-- <origin xyz="0.0 0.0 0.913" rpy="0 0 0"/> -->
     <parent link="world"/>
-    <child link="robot0_link0"/>
+    <child link="robot0_base_link"/>
   </joint>
   
-  <xacro:base_platform prefix="robot0_" attach_link="robot0_link0" />
+  <xacro:base_platform prefix="robot0_" attach_link="robot0_base_link" />
 
   <!-- arm -->
-  <xacro:panda_arm arm_id="robot0" connected_to="world" xyz="-0.56 0.0 0.913" rpy="0 0 0"/>
+  <xacro:panda_arm arm_id="robot0" connected_to="robot0_base_link" />
 
   <!-- gripper -->
   <link name="robot0_right_hand" /><!-- could add camera with this link -->
@@ -34,11 +34,12 @@
     <origin xyz="0 0 0.1065" rpy="0 0 -0.7858908" />
   </joint>
   
-  <xacro:hand ns="gripper0" rpy="0 0 ${-pi / 4}" connected_to="robot0_right_hand"/>
+  <!-- <xacro:hand ns="gripper0" rpy="0 0 ${-pi / 2}" connected_to="robot0_right_hand" safety_distance="0.03"/> -->
+  <xacro:hand ns="gripper0" rpy="0 0 ${-pi / 4}" connected_to="robot0_link8" safety_distance="0.03"/>
 
   <link name="gripper0_right_gripper" /><!-- rename grippe0_hand link -->
   <joint name="gripper0_right_gripper_joint" type="fixed">
-    <parent link="gripper0_hand" />
+    <parent link="robot0_right_hand" />
     <child link="gripper0_right_gripper" />
     <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
