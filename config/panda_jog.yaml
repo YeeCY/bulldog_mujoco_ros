@@ -3,11 +3,11 @@ jog:
   target_link: gripper0_tool0
   base_link: world
 
-jog_frame_node:
-  time_from_start: 4.0
-  exclude_joint_names: 
-    - gripper0_finger_joint1
-    - gripper0_finger_joint2
+# jog_frame_node:
+#   time_from_start: 4.0
+#   exclude_joint_names: 
+#     - gripper0_finger_joint1
+#     - gripper0_finger_joint2
 
 # jog_joint_node:
 #   joint_names:

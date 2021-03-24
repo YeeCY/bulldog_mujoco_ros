@@ -73,7 +73,7 @@
         <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="robot0_joint6" name="robot0_joint6_torq" />
         <motor ctrllimited="true" ctrlrange="-12.0 12.0" joint="robot0_joint7" name="robot0_joint7_torq" />
         <position ctrllimited="true" ctrlrange="0.0 0.04" joint="gripper0_finger_joint1" kp="1000000" name="gripper0_finger_joint1_pos" forcelimited="true" forcerange="-20 20" />
-        <position ctrllimited="true" ctrlrange="0.0 0.04" joint="gripper0_finger_joint2" kp="1000000" name="gripper0_finger_joint2" forcelimited="true" forcerange="-20 20" />
+        <position ctrllimited="true" ctrlrange="0.0 0.04" joint="gripper0_finger_joint2" kp="1000000" name="gripper0_finger_joint2_pos" forcelimited="true" forcerange="-20 20" />
     </actuator>
 
     <worldbody>

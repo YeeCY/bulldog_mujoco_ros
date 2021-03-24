@@ -102,9 +102,9 @@
     <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
 
     <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
-    <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
+    <!-- <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
         <arg name="object_state_topic" value="$(arg object_state_topic)"/>
         <arg name="description_repo_path" value="$(arg description_repo_path)"/>
         <arg name="static_only" value="$(arg static_only)"/>
-    </include>
+    </include> -->
 </launch>
