@@ -1,8 +1,9 @@
 <launch>
   <arg name="env_prefix" default="env" />
   <arg name="use_rviz" default="false" />
-  <arg name="visualize" default="false" />
-  <arg name="robot_launch_file" default="bulldog_mujoco_ros ur5e_robotiq_2f_85_mujoco.launch visualize:=$(arg visualize) use_rviz:=$(arg use_rviz) window_name:=$(arg env_prefix)" />
+  <arg name="visualize" default="true" />
+  <arg name="robot_launch_file" default="bulldog_mujoco_ros ur5e_robotiq_2f_85_mujoco.launch 
+    visualize:=$(arg visualize) use_rviz:=$(arg use_rviz) window_name:=$(arg env_prefix)" />
 
   <group ns="$(arg env_prefix)">
     <remap from="/clock" to="clock" />

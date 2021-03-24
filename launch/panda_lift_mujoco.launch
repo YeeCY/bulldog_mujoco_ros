@@ -98,8 +98,8 @@
 
     <!-- Jog -->
     <!-- TODO (chongyi zheng): fix bugs -->
-    <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_jog.yaml"/>
-    <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/> -->
+    <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_jog.yaml"/>
+    <node name="jog_frame_node" pkg="jog_controller" type="jog_frame_node" output="screen"/>
 
     <!-- MuJoCo2RVIZ, publish static objects to MoveIt -->
     <include file="$(find bulldog_mujoco_ros)/launch/mujoco2rviz.launch">
