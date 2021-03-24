@@ -89,12 +89,12 @@
         panda_gripper_controller 
         panda_manipulator_controller"/>
 
-    <!-- <include file="$(find bulldog_mujoco_ros)/launch/panda_moveit_planning_and_execution.launch">
+    <include file="$(find bulldog_mujoco_ros)/launch/panda_moveit_planning_and_execution.launch">
         <arg name="load_robot_description" value="false"/>
         <arg name="debug" value="$(arg debug)"/>
         <arg name="use_rviz" value="$(arg use_rviz)"/>
         <arg name="planning" value="$(arg planning)"/>
-    </include> -->
+    </include>
 
     <!-- Jog -->
     <!-- <rosparam command="load" file="$(find bulldog_mujoco_ros)/config/panda_jog.yaml"/>
