@@ -14,17 +14,17 @@
   <!-- base -->
   <link name="world" />
   
-  <link name="robot0_base_link" />
+  <link name="robot0_base" />
   <joint name="robot0_base_joint" type="fixed">
     <origin xyz="-0.56 0.0 0.913" rpy="0 0 0"/>
     <parent link="world"/>
-    <child link="robot0_base_link"/>
+    <child link="robot0_base"/>
   </joint>
   
-  <xacro:base_platform prefix="robot0_" attach_link="robot0_base_link" />
+  <xacro:base_platform prefix="robot0_" attach_link="robot0_base" />
 
   <!-- arm -->
-  <xacro:panda_arm arm_id="robot0" connected_to="robot0_base_link" />
+  <xacro:panda_arm arm_id="robot0" connected_to="robot0_base" />
 
   <!-- gripper -->
   <link name="robot0_right_hand" /><!-- could add camera with this link -->
@@ -45,13 +45,26 @@
   </joint>
 
   <link name="gripper0_tool0" />
-
   <joint name="gripper0_tool0_joint" type="fixed">
     <parent link="gripper0_right_gripper" />
     <child link="gripper0_tool0" />
     <origin xyz="0 0 0.097" rpy="0 0 0" />
   </joint>
 
+  <link name="gripper0_finger_joint1_tip" />
+  <joint name="gripper0_finger_joint1_tip_joint" type="fixed">
+    <parent link="gripper0_leftfinger" />
+    <child link="gripper0_finger_joint1_tip" />
+    <origin xyz="0 0.0085 0.056" />
+  </joint>
+
+  <link name="gripper0_finger_joint2_tip" />
+  <joint name="gripper0_finger_joint2_tip_joint" type="fixed">
+    <parent link="gripper0_rightfinger" />
+    <child link="gripper0_finger_joint2_tip" />
+    <origin xyz="0 -0.0085 0.056" />
+  </joint>
+  
   <!-- transmission -->
   <xacro:panda_transmission robot_name="robot0" gripper_name="gripper0" load_gripper="true" use_gazebo_control="false"/>
 
